@@ -15,7 +15,7 @@ import javax.persistence.Id;
  * @author PC
  */
 @Entity
-public class Nombre_Completo implements Serializable {
+public class Placas implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,10 +40,10 @@ public class Nombre_Completo implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Nombre_Completo)) {
+        if (!(object instanceof Placas)) {
             return false;
         }
-        Nombre_Completo other = (Nombre_Completo) object;
+        Placas other = (Placas) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -52,7 +52,7 @@ public class Nombre_Completo implements Serializable {
 
     @Override
     public String toString() {
-        return "org.itson.concesionaria.entitys.Nombre_Completo[ id=" + id + " ]";
+        return "org.itson.concesionaria.entitys.Placas[ id=" + id + " ]";
     }
     
 }

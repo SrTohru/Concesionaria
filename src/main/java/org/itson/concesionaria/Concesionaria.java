@@ -1,12 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
 package org.itson.concesionaria;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import org.itson.concesionaria.entitys.Persona;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityManager;
 
 public class Concesionaria {
 

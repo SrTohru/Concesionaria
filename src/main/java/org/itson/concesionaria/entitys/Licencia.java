@@ -5,23 +5,28 @@
 package org.itson.concesionaria.entitys;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-/**
- *
- * @author PC
- */
 @Entity
 public class Licencia implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "fechaLanzamiento", nullable = false)
+    private Calendar fechaVigencia;
+    
+    
+    
     public Long getId() {
         return id;
     }
@@ -54,5 +59,5 @@ public class Licencia implements Serializable {
     public String toString() {
         return "org.itson.concesionaria.entitys.Licencia[ id=" + id + " ]";
     }
-    
+
 }

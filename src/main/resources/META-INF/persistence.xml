@@ -6,10 +6,9 @@
     <class>org.itson.concesionaria.Licencias</class>
     <class>org.itson.concesionaria.entitys.RFC</class>
     <class>org.itson.concesionaria.entitys.Licencia</class>
-    <class>org.itson.concesionaria.entitys.Telefono</class>
-    <class>org.itson.concesionaria.entitys.Fecha_Nacimiento</class>
-    <class>org.itson.concesionaria.entitys.Nombre_Completo</class>
     <class>org.itson.concesionaria.entitys.Vigencia</class>
+    <class>org.itson.concesionaria.entitys.Auto</class>
+    <class>org.itson.concesionaria.entitys.Placas</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://u10393_hhSTBpRIRK:F3%5Eic0MVByEA%40NrwOjzqjCln@107.181.226.202:3306/s10393_concesionaria"/>
       <property name="javax.persistence.jdbc.user" value="u10393_hhSTBpRIRK"/>
