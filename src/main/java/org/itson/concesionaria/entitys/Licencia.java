@@ -6,11 +6,15 @@ package org.itson.concesionaria.entitys;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,25 +30,29 @@ public class Licencia implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "fechaVigencia", nullable = false)
     private Calendar fechaVigencia;
-    
+
     @Column(name = "costo", nullable = false)
     private double costo;
+
+    @JoinColumn(name = "idPersona", nullable = false)
+    private Persona idPersona;
 
     public Licencia() {
     }
 
-    public Licencia(Calendar fechaVigencia, double costo) {
+    public Licencia(Calendar fechaVigencia, double costo, Persona persona) {
         this.fechaVigencia = fechaVigencia;
+        this.idPersona = persona;
         this.costo = costo;
     }
 
-    public Licencia(Long id, Calendar fechaVigencia, double costo) {
+    public Licencia(Long id, Calendar fechaVigencia, double costo, Persona persona) {
         this.id = id;
         this.fechaVigencia = fechaVigencia;
         this.costo = costo;
+        this.idPersona = persona;
     }
-    
-    
+
     public Long getId() {
         return id;
     }
@@ -69,8 +77,6 @@ public class Licencia implements Serializable {
         this.costo = costo;
     }
 
-    
-    
     @Override
     public int hashCode() {
         int hash = 0;
