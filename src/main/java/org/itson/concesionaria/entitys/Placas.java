@@ -1,27 +1,41 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.itson.concesionaria.entitys;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import org.itson.concesionaria.utilities.EstadosPlaca;
 
-/**
- *
- * @author PC
- */
 @Entity
+@Table(name = "placas")
 public class Placas implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estadoPlaca", nullable = false)
+    private EstadosPlaca estadosPlaca;
+    
+    @Column(name = "codigoPlacas", nullable = false)
+    private String codigoPlacas;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "fechaTramite", nullable = false)
+    private Calendar fechaTramite;
+    
+    @Column(name = "costo", nullable = false)
+    private double Costo;
+    
     public Long getId() {
         return id;
     }
@@ -54,5 +68,5 @@ public class Placas implements Serializable {
     public String toString() {
         return "org.itson.concesionaria.entitys.Placas[ id=" + id + " ]";
     }
-    
+
 }

@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Auto")
+@Table(name = "auto")
 public class Auto implements Serializable {
 
     @Id
@@ -30,7 +30,8 @@ public class Auto implements Serializable {
     
     @Column(name = "color", nullable = false, length = 25)
     private String color; 
-    @OneToMany()
+    
+    
     @JoinColumn(name = "idLicencia", nullable = false)
     private Licencia idLicencia;
     
