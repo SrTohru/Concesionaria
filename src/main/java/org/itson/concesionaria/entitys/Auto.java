@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -21,23 +22,25 @@ public class Auto implements Serializable {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(name = "serie", nullable = false, length = 7)
     private String serie;
-    
+
     @Column(name = "marca", nullable = false, length = 50)
     private String marca;
-    
+
     @Column(name = "color", nullable = false, length = 25)
-    private String color; 
-    
-    
+    private String color;
+
     @JoinColumn(name = "idLicencia", nullable = false)
     private Licencia idLicencia;
-    
+
     @Column(name = "modelo", nullable = false, length = 50)
     private String modelo;
-    
+
+    @JoinColumn(name = "idPersona", nullable = false)
+    private Persona idPersona;
+
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "idPlacas", nullable = false)
     private Placas idPlacas;
@@ -45,27 +48,27 @@ public class Auto implements Serializable {
     public Auto() {
     }
 
-    public Auto(String serie, String marca, String color, Licencia idLicencia, String modelo, Placas idPlacas) {
+    public Auto(String serie, String marca, String color, Licencia idLicencia, String modelo, Placas idPlacas, Persona idPersona) {
         this.serie = serie;
         this.marca = marca;
         this.color = color;
         this.idLicencia = idLicencia;
         this.modelo = modelo;
+        this.idPersona = idPersona;
         this.idPlacas = idPlacas;
     }
 
-    public Auto(Long id, String serie, String marca, String color, Licencia idLicencia, String modelo, Placas idPlacas) {
+    public Auto(Long id, String serie, String marca, String color, Licencia idLicencia, String modelo, Placas idPlacas, Persona idPersona) {
         this.id = id;
         this.serie = serie;
         this.marca = marca;
         this.color = color;
         this.idLicencia = idLicencia;
         this.modelo = modelo;
+        this.idPersona = idPersona;
         this.idPlacas = idPlacas;
     }
-    
-    
-    
+
     public Long getId() {
         return id;
     }
@@ -121,9 +124,7 @@ public class Auto implements Serializable {
     public void setIdPlacas(Placas idPlacas) {
         this.idPlacas = idPlacas;
     }
-    
-    
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -149,6 +150,4 @@ public class Auto implements Serializable {
         return "Auto{" + "id=" + id + ", serie=" + serie + ", marca=" + marca + ", color=" + color + ", idLicencia=" + idLicencia + ", modelo=" + modelo + ", idPlacas=" + idPlacas + '}';
     }
 
-  
-    
 }
