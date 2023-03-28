@@ -24,7 +24,7 @@ public class Persona implements Serializable {
     @Column(name = "telefono", nullable = false, length = 14)
     private String telefono;
 
-    @Column(name = "rfc", nullable = false, length = 13)
+    @Column(name = "rfc", nullable = false, length = 13, unique = true)
     private String rfc;
     @OneToOne
     @JoinColumn(name = "idLicencia", nullable = false)
