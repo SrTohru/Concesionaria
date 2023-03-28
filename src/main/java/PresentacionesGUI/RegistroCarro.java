@@ -4,17 +4,17 @@
  */
 package PresentacionesGUI;
 
-/**
- *
- * @author naely
- */
-public class RegistroCarro extends javax.swing.JFrame {
-
-    /**
-     * Creates new form RegistroCarro
-     */
+import org.itson.concesionaria.utilities.costoLicencias;
+import org.itson.concesionaria.utilities.costoPlacas;
+public class RegistroCarro extends javax.swing.JFrame { 
+    
+    costoPlacas cp = new costoPlacas();
+    
     public RegistroCarro() {
         initComponents();
+       
+        
+       
     }
 
     /**

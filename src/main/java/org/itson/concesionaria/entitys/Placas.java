@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import org.itson.concesionaria.utilities.EstadosPlaca;
+import org.itson.concesionaria.utilities.estadosPlaca;
 
 @Entity
 @Table(name = "placas")
@@ -25,7 +25,7 @@ public class Placas implements Serializable {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "estadoPlaca", nullable = false)
-    private EstadosPlaca estadosPlaca;
+    private estadosPlaca estadosPlaca;
 
     @Column(name = "codigoPlacas", nullable = false)
     private String codigoPlacas;
@@ -46,7 +46,7 @@ public class Placas implements Serializable {
     public Placas() {
     }
 
-    public Placas(EstadosPlaca estadosPlaca, String codigoPlacas, Calendar fechaTramite, double Costo, Persona persona, Auto auto) {
+    public Placas(estadosPlaca estadosPlaca, String codigoPlacas, Calendar fechaTramite, double Costo, Persona persona, Auto auto) {
         this.estadosPlaca = estadosPlaca;
         this.codigoPlacas = codigoPlacas;
         this.fechaTramite = fechaTramite;
@@ -55,7 +55,7 @@ public class Placas implements Serializable {
         this.Costo = Costo;
     }
 
-    public Placas(Long id, EstadosPlaca estadosPlaca, String codigoPlacas, Calendar fechaTramite, double Costo, Persona persona, Auto auto) {
+    public Placas(Long id, estadosPlaca estadosPlaca, String codigoPlacas, Calendar fechaTramite, double Costo, Persona persona, Auto auto) {
         this.id = id;
         this.estadosPlaca = estadosPlaca;
         this.codigoPlacas = codigoPlacas;
@@ -91,11 +91,11 @@ public class Placas implements Serializable {
 
     
     
-    public EstadosPlaca getEstadosPlaca() {
+    public estadosPlaca getEstadosPlaca() {
         return estadosPlaca;
     }
 
-    public void setEstadosPlaca(EstadosPlaca estadosPlaca) {
+    public void setEstadosPlaca(estadosPlaca estadosPlaca) {
         this.estadosPlaca = estadosPlaca;
     }
 

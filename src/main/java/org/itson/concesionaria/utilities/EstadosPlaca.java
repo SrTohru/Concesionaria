@@ -1,4 +1,4 @@
 package org.itson.concesionaria.utilities;
-public enum EstadosPlaca {
+public enum estadosPlaca {
     ACTIVA, DESACTIVA
 }
