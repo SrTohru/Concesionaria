@@ -4,17 +4,20 @@
  */
 package PresentacionesGUI;
 
+import java.awt.Image;
+import java.awt.image.ImageObserver;
+import org.itson.concesionaria.utilities.costoLicencias;
+import org.itson.concesionaria.utilities.costoPlacas;
+
 /**
  *
  * @author naely
  */
 public class PantallaPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PantallaPrincipal
-     */
-    public PantallaPrincipal() {
+     public PantallaPrincipal() {
         initComponents();
+        
     }
 
     /**

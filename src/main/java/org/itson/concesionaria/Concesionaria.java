@@ -10,6 +10,11 @@ import org.itson.concesionaria.entitys.Persona;
 public class Concesionaria {
 
     public static void main(String[] args) {
-   
+             EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("com.itson_PruebasJPA_235666_jar_1.0");
+        EntityManager entityManager = managerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+
+        
+        entityManager.getTransaction().commit();
     }
 }

@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -36,10 +37,12 @@ public class Placas implements Serializable {
 
     @Column(name = "costo", nullable = false)
     private double Costo;
-
+    
+    @ManyToOne
     @JoinColumn(name = "idPersona", nullable = false)
-    private Persona idPersona;
-
+    private Persona persona;
+    
+    
     @JoinColumn(name = "idAuto", nullable = false)
     private Auto idAuto;
 
@@ -50,7 +53,7 @@ public class Placas implements Serializable {
         this.estadosPlaca = estadosPlaca;
         this.codigoPlacas = codigoPlacas;
         this.fechaTramite = fechaTramite;
-        this.idPersona = persona;
+        this.persona = persona;
         this.idAuto = auto;
         this.Costo = Costo;
     }
@@ -60,7 +63,7 @@ public class Placas implements Serializable {
         this.estadosPlaca = estadosPlaca;
         this.codigoPlacas = codigoPlacas;
         this.fechaTramite = fechaTramite;
-        this.idPersona = persona;
+        this.persona = persona;
         this.idAuto = auto;
         this.Costo = Costo;
     }
@@ -73,12 +76,12 @@ public class Placas implements Serializable {
         this.id = id;
     }
 
-    public Persona getIdPersona() {
-        return idPersona;
+    public Persona getPersona() {
+        return persona;
     }
 
-    public void setIdPersona(Persona idPersona) {
-        this.idPersona = idPersona;
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
     public Auto getIdAuto() {

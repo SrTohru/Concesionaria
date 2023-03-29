@@ -31,14 +31,15 @@ public class Auto implements Serializable {
 
     @Column(name = "color", nullable = false, length = 25)
     private String color;
-    
+
     @OneToOne
     @JoinColumn(name = "idLicencia", nullable = false)
     private Licencia idLicencia;
 
     @Column(name = "modelo", nullable = false, length = 50)
     private String modelo;
-    @OneToMany
+
+    @ManyToOne()
     @JoinColumn(name = "idPersona", nullable = false)
     private Persona idPersona;
 
@@ -124,6 +125,14 @@ public class Auto implements Serializable {
 
     public void setIdPlacas(Placas idPlacas) {
         this.idPlacas = idPlacas;
+    }
+
+    public Persona getIdPersona() {
+        return idPersona;
+    }
+
+    public void setIdPersona(Persona idPersona) {
+        this.idPersona = idPersona;
     }
 
     @Override
