@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,11 +32,12 @@ public class Licencia implements Serializable {
     @Column(name = "fechaVigencia", nullable = false)
     private Calendar fechaVigencia;
 
-    @Column(name = "costo", nullable = false)
-    private double costo;
-
+    @OneToOne
     @JoinColumn(name = "idPersona", nullable = false)
     private Persona idPersona;
+
+    @Column(name = "costo", nullable = false)
+    private double costo;
 
     public Licencia() {
     }

@@ -23,12 +23,7 @@ public class Persona implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "telefono", nullable = false, length = 14)
-    private String telefono;
-
-    @Column(name = "rfc", nullable = false, length = 13, unique = true)
-    private String rfc;
-
+    
     @Column(name = "nombres", nullable = false, length = 50, unique = true)
     private String nombres;
 
@@ -38,12 +33,17 @@ public class Persona implements Serializable {
     @Column(name = "apellidoMaterno", nullable = false, length = 50, unique = true)
     private String apellidoMaterno;
     
+    @Column(name = "telefono", nullable = false, length = 14)
+    private String telefono;
+
+    @Column(name = "rfc", nullable = false, length = 13, unique = true)
+    private String rfc;
       
     @OneToMany(mappedBy = "persona")
     private List<Placas> placas;
     
     @OneToOne
-    @JoinColumn(name = "idLicencia", nullable = false)
+    @JoinColumn(name = "idLicencia", nullable = true)
     private Licencia licencia;
 
     @Temporal(TemporalType.DATE)

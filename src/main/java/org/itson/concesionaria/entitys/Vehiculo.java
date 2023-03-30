@@ -2,21 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package org.itson.concesionaria.entitys;
 
 import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import org.eclipse.persistence.annotations.DiscriminatorClass;
-
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
 @Table(name = "vehiculo")
-@DiscriminatorClass()
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_vehiculo", discriminatorType = DiscriminatorType.STRING)
 public class Vehiculo implements Serializable {
 
     @Id
@@ -31,6 +35,72 @@ public class Vehiculo implements Serializable {
         this.id = id;
     }
 
+    @Column(name = "serie", nullable = false, length = 7)
+    private String serie;
+
+    @Column(name = "marca", nullable = false, length = 50)
+    private String marca;
+
+    @Column(name = "color", nullable = false, length = 25)
+    private String color;
+
+    @Column(name = "modelo", nullable = false, length = 50)
+    private String modelo;
+
+    public Vehiculo() {
+    }
+
+    public Vehiculo(String serie, String marca, String color, String modelo) {
+        this.serie = serie;
+        this.marca = marca;
+        this.color = color;
+        this.modelo = modelo;
+    }
+
+    public Vehiculo(Long id, String serie, String marca, String color, String modelo) {
+        this.id = id;
+        this.serie = serie;
+        this.marca = marca;
+        this.color = color;
+        this.modelo = modelo;
+    }
+
+    
+    
+    public String getSerie() {
+        return serie;
+    }
+
+    public void setSerie(String serie) {
+        this.serie = serie;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;

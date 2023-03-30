@@ -10,11 +10,12 @@ import org.itson.concesionaria.entitys.Persona;
 public class Concesionaria {
 
     public static void main(String[] args) {
-             EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("com.itson_PruebasJPA_235666_jar_1.0");
+             EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("org.itson_Concesionaria_jar_1.0PU");
         EntityManager entityManager = managerFactory.createEntityManager();
         entityManager.getTransaction().begin();
 
-        
-        entityManager.getTransaction().commit();
+            Persona p = new Persona("6442304259", "sdasdasd", "Jose Eduardo", "Hinojosa", "Romero", null, null, new GregorianCalendar(2003, 12, 02));
+            entityManager.persist(p);
+            entityManager.getTransaction().commit();
     }
 }
