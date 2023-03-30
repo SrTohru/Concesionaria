@@ -24,13 +24,13 @@ public class Persona implements Serializable {
     private Long id;
 
     
-    @Column(name = "nombres", nullable = false, length = 50)
+    @Column(name = "nombres", nullable = false, length = 50, unique = true)
     private String nombres;
 
-    @Column(name = "apellidoPaterno", nullable = false, length = 50)
+    @Column(name = "apellidoPaterno", nullable = false, length = 50, unique = true)
     private String apellidoPaterno;
 
-    @Column(name = "apellidoMaterno", nullable = false, length = 50)
+    @Column(name = "apellidoMaterno", nullable = false, length = 50, unique = true)
     private String apellidoMaterno;
     
     @Column(name = "telefono", nullable = false, length = 14)
