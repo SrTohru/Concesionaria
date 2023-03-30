@@ -8,6 +8,7 @@ import java.awt.Image;
 import java.awt.image.ImageObserver;
 import org.itson.concesionaria.utilities.costoLicencias;
 import org.itson.concesionaria.utilities.costoPlacas;
+import org.itson.concesionaria.utilities.registroMasivoPersonas;
 
 /**
  *
@@ -131,7 +132,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir1ActionPerformed
-        // TODO add your handling code here:
+       registroMasivoPersonas rM = new registroMasivoPersonas();
+       
+       rM.registroMasivoPersonas();
     }//GEN-LAST:event_btnSalir1ActionPerformed
 
     /**
