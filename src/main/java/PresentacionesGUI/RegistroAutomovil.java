@@ -6,11 +6,11 @@ package PresentacionesGUI;
 
 import org.itson.concesionaria.utilities.costoLicencias;
 import org.itson.concesionaria.utilities.costoPlacas;
-public class RegistroCarro extends javax.swing.JFrame { 
+public class RegistroAutomovil extends javax.swing.JFrame { 
     
     costoPlacas cp = new costoPlacas();
     
-    public RegistroCarro() {
+    public RegistroAutomovil() {
         initComponents();
        
         

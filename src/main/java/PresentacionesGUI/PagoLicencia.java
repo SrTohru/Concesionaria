@@ -41,7 +41,7 @@ public class PagoLicencia extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblCobro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblCobro.setText("Cobro Licencia");
+        lblCobro.setText("Pago Licencia");
 
         lblIdPersona.setText("RFC");
 
