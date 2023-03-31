@@ -34,10 +34,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         btnRegistrar = new javax.swing.JButton();
         btnSolicitar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        lblRegistrarCarro = new javax.swing.JLabel();
-        lblSolicitarLicencia = new javax.swing.JLabel();
+        lblRegistro = new javax.swing.JLabel();
+        lblSolicitarLiencia = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        btnSalir1 = new javax.swing.JButton();
+        lblGenerarPersonas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,14 +55,14 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        lblRegistrarCarro.setText("Registro de carro");
+        lblRegistro.setText("Registro de carro");
 
-        lblSolicitarLicencia.setText("Solicitar Liencia");
+        lblSolicitarLiencia.setText("Solicitar Liencia");
 
-        btnSalir1.setText("Generar personas");
-        btnSalir1.addActionListener(new java.awt.event.ActionListener() {
+        lblGenerarPersonas.setText("Generar personas");
+        lblGenerarPersonas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalir1ActionPerformed(evt);
+                lblGenerarPersonasActionPerformed(evt);
             }
         });
 
@@ -70,18 +70,15 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnSalir1)
+                        .addComponent(lblGenerarPersonas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSalir)
                         .addContainerGap())
+<<<<<<< Updated upstream
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,26 +98,49 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                                         .addComponent(lblSolicitarLicencia))
                                     .addComponent(btnSolicitar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(57, 57, 57))))))
+=======
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(lblSolicitarLiencia))
+                            .addComponent(btnSolicitar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(57, 57, 57))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
+>>>>>>> Stashed changes
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(lblBienvenida)
+                .addGap(13, 13, 13)
+                .addComponent(lblBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblRegistrarCarro)
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
+                .addComponent(lblRegistro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegistrar)
                 .addGap(19, 19, 19)
-                .addComponent(lblSolicitarLicencia)
+                .addComponent(lblSolicitarLiencia)
                 .addGap(18, 18, 18)
                 .addComponent(btnSolicitar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir)
-                    .addComponent(btnSalir1))
+                    .addComponent(lblGenerarPersonas))
                 .addContainerGap())
         );
 
@@ -131,11 +151,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void btnSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir1ActionPerformed
+    private void lblGenerarPersonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblGenerarPersonasActionPerformed
        registroMasivoPersonas rM = new registroMasivoPersonas();
        
        rM.registroMasivoPersonas();
-    }//GEN-LAST:event_btnSalir1ActionPerformed
+    }//GEN-LAST:event_lblGenerarPersonasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,11 +195,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton btnSalir1;
     private javax.swing.JButton btnSolicitar;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblBienvenida;
-    private javax.swing.JLabel lblRegistrarCarro;
-    private javax.swing.JLabel lblSolicitarLicencia;
+    private javax.swing.JButton lblGenerarPersonas;
+    private javax.swing.JLabel lblRegistro;
+    private javax.swing.JLabel lblSolicitarLiencia;
     // End of variables declaration//GEN-END:variables
 }

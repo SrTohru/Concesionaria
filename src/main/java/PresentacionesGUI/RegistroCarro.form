@@ -30,45 +30,52 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblIngresarDatos" min="-2" pref="290" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="txtSerie" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="lblModelo" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
-                                      <Component id="txtModelo" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="lblSerie" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblColor" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="lblMarca" min="-2" pref="37" max="-2" attributes="0"/>
-                                      <Component id="txtMarca" max="32767" attributes="0"/>
-                                      <Component id="txtColor" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="txtSerie" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblModelo" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
+                              <Component id="txtModelo" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jSeparator" alignment="0" min="-2" pref="301" max="-2" attributes="0"/>
+                          <Component id="lblSerie" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <Component id="lblColor" min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="txtColor" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="lblMarca" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="txtMarca" min="-2" pref="146" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
-                      <Component id="btnRegistrar" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblRFC" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="txtRFC" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblIngresarDatos" alignment="0" min="-2" pref="290" max="-2" attributes="0"/>
+                              <Component id="jSeparator" alignment="0" min="-2" pref="301" max="-2" attributes="0"/>
+                              <Component id="jLabel1" alignment="0" pref="332" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
+              <Component id="btnRegistrar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="btnSalir" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -79,31 +86,44 @@
               <Component id="lblIngresarDatos" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSeparator" min="-2" pref="10" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblModelo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblMarca" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="lblRFC" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtModelo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtMarca" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Component id="txtRFC" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="lblModelo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtModelo" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="lblMarca" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtMarca" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lblSerie" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="txtSerie" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="lblColor" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtColor" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblSerie" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblColor" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtSerie" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtColor" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Component id="btnRegistrar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="36" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnSalir" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -155,6 +175,18 @@
     <Component class="javax.swing.JButton" name="btnSalir">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salir"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblRFC">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="RFC"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtRFC">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Porfavor ingresa los datos que se te solicitan a continuaci&#xf3;n"/>
       </Properties>
     </Component>
   </SubComponents>
