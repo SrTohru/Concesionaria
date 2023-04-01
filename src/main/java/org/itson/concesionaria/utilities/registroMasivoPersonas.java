@@ -45,8 +45,14 @@ public class registroMasivoPersonas {
                 persona.setNombres(nombre);
                 persona.setApellidoPaterno(apellidoPaterno);
                 persona.setApellidoMaterno(apellidoMaterno);
-                persona.setTelefono("555-555-555" + i);
-                persona.setRfc(null);
+                
+                int num1 = rand.nextInt(9);
+                int num2 = rand.nextInt(9);
+                int num3 = rand.nextInt(9);
+                int num4 = rand.nextInt(9);
+                String telefono = "644230" + num1 + num2 + num3 + num4;
+                persona.setTelefono(telefono);
+                persona.setRfc("ITSONRFC" + i);
 
                 // Convertir la fecha de nacimiento de String a Date
                 persona.setFechaNacimiento(new GregorianCalendar(2003, 01, 01));
@@ -55,9 +61,10 @@ public class registroMasivoPersonas {
             }
 
             eM.getEntityManager().getTransaction().commit();
-            JOptionPane.showMessageDialog(null, "Se registraron 20 personas exitosamente.");
+            JOptionPane.showMessageDialog(null, "Se han registrado a 20 personas aleatoreas exitosamente.");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ocurrió un error al intentar insertar los datos:");
+
+            JOptionPane.showMessageDialog(null, "Debugg: Ocurrió un error al intentar insertar los datos:", "Quitar este mensaje al finalizar desarrollo", JOptionPane.INFORMATION_MESSAGE);
             JOptionPane.showMessageDialog(null, e.getMessage());
             eM.getEntityManager().getTransaction().rollback();
         } finally {

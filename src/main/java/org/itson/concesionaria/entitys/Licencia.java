@@ -63,6 +63,14 @@ public class Licencia implements Serializable {
         this.id = id;
     }
 
+    public Persona getIdPersona() {
+        return idPersona;
+    }
+
+    public void setIdPersona(Persona idPersona) {
+        this.idPersona = idPersona;
+    }
+
     public Calendar getFechaVigencia() {
         return fechaVigencia;
     }
