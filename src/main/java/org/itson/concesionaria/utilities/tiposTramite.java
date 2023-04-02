@@ -1,5 +1,5 @@
 package org.itson.concesionaria.utilities;
 
-public enum tipoTramite {
+public enum tiposTramite {
     Expedicion_De_Licencia, Expedicion_De_Placas
 }

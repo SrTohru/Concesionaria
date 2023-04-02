@@ -8,7 +8,7 @@ import org.itson.concesionaria.entitys.Auto;
 import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.utilities.estadosPlaca;
 
-@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-03-31T18:07:51")
+@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-04-01T21:26:41")
 @StaticMetamodel(Placas.class)
 public class Placas_ { 
 

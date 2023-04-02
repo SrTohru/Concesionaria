@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.itson.concesionaria.utilities.estadosTramite;
+import org.itson.concesionaria.utilities.tiposTramite;
 
 @Entity
 @Table(name = "tramite")
@@ -30,8 +31,11 @@ public class Tramite implements Serializable {
 
     @Column(name = "estado", nullable = false)
     private estadosTramite estadoTramite;
-
-    @Column(name = "costo", nullable = false)
+   
+      @Column(name = "tipoTramite", nullable = false)
+    private tiposTramite tipoTramite;
+    
+    @Column(name = "costo", nullable = true)
     private double costo;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -52,6 +56,14 @@ public class Tramite implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public tiposTramite getTipoTramite() {
+        return tipoTramite;
+    }
+
+    public void setTipoTramite(tiposTramite tipoTramite) {
+        this.tipoTramite = tipoTramite;
     }
 
     public Persona getIdPersona() {

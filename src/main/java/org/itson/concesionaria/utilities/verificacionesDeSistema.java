@@ -11,7 +11,7 @@ import org.itson.concesionaria.entitys.Persona;
 
 public class verificacionesDeSistema {
 
-    private entityManager em = new entityManager();
+    private final entityManager em = new entityManager();
 
     public boolean verificarFormatoFecha(String fecha) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -19,7 +19,7 @@ public class verificacionesDeSistema {
         String inputText = fecha;
 
         try {
-            Date date = dateFormat.parse(inputText);
+            Date date = dateFormat.parse(inputText); 
             return true;
         } catch (ParseException e) {
             return false;
