@@ -5,10 +5,12 @@
 package org.itson.concesionaria.entitys;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +20,15 @@ public class Pago implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @JoinColumn(name = "idLicencia", nullable = false)
+    private Tramite tramite;
+
+    @Column(name = "pagoLicencia", nullable = true)
+    private int pagoLicencia;
+
+    @Column(name = "pagoPlacas", nullable = true)
+    private int pagoPlacas;
 
     public Long getId() {
         return id;
@@ -51,5 +62,5 @@ public class Pago implements Serializable {
     public String toString() {
         return "org.itson.concesionaria.entitys.Pago[ id=" + id + " ]";
     }
-    
+
 }

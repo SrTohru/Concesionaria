@@ -13,6 +13,7 @@
     <class>org.itson.concesionaria.entitys.Licencias</class>
     <class>org.itson.concesionaria.entitys.Licencia</class>
     <class>org.itson.concesionaria.entitys.Tramite</class>
+    <class>org.itson.concesionaria.entitys.Pago</class>
     <properties>
       <!-- -->
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://u10393_hhSTBpRIRK:F3%5Eic0MVByEA%40NrwOjzqjCln@107.181.226.202:3306/s10393_concesionaria"/>

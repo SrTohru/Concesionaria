@@ -73,6 +73,14 @@ public class Vehiculo implements Serializable {
         this.tramite = tramite;
     }
 
+    public Tramite getTramite() {
+        return tramite;
+    }
+
+    public void setTramite(Tramite tramite) {
+        this.tramite = tramite;
+    }
+
     
     
     public String getSerie() {

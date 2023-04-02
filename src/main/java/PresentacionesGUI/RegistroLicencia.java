@@ -212,6 +212,9 @@ public class RegistroLicencia extends javax.swing.JFrame {
             Persona persona = verificador.verificarPersona(txtRFC.getText());
             int vigenciaAños = obtenerVigencia();
             if (persona != null) {
+                
+                
+                
                 GregorianCalendar fecha = new GregorianCalendar();
                 fecha.add(GregorianCalendar.YEAR, vigenciaAños);
                 System.out.println(YEAR);
