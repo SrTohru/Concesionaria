@@ -11,17 +11,15 @@ import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import org.itson.concesionaria.dao.LicenciasDAO;
 import org.itson.concesionaria.entitys.Persona;
+import org.itson.concesionaria.utilities.costoLicencias;
 import org.itson.concesionaria.utilities.entityManager;
 import org.itson.concesionaria.utilities.verificacionesDeSistema;
 
-/**
- *
- * @author PC
- */
 public class RegistroLicencia extends javax.swing.JFrame {
 
     private LicenciasDAO licenciasDAO = new LicenciasDAO();
     private verificacionesDeSistema verificador = new verificacionesDeSistema();
+    private costoLicencias costoLicencia = new costoLicencias();
 
     public RegistroLicencia() {
         initComponents();
@@ -38,17 +36,45 @@ public class RegistroLicencia extends javax.swing.JFrame {
             default:
                 break;
         }
-
         return -1;
     }
 
+    public int calcularCostoLicencia() {
+        if (checkBoxDiscapacitado.isSelected()) {
+            switch (obtenerVigencia()) {
+                case 1:
+                    return costoLicencia.getANO_COSTO_DISCAPACITADOS();
+                case 2:
+                    return costoLicencia.getDOS_ANOS_COSTO_DISCAPACITADOS();
+                case 3:
+                    return costoLicencia.getTRES_ANOS_COSTO_DISCAPACITADOS();
+                default:
+                    break;
+            }
+        } else {
+            switch (obtenerVigencia()) {
+                case 1:
+                    return costoLicencia.getANO_COSTO_NORMAL();
+                case 2:
+                    return costoLicencia.getDOS_ANOS_COSTO_NORMAL();
+                case 3:
+                    return costoLicencia.getTRES_ANOS_COSTO_NORMAL();
+                default:
+                    break;
+            }
+        }
+        return -1;
+    }
+
+    public boolean discapacidad() {
+        return checkBoxDiscapacitado.isSelected();
+    }
+
     public boolean allInformationRequiered() {
-        if (txtRFC.getText().isEmpty()
-                || !(checkBoxDiscapacitado.isSelected())
-                && !(checkBoxNoDiscapacitado.isSelected())) {
+        if (txtRFC.getText().isEmpty()) {
             return false;
         }
-        
+
         return true;
     }
 
@@ -56,7 +82,6 @@ public class RegistroLicencia extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        checkBoxNoDiscapacitado = new javax.swing.JCheckBox();
         lblDiscapacitado = new javax.swing.JLabel();
         lblVigencia = new javax.swing.JLabel();
         Solicitar = new javax.swing.JButton();
@@ -70,13 +95,6 @@ public class RegistroLicencia extends javax.swing.JFrame {
         checkBoxDiscapacitado = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        checkBoxNoDiscapacitado.setText("No");
-        checkBoxNoDiscapacitado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkBoxNoDiscapacitadoActionPerformed(evt);
-            }
-        });
 
         lblDiscapacitado.setText("¿Eres discapacitado?");
 
@@ -128,30 +146,31 @@ public class RegistroLicencia extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(27, 27, 27)
-                            .addComponent(txtRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblVigencia)
-                            .addGap(18, 18, 18)
-                            .addComponent(añosVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(lblDiscapacitado)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(9, 9, 9)
-                            .addComponent(checkBoxDiscapacitado)
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGap(21, 21, 21)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(27, 27, 27)
+                                    .addComponent(txtRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblVigencia)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(añosVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(80, 80, 80)
                                     .addComponent(Solicitar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(checkBoxNoDiscapacitado))))
-                    .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addComponent(checkBoxDiscapacitado)))
+                            .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblDiscapacitado)
+                        .addGap(153, 153, 153))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,11 +195,9 @@ public class RegistroLicencia extends javax.swing.JFrame {
                     .addComponent(añosVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lblDiscapacitado)
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkBoxDiscapacitado)
-                    .addComponent(checkBoxNoDiscapacitado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkBoxDiscapacitado)
+                .addGap(12, 12, 12)
                 .addComponent(Solicitar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(btnSalir)
@@ -190,26 +207,19 @@ public class RegistroLicencia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void checkBoxNoDiscapacitadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxNoDiscapacitadoActionPerformed
-        if (checkBoxNoDiscapacitado.isSelected()) {
-            checkBoxDiscapacitado.setSelected(false);
-        }
-    }//GEN-LAST:event_checkBoxNoDiscapacitadoActionPerformed
-
     private void SolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SolicitarActionPerformed
         if (allInformationRequiered()) {
             Persona persona = verificador.verificarPersona(txtRFC.getText());
-
+            int vigenciaAños = obtenerVigencia();
             if (persona != null) {
-                GregorianCalendar fecha = new GregorianCalendar(YEAR + obtenerVigencia(), MONTH, Calendar.DAY_OF_YEAR);
-
-                licenciasDAO.registrarLicencia(persona, fecha, 999);
+                GregorianCalendar fecha = new GregorianCalendar();
+                fecha.add(GregorianCalendar.YEAR, vigenciaAños);
+                System.out.println(YEAR);
+              //  licenciasDAO.registrarLicencia(persona, fecha, calcularCostoLicencia());
+            }else{
+                JOptionPane.showMessageDialog(null, "Disculpe, ese 'RFC' no existe en nuestra base de datos, intentelo denuvo,", "Error al encontrar 'RFC", JOptionPane.ERROR_MESSAGE);
             }
         }
-
-//        entityManager eM = new entityManager();
-//        Persona persona = eM.getEntityManager().find(Persona.class, 2L);
-//        licenciasDAO.registrarLicencia(persona, new GregorianCalendar(2024, 03, 31), 999);
     }//GEN-LAST:event_SolicitarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -223,9 +233,7 @@ public class RegistroLicencia extends javax.swing.JFrame {
     }//GEN-LAST:event_añosVigenciaAncestorAdded
 
     private void checkBoxDiscapacitadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxDiscapacitadoActionPerformed
-        if (checkBoxDiscapacitado.isSelected()) {
-            checkBoxNoDiscapacitado.setSelected(false);
-        }
+
     }//GEN-LAST:event_checkBoxDiscapacitadoActionPerformed
 
 
@@ -234,7 +242,6 @@ public class RegistroLicencia extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> añosVigencia;
     private javax.swing.JToggleButton btnSalir;
     private javax.swing.JCheckBox checkBoxDiscapacitado;
-    private javax.swing.JCheckBox checkBoxNoDiscapacitado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;

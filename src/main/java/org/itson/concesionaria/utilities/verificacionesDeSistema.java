@@ -12,7 +12,7 @@ import org.itson.concesionaria.entitys.Persona;
 public class verificacionesDeSistema {
 
     private entityManager em = new entityManager();
-    
+
     public boolean verificarFormatoFecha(String fecha) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -32,9 +32,14 @@ public class verificacionesDeSistema {
     }
 
     public Persona verificarPersona(String rfc) {
-        String consulta = "SELECT p FROM Persona p WHERE p.rfc = :rfc";
-        TypedQuery<Persona> query = em.getEntityManager().createQuery(consulta, Persona.class);
-        query.setParameter("rfc", rfc);
-        return query.getSingleResult();
+        try {
+            String consulta = "SELECT p FROM Persona p WHERE p.rfc = :rfc";
+            TypedQuery<Persona> query = em.getEntityManager().createQuery(consulta, Persona.class);
+            query.setParameter("rfc", rfc);
+            return query.getSingleResult();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Disculpe, ese 'RFC' no existe en nuestra base de datos, intentelo denuvo,", "Error al encontrar 'RFC", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 }

@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 @Table(name = "vehiculo")
@@ -47,22 +49,28 @@ public class Vehiculo implements Serializable {
     @Column(name = "modelo", nullable = false, length = 50)
     private String modelo;
 
+    @OneToOne
+    @JoinColumn(name = "tramiteLicencia")
+    private Tramite tramite;
+    
     public Vehiculo() {
     }
 
-    public Vehiculo(String serie, String marca, String color, String modelo) {
+    public Vehiculo(String serie, String marca, String color, String modelo, Tramite tramite) {
         this.serie = serie;
         this.marca = marca;
         this.color = color;
         this.modelo = modelo;
+        this.tramite = tramite;
     }
 
-    public Vehiculo(Long id, String serie, String marca, String color, String modelo) {
+    public Vehiculo(Long id, String serie, String marca, String color, String modelo,Tramite tramite) {
         this.id = id;
         this.serie = serie;
         this.marca = marca;
         this.color = color;
         this.modelo = modelo;
+        this.tramite = tramite;
     }
 
     

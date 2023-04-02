@@ -23,7 +23,6 @@ public class Persona implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    
     @Column(name = "nombres", nullable = false, length = 50)
     private String nombres;
 
@@ -32,16 +31,19 @@ public class Persona implements Serializable {
 
     @Column(name = "apellidoMaterno", nullable = false, length = 50)
     private String apellidoMaterno;
-    
+
     @Column(name = "telefono", nullable = false, length = 14)
     private String telefono;
 
     @Column(name = "rfc", nullable = false, length = 13, unique = true)
     private String rfc;
-      
+
     @OneToMany(mappedBy = "persona")
     private List<Placas> placas;
-    
+
+    @OneToMany(mappedBy = "idPersona")
+    private List<Tramite> tramite;
+
     @OneToOne
     @JoinColumn(name = "idLicencia", nullable = true)
     private Licencia licencia;
@@ -76,6 +78,16 @@ public class Persona implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    public List<Tramite> getTramite() {
+        return tramite;
+    }
+
+    public void setTramite(List<Tramite> tramite) {
+        this.tramite = tramite;
+    }
+
+    
+    
     public String getNombres() {
         return nombres;
     }
@@ -108,8 +120,6 @@ public class Persona implements Serializable {
         this.placas = placas;
     }
 
-    
-    
     public Long getId() {
         return id;
     }

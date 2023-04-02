@@ -1,14 +1,11 @@
 package org.itson.concesionaria.utilities;
 
-import java.awt.HeadlessException;
-import java.text.ParseException;
 import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import org.itson.concesionaria.entitys.Persona;
-import org.itson.concesionaria.utilities.entityManager;
 
 public class registroMasivoPersonas {
 
@@ -34,7 +31,6 @@ public class registroMasivoPersonas {
         try {
             eM.getEntityManager().getTransaction().begin();
 
-            // Insertar las 20 personas
             for (int i = 1; i <= 20; i++) {
                 Persona persona = new Persona();
                 Random rand = new Random();
@@ -54,7 +50,6 @@ public class registroMasivoPersonas {
                 persona.setTelefono(telefono);
                 persona.setRfc("ITSONRFC" + i);
 
-                // Convertir la fecha de nacimiento de String a Date
                 persona.setFechaNacimiento(new GregorianCalendar(2003, 01, 01));
 
                 eM.getEntityManager().persist(persona);

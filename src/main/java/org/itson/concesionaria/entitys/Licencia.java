@@ -36,23 +36,50 @@ public class Licencia implements Serializable {
     @JoinColumn(name = "idPersona", nullable = false)
     private Persona idPersona;
 
+    @Column(name = "discapacidad", nullable = false)
+    private String discapacidad;
+
     @Column(name = "costo", nullable = false)
     private double costo;
+
+    @OneToOne
+    @JoinColumn(name = "tramiteLicencia")
+    private Tramite tramite;
 
     public Licencia() {
     }
 
-    public Licencia(Calendar fechaVigencia, double costo, Persona persona) {
+    public Licencia(Calendar fechaVigencia, Persona idPersona, String discapacidad, double costo, Tramite tramite) {
         this.fechaVigencia = fechaVigencia;
-        this.idPersona = persona;
+        this.idPersona = idPersona;
+        this.discapacidad = discapacidad;
         this.costo = costo;
+        this.tramite = tramite;
     }
 
-    public Licencia(Long id, Calendar fechaVigencia, double costo, Persona persona) {
+    public Licencia(Long id, Calendar fechaVigencia, Persona idPersona, String discapacidad, double costo, Tramite tramite) {
         this.id = id;
         this.fechaVigencia = fechaVigencia;
+        this.idPersona = idPersona;
+        this.discapacidad = discapacidad;
         this.costo = costo;
-        this.idPersona = persona;
+        this.tramite = tramite;
+    }
+
+    public Tramite getTramite() {
+        return tramite;
+    }
+
+    public void setTramite(Tramite tramite) {
+        this.tramite = tramite;
+    }
+
+    public String getDiscapacidad() {
+        return discapacidad;
+    }
+
+    public void setDiscapacidad(String discapacidad) {
+        this.discapacidad = discapacidad;
     }
 
     public Long getId() {
