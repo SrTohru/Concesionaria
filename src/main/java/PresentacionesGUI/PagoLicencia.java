@@ -4,18 +4,18 @@
  */
 package PresentacionesGUI;
 
+import org.itson.concesionaria.entitys.Persona;
+
 /**
  *
  * @author usuario
  */
 public class PagoLicencia extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Cobro
-     */
-    public PagoLicencia() {
+    public PagoLicencia(Persona persona, int costo, String rfc) {
         initComponents();
-        lblRFC.setText("Prueba");
+        lblRFC.setText(rfc);
+        lblCosto.setText(""+ costo);
         
         
         
@@ -37,6 +37,8 @@ public class PagoLicencia extends javax.swing.JFrame {
         btSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblRFC = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lblCosto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,6 +53,10 @@ public class PagoLicencia extends javax.swing.JFrame {
 
         jLabel1.setText("Costo");
 
+        jLabel2.setText("Null data");
+
+        lblCosto.setText("Null data");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -60,10 +66,15 @@ public class PagoLicencia extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblCosto))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblIdPersona)
                                 .addGap(34, 34, 34)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -75,8 +86,8 @@ public class PagoLicencia extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btSalir)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(105, 105, 105)
                 .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -90,12 +101,15 @@ public class PagoLicencia extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIdPersona)
-                    .addComponent(lblRFC))
+                    .addComponent(lblRFC)
+                    .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addGap(54, 54, 54)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lblCosto))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(btnPagar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
                 .addComponent(btSalir)
                 .addContainerGap())
         );
@@ -109,8 +123,10 @@ public class PagoLicencia extends javax.swing.JFrame {
     private javax.swing.JButton btSalir;
     private javax.swing.JToggleButton btnPagar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblCobro;
+    private javax.swing.JLabel lblCosto;
     private javax.swing.JLabel lblIdPersona;
     private javax.swing.JLabel lblRFC;
     // End of variables declaration//GEN-END:variables

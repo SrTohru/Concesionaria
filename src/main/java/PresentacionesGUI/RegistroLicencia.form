@@ -26,35 +26,33 @@
           <Group type="102" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                      <Component id="lblSolicitud" alignment="0" min="-2" pref="204" max="-2" attributes="0"/>
-                      <Component id="jSeparator1" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
-                      <Component id="jLabel2" alignment="0" min="-2" pref="452" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel1" min="-2" pref="37" max="-2" attributes="0"/>
-                          <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
-                          <Component id="txtRFC" min="-2" pref="267" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblVigencia" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                          <Component id="añosVigencia" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="lblDiscapacitado" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                          <Component id="checkBoxDiscapacitado" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
-                                  <Component id="Solicitar" min="-2" pref="87" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="checkBoxNoDiscapacitado" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                          <Component id="lblSolicitud" alignment="0" min="-2" pref="204" max="-2" attributes="0"/>
+                          <Component id="jSeparator1" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" min="-2" pref="452" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel1" min="-2" pref="37" max="-2" attributes="0"/>
+                              <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
+                              <Component id="txtRFC" min="-2" pref="267" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblVigencia" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                              <Component id="añosVigencia" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                              <Component id="Solicitar" min="-2" pref="87" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Component id="checkBoxDiscapacitado" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <Component id="btnSalir" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="btnSalir" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
+                  <Component id="lblDiscapacitado" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -87,12 +85,9 @@
               </Group>
               <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
               <Component id="lblDiscapacitado" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="checkBoxDiscapacitado" min="-2" max="-2" attributes="0"/>
-                  <Component id="checkBoxNoDiscapacitado" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="checkBoxDiscapacitado" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="Solicitar" min="-2" pref="35" max="-2" attributes="0"/>
               <EmptySpace pref="14" max="32767" attributes="0"/>
               <Component id="btnSalir" min="-2" max="-2" attributes="0"/>
@@ -102,14 +97,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JCheckBox" name="checkBoxNoDiscapacitado">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="No"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkBoxNoDiscapacitadoActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblDiscapacitado">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xbf;Eres discapacitado?"/>
