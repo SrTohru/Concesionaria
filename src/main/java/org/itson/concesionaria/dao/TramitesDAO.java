@@ -13,15 +13,10 @@ import org.itson.concesionaria.utilities.tiposTramite;
 public class TramitesDAO implements ITramites {
 
     private entityManager em = new entityManager();
-    PagosDAO pagoDAO = new PagosDAO();
+
     @Override
     public Tramite crearTramite(Persona persona, estadosTramite estadoTramite, tiposTramite tipoTramite, Calendar fechaTramite) {
-        Tramite tramite = new Tramite();
-
-        tramite.setIdPersona(persona);
-        tramite.setEstadoTramite(estadoTramite);
-        tramite.setFechaTramite(fechaTramite);
-        tramite.setTipoTramite(tipoTramite);
+        Tramite tramite = new Tramite(persona, estadoTramite, tipoTramite, fechaTramite);
 
         em.getEntityManager().getTransaction().begin();
         em.getEntityManager().persist(tramite);

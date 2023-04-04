@@ -1,15 +1,14 @@
 package org.itson.concesionaria.interfaces;
 
-
 import org.itson.concesionaria.entitys.Auto;
-import org.itson.concesionaria.entitys.Licencia;
 import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.entitys.Placas;
 import org.itson.concesionaria.entitys.Tramite;
 import org.itson.concesionaria.utilities.estadosPlaca;
 
+public interface IPlacas {
 
-public interface IAutos {
-//idLicencia, idpersona, idplacas
-    Auto registrarAuto(Persona persona, String codigoPlacas, Tramite tramite);
+    Placas registroPlacas(String codigoPlacas, estadosPlaca estadoPlaca, Tramite tramite, int costo, Persona persona, Auto auto);
+    
+    Placas actualizarPlacas(estadosPlaca estadoPlaca, Tramite tramite, int costo, Persona persona, Auto auto, Placas placas);
 }

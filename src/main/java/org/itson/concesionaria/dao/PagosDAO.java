@@ -4,6 +4,7 @@ package org.itson.concesionaria.dao;
 import org.itson.concesionaria.entitys.Licencia;
 import org.itson.concesionaria.entitys.Pago;
 import org.itson.concesionaria.entitys.Placas;
+import org.itson.concesionaria.entitys.Tramite;
 import org.itson.concesionaria.interfaces.IPagos;
 import org.itson.concesionaria.utilities.entityManager;
 import org.itson.concesionaria.utilities.tipoDePago;
@@ -13,13 +14,15 @@ public class PagosDAO implements IPagos{
     entityManager em = new entityManager();
     
     @Override
-    public Pago registrarPagoLicencia(Licencia licencia, tipoDePago tipoPago) {
+    public Pago registrarPagoLicencia(Licencia licencia, Tramite tramite, tipoDePago tipoPago) {
     em.getEntityManager().getTransaction().begin();
     
-    Pago pago = new Pago();
+    Pago pago = new Pago(tramite, tipoPago, licencia);
+   
+    tramite.setIdPago(pago);
     
-    pago.setIdLicencia(licencia);
-    pago.setTipoDePago(tipoPago);
+    em.getEntityManager().merge(tramite);
+ 
     
     em.getEntityManager().persist(pago);
     em.getEntityManager().getTransaction().commit();

@@ -2,6 +2,7 @@ package org.itson.concesionaria.entitys;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -24,46 +25,50 @@ public class Placas implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-  
+
     @Enumerated(EnumType.STRING)
     @Column(name = "estadoPlaca", nullable = false)
     private estadosPlaca estadosPlaca;
 
-    @Column(name = "codigoPlacas", nullable = false)
+    @Column(name = "codigoPlacas", nullable = false, unique = true)
     private String codigoPlacas;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "fechaTramite", nullable = false)
-    private Calendar fechaTramite;
+    @OneToOne
+    @JoinColumn(name = "idTramite", nullable = false)
+    private Tramite tramite;
 
     @Column(name = "costo", nullable = false)
     private double Costo;
-    
+
     @ManyToOne
     @JoinColumn(name = "idPersona", nullable = false)
     private Persona persona;
-    
-    @OneToOne
-    @JoinColumn(name = "idAuto", nullable = false)
+
+    @ManyToOne()
+    @JoinColumn(name = "idAuto")
     private Auto idAuto;
+
+    @OneToOne()
+    @JoinColumn(name = "idPlacas", nullable = false)
+    private Placas placas;
 
     public Placas() {
     }
 
-    public Placas(estadosPlaca estadosPlaca, String codigoPlacas, Calendar fechaTramite, double Costo, Persona persona, Auto auto) {
+    public Placas(estadosPlaca estadosPlaca, String codigoPlacas, Tramite tramite, double Costo, Persona persona, Auto auto) {
         this.estadosPlaca = estadosPlaca;
         this.codigoPlacas = codigoPlacas;
-        this.fechaTramite = fechaTramite;
+        this.tramite = tramite;
         this.persona = persona;
         this.idAuto = auto;
         this.Costo = Costo;
     }
 
-    public Placas(Long id, estadosPlaca estadosPlaca, String codigoPlacas, Calendar fechaTramite, double Costo, Persona persona, Auto auto) {
+    public Placas(Long id, estadosPlaca estadosPlaca, String codigoPlacas, Tramite tramite, Calendar fechaTramite, double Costo, Persona persona, Auto auto) {
         this.id = id;
         this.estadosPlaca = estadosPlaca;
         this.codigoPlacas = codigoPlacas;
-        this.fechaTramite = fechaTramite;
+        this.tramite = tramite;
         this.persona = persona;
         this.idAuto = auto;
         this.Costo = Costo;
@@ -93,8 +98,6 @@ public class Placas implements Serializable {
         this.idAuto = idAuto;
     }
 
-    
-    
     public estadosPlaca getEstadosPlaca() {
         return estadosPlaca;
     }
@@ -111,12 +114,12 @@ public class Placas implements Serializable {
         this.codigoPlacas = codigoPlacas;
     }
 
-    public Calendar getFechaTramite() {
-        return fechaTramite;
+    public Tramite getFechaTramite() {
+        return tramite;
     }
 
-    public void setFechaTramite(Calendar fechaTramite) {
-        this.fechaTramite = fechaTramite;
+    public void setFechaTramite(Tramite tramite) {
+        this.tramite = tramite;
     }
 
     public double getCosto() {

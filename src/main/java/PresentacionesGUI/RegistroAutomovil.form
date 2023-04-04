@@ -9,7 +9,7 @@
     </Component>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -30,12 +30,8 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="404" max="-2" attributes="0"/>
-              <Component id="btnSalir" min="-2" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
@@ -46,25 +42,18 @@
                       <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
                       <Component id="lblColor" min="-2" pref="37" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="btnVerificadorRFC" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblRFC" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="txtRFC" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lblIngresarDatos" alignment="0" min="-2" pref="290" max="-2" attributes="0"/>
-                                  <Component id="jSeparator" alignment="0" min="-2" pref="301" max="-2" attributes="0"/>
-                                  <Component id="jLabel1" alignment="0" pref="332" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Component id="lblMarca" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="txtMarca" min="-2" pref="146" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                  <Component id="lblRFC" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="txtRFC" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblIngresarDatos" alignment="0" min="-2" pref="290" max="-2" attributes="0"/>
+                          <Component id="jSeparator" alignment="0" min="-2" pref="301" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="0" pref="332" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblRFCInfo" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                          <Component id="lblMarca" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="txtMarca" min="-2" pref="146" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -78,7 +67,12 @@
                       <Component id="txtColor" min="-2" pref="146" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="46" max="32767" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnSalir" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -94,13 +88,8 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="lblRFC" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtRFC" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblRFCInfo" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnVerificadorRFC" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="txtRFC" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblMarca" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblModelo" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -122,9 +111,9 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnRegistrar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="btnSalir" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -191,19 +180,6 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Porfavor ingresa los datos que se te solicitan a continuaci&#xf3;n"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnVerificadorRFC">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Verificar RFC"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVerificadorRFCActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblRFCInfo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Null data"/>
       </Properties>
     </Component>
   </SubComponents>

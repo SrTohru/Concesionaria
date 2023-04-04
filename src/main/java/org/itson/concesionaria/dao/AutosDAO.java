@@ -4,19 +4,22 @@ import org.itson.concesionaria.entitys.Auto;
 import org.itson.concesionaria.entitys.Licencia;
 import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.entitys.Placas;
+import org.itson.concesionaria.entitys.Tramite;
 import org.itson.concesionaria.interfaces.IAutos;
 import org.itson.concesionaria.utilities.entityManager;
 import org.itson.concesionaria.utilities.estadosPlaca;
+import org.itson.concesionaria.utilities.verificacionesDeSistema;
 
-public class AutosDAO implements IAutos{
+public class AutosDAO implements IAutos {
     
-    //Auto auto, estadosPlaca estadoplaca, Persona persona, Placas placas
-      //EstadoPlaca, codigoPlacas, fechaTramite, costo, idPersona, idAuto      
+    
+    PlacasDAO placasDAO = new PlacasDAO();
+    verificacionesDeSistema verificacionesSistema = new verificacionesDeSistema();
     entityManager em = new entityManager();
-    
+
     @Override
-    public Auto registrarAuto(estadosPlaca estadoPlaca, Persona persona, Placas placas) {
-    /*
+    public Auto registrarAuto(Persona persona, String codigoPlacas, Tramite tramite) {
+        /*
                 eM.getEntityManager().getTransaction().begin();
         JOptionPane.showMessageDialog(null, "Persona: " + persona + " fechaVencimiento" + fechaVencimiento + " discapacidad: " + discapacidad + " costo" + costo + " trmaite" + tramite);
         Licencia licencia = new Licencia();
@@ -38,15 +41,18 @@ public class AutosDAO implements IAutos{
         JOptionPane.showMessageDialog(null, "Exitosamente");
         return licencia;
         
-        */
-        Auto auto = new Auto();
-    em.getEntityManager().getTransaction().begin();
-    
-    
-    
-    
+         */
+        Auto auto = new Auto(persona.getLicencia(), persona, null);
+        
+        Placas placas = placasDAO.registroPlacas(codigoPlacas, estadosPlaca.ACTIVA, tramite, verificacionesSistema.verificarAutoNuevo(auto), persona, auto);
+        
+        auto.setIdPlacas(placas);
+        em.getEntityManager().getTransaction().begin();
+        
+        
+        
         return null;
-    
+
     }
-    
+
 }

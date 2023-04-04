@@ -52,13 +52,53 @@ public class Tramite implements Serializable {
     @Column(name = "fechaRealizacionTramite", nullable = true)
     private Calendar fechaRealizacion;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "idPago")
+    @OneToOne()
+    @JoinColumn(name = "idPago", nullable = true)
     private Pago idPago;
 
     public Tramite() {
     }
 
+    public Tramite(Persona idPersona, estadosTramite estadoTramite, tiposTramite tipoTramite, Calendar fechaTramite) {
+        this.idPersona = idPersona;
+        this.estadoTramite = estadoTramite;
+        this.tipoTramite = tipoTramite;
+        this.costo = costo;
+        this.fechaTramite = fechaTramite;
+        this.fechaRealizacion = fechaRealizacion;
+    }
+    
+    public Tramite(Persona idPersona, estadosTramite estadoTramite, tiposTramite tipoTramite, Calendar fechaTramite, Pago idPago) {
+        this.idPersona = idPersona;
+        this.estadoTramite = estadoTramite;
+        this.tipoTramite = tipoTramite;
+        this.fechaTramite = fechaTramite;
+        this.idPago = idPago;
+    }
+    
+    public Tramite(Persona idPersona, estadosTramite estadoTramite, tiposTramite tipoTramite, int costo, Calendar fechaTramite, Calendar fechaRealizacion, Pago idPago) {
+        this.idPersona = idPersona;
+        this.estadoTramite = estadoTramite;
+        this.tipoTramite = tipoTramite;
+        this.costo = costo;
+        this.fechaTramite = fechaTramite;
+        this.fechaRealizacion = fechaRealizacion;
+        this.idPago = idPago;
+    }
+
+    public Tramite(Long id, Persona idPersona, estadosTramite estadoTramite, tiposTramite tipoTramite, int costo, Calendar fechaTramite, Calendar fechaRealizacion, Pago idPago) {
+        this.id = id;
+        this.idPersona = idPersona;
+        this.estadoTramite = estadoTramite;
+        this.tipoTramite = tipoTramite;
+        this.costo = costo;
+        this.fechaTramite = fechaTramite;
+        this.fechaRealizacion = fechaRealizacion;
+        this.idPago = idPago;
+    }
+
+    
+    
     public Long getId() {
         return id;
     }

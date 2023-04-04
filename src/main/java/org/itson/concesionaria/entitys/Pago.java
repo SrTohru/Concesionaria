@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.itson.concesionaria.utilities.tipoDePago;
 
@@ -23,23 +24,53 @@ public class Pago implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
+    @OneToOne
     @JoinColumn(name = "idTramite", nullable = false)
     private Tramite tramite;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipoDePago", nullable = true)
+    @Column(name = "tipoDePago", nullable = false)
     private tipoDePago tipoDePago;
-
+    
+    @OneToOne
     @JoinColumn(name = "idPlacas", nullable = true)
     private Placas idPlacas;
 
+    @OneToOne
     @JoinColumn(name = "idLicencia", nullable = true)
     private Licencia idLicencia;
 
     public Pago() {
     }
 
+    public Pago(Tramite tramite, tipoDePago tipoDePago, Licencia idLicencia) {
+        this.tramite = tramite;
+        this.tipoDePago = tipoDePago;
+        this.idLicencia = idLicencia;
+    }
+
+    public Pago(Tramite tramite, tipoDePago tipoDePago, Placas idPlacas) {
+        this.tramite = tramite;
+        this.tipoDePago = tipoDePago;
+        this.idPlacas = idPlacas;
+    }
+    
+    public Pago(Tramite tramite, tipoDePago tipoDePago, Placas idPlacas, Licencia idLicencia) {
+        this.tramite = tramite;
+        this.tipoDePago = tipoDePago;
+        this.idPlacas = idPlacas;
+        this.idLicencia = idLicencia;
+    }
+
+    public Pago(Long id, Tramite tramite, tipoDePago tipoDePago, Placas idPlacas, Licencia idLicencia) {
+        this.id = id;
+        this.tramite = tramite;
+        this.tipoDePago = tipoDePago;
+        this.idPlacas = idPlacas;
+        this.idLicencia = idLicencia;
+    }
+    
     public Long getId() {
         return id;
     }
@@ -80,8 +111,6 @@ public class Pago implements Serializable {
         this.idLicencia = idLicencia;
     }
 
-    
-    
     @Override
     public int hashCode() {
         int hash = 0;

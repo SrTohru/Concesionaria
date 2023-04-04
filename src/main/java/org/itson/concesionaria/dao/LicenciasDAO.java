@@ -19,41 +19,39 @@ public class LicenciasDAO implements ILicencias {
     entityManager eM = new entityManager();
     TramitesDAO tramitesDAO = new TramitesDAO();
     PagosDAO pagoDAO = new PagosDAO();
-    
+
     //persona, fecha,discapacidad, costo, tramite
     @Override
     public Licencia registrarLicencia(Persona persona, Calendar fechaVencimiento, discapacidadPersona discapacidad, int costo, Tramite tramite) {
         eM.getEntityManager().getTransaction().begin();
+        
         JOptionPane.showMessageDialog(null, "Persona: " + persona + " fechaVencimiento" + fechaVencimiento + " discapacidad: " + discapacidad + " costo" + costo + " trmaite" + tramite);
-        Licencia licencia = new Licencia();
-        licencia.setFechaVigencia(fechaVencimiento);
-        licencia.setIdPersona(persona);
-        licencia.setDiscapacidad(discapacidad);
-        licencia.setTramite(tramite);
+
+        Licencia licencia = new Licencia(fechaVencimiento, persona, discapacidad, tramite);
+
         eM.getEntityManager().persist(licencia);
 
         tramitesDAO.finalizarTramite(estadosTramite.Finalizado, fechaVencimiento, costo, tramite);
-        
-        Calendar fechaRealizacion = new GregorianCalendar();
 
-        eM.getEntityManager().find(Tramite.class, tramite.getId()).setFechaRealizacion(fechaRealizacion);
         eM.getEntityManager().find(Persona.class, persona.getId()).setLicencia(licencia);
-        
-         pagoDAO.registrarPagoLicencia(licencia, tipoDePago.Pago_Licencia);
-        
+
         eM.getEntityManager().getTransaction().commit();
+
         JOptionPane.showMessageDialog(null, "Exitosamente");
+        JOptionPane.showMessageDialog(null, "Registro pago");
+        pagoDAO.registrarPagoLicencia(licencia, tramite, tipoDePago.Pago_Licencia);
+
         return licencia;
     }
-    
-    public List<Tramite> test(){
+
+    public List<Tramite> test() {
         Persona persona = eM.getEntityManager().find(Persona.class, 10L);
-        
+
         List<Tramite> tramites = eM.getEntityManager().createQuery(
-    "SELECT t FROM Tramite t WHERE t.idPersona = :persona",
-    Tramite.class
-).setParameter("persona", persona).getResultList();
-    return tramites;
+                "SELECT t FROM Tramite t WHERE t.idPersona = :persona",
+                Tramite.class
+        ).setParameter("persona", persona).getResultList();
+        return tramites;
     }
 
 }

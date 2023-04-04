@@ -55,6 +55,17 @@ public class Persona implements Serializable {
     public Persona() {
     }
 
+    public Persona(String nombres, String apellidoPaterno, String apellidoMaterno, String telefono, String rfc, List<Placas> placas, List<Tramite> tramite, Calendar fechaNacimiento) {
+        this.nombres = nombres;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.telefono = telefono;
+        this.rfc = rfc;
+        this.placas = placas;
+        this.tramite = tramite;
+        this.fechaNacimiento = fechaNacimiento;
+    }
+    
     public Persona(String telefono, String rfc, String nombres, String apellidoPaterno, String apellidoMaterno, List<Placas> placas, Licencia licencia, Calendar fechaNacimiento) {
         this.telefono = telefono;
         this.rfc = rfc;

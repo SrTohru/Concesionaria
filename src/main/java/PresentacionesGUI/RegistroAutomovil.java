@@ -4,12 +4,16 @@
  */
 package PresentacionesGUI;
 
+import java.util.GregorianCalendar;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import org.itson.concesionaria.entitys.Persona;
+import org.itson.concesionaria.entitys.Tramite;
 import org.itson.concesionaria.utilities.costoLicencias;
 import org.itson.concesionaria.utilities.costoPlacas;
+import org.itson.concesionaria.utilities.estadosTramite;
 import org.itson.concesionaria.utilities.mensajesDeSistema;
+import org.itson.concesionaria.utilities.tiposTramite;
 import org.itson.concesionaria.utilities.verificacionesDeSistema;
 
 public class RegistroAutomovil extends javax.swing.JFrame {
@@ -17,10 +21,9 @@ public class RegistroAutomovil extends javax.swing.JFrame {
     costoPlacas cp = new costoPlacas();
     verificacionesDeSistema verificacionesSistema = new verificacionesDeSistema();
     mensajesDeSistema mensajesSistema = new mensajesDeSistema();
-    
+
     public RegistroAutomovil() {
         initComponents();
-        lblRFCInfo.setText("✘");
     }
 
     @SuppressWarnings("unchecked")
@@ -43,12 +46,10 @@ public class RegistroAutomovil extends javax.swing.JFrame {
         lblRFC = new javax.swing.JLabel();
         txtRFC = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        btnVerificadorRFC = new javax.swing.JButton();
-        lblRFCInfo = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblIngresarDatos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblIngresarDatos.setText("Ingresa los datos del automóvil");
@@ -74,24 +75,12 @@ public class RegistroAutomovil extends javax.swing.JFrame {
 
         jLabel1.setText("Porfavor ingresa los datos que se te solicitan a continuación");
 
-        btnVerificadorRFC.setText("Verificar RFC");
-        btnVerificadorRFC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerificadorRFCActionPerformed(evt);
-            }
-        });
-
-        lblRFCInfo.setText("Null data");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(404, 404, 404)
-                .addComponent(btnSalir))
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(136, 136, 136)
@@ -100,21 +89,16 @@ public class RegistroAutomovil extends javax.swing.JFrame {
                         .addComponent(lblSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(148, 148, 148)
                         .addComponent(lblColor, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnVerificadorRFC)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblRFC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtRFC, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblIngresarDatos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSeparator, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblRFCInfo))
+                    .addComponent(lblRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtRFC, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblIngresarDatos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -123,7 +107,11 @@ public class RegistroAutomovil extends javax.swing.JFrame {
                                 .addComponent(lblModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(39, 39, 39)
                         .addComponent(txtColor, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalir)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,12 +125,8 @@ public class RegistroAutomovil extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblRFC)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtRFC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblRFCInfo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnVerificadorRFC)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtRFC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMarca)
                     .addComponent(lblModelo))
@@ -160,9 +144,9 @@ public class RegistroAutomovil extends javax.swing.JFrame {
                     .addComponent(txtColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnRegistrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSalir)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
         pack();
@@ -170,34 +154,29 @@ public class RegistroAutomovil extends javax.swing.JFrame {
 
     public boolean verificacionRFC() {
         Persona persona = verificacionesSistema.verificarPersonaPorRFC(txtRFC.getText());
-
-        if (persona != null) {
-            lblRFCInfo.setText("✔");
-            return true;
-        } else {
-            lblRFCInfo.setText("✘");
-            return false;
-        }
+        return persona != null;
     }
 
-    public boolean verificacionDeInformacion(){
+    public boolean verificacionDeInformacion() {
         return !(txtColor.getText().isEmpty())
                 || !(txtMarca.getText().isEmpty())
                 || !(txtModelo.getText().isEmpty())
                 || !(txtRFC.getText().isEmpty())
                 || !(txtSerie.getText().isEmpty());
     }
-    
-    private void btnVerificadorRFCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificadorRFCActionPerformed
-        if (!txtRFC.getText().isEmpty()) {
-            verificacionRFC();
-        }
-    }//GEN-LAST:event_btnVerificadorRFCActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        if(verificacionDeInformacion()){
-            
-        }else{
+        if (verificacionDeInformacion()) {
+            if(verificacionRFC()){
+                
+//                Persona persona = verificacionesSistema.verificarPersonaPorRFC(txtRFC.getText());
+//                Tramite tramite = new Tramite(persona, estadosTramite.En_Proceso, tiposTramite.Expedicion_De_Placas, new GregorianCalendar());
+//                
+                RegistroPlaca rPlacas = new RegistroPlaca();
+                
+                rPlacas.setVisible(true);
+            }
+        } else {
             mensajesSistema.mensajeDeFaltaInformacion();
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
@@ -206,7 +185,6 @@ public class RegistroAutomovil extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton btnVerificadorRFC;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator;
     private javax.swing.JToggleButton jToggleButton1;
@@ -215,7 +193,6 @@ public class RegistroAutomovil extends javax.swing.JFrame {
     private javax.swing.JLabel lblMarca;
     private javax.swing.JLabel lblModelo;
     private javax.swing.JLabel lblRFC;
-    private javax.swing.JLabel lblRFCInfo;
     private javax.swing.JLabel lblSerie;
     private javax.swing.JTextField txtColor;
     private javax.swing.JTextField txtMarca;
