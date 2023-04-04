@@ -86,7 +86,9 @@ public class Persona implements Serializable {
         this.tramite = tramite;
     }
 
-    
+    public void addTramite(Tramite tramite){
+        this.tramite.add(tramite);
+    }
     
     public String getNombres() {
         return nombres;

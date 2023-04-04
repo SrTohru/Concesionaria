@@ -9,6 +9,8 @@ import java.util.Calendar;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,6 +21,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.itson.concesionaria.utilities.discapacidadPersona;
 
 @Entity
 @Table(name = "licencia")
@@ -35,34 +38,31 @@ public class Licencia implements Serializable {
     @OneToOne
     @JoinColumn(name = "idPersona", nullable = false)
     private Persona idPersona;
-
+    
+    @Enumerated(EnumType.STRING)
     @Column(name = "discapacidad", nullable = false)
-    private String discapacidad;
-
-    @Column(name = "costo", nullable = false)
-    private double costo;
+    private discapacidadPersona discapacidad;
 
     @OneToOne
-    @JoinColumn(name = "tramiteLicencia")
+    @JoinColumn(name = "idTramite")
     private Tramite tramite;
 
     public Licencia() {
     }
 
-    public Licencia(Calendar fechaVigencia, Persona idPersona, String discapacidad, double costo, Tramite tramite) {
+    public Licencia(Calendar fechaVigencia, Persona idPersona, discapacidadPersona discapacidad, Tramite tramite) {
         this.fechaVigencia = fechaVigencia;
         this.idPersona = idPersona;
         this.discapacidad = discapacidad;
-        this.costo = costo;
+
         this.tramite = tramite;
     }
 
-    public Licencia(Long id, Calendar fechaVigencia, Persona idPersona, String discapacidad, double costo, Tramite tramite) {
+    public Licencia(Long id, Calendar fechaVigencia, Persona idPersona, discapacidadPersona discapacidad, Tramite tramite) {
         this.id = id;
         this.fechaVigencia = fechaVigencia;
         this.idPersona = idPersona;
         this.discapacidad = discapacidad;
-        this.costo = costo;
         this.tramite = tramite;
     }
 
@@ -74,11 +74,11 @@ public class Licencia implements Serializable {
         this.tramite = tramite;
     }
 
-    public String getDiscapacidad() {
+    public discapacidadPersona getDiscapacidad() {
         return discapacidad;
     }
 
-    public void setDiscapacidad(String discapacidad) {
+    public void setDiscapacidad(discapacidadPersona discapacidad) {
         this.discapacidad = discapacidad;
     }
 
@@ -104,14 +104,6 @@ public class Licencia implements Serializable {
 
     public void setFechaVigencia(Calendar fechaVigencia) {
         this.fechaVigencia = fechaVigencia;
-    }
-
-    public double getCosto() {
-        return costo;
-    }
-
-    public void setCosto(double costo) {
-        this.costo = costo;
     }
 
     @Override

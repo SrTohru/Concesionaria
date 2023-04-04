@@ -3,14 +3,18 @@ package org.itson.concesionaria.entitys;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,24 +33,29 @@ public class Tramite implements Serializable {
     @JoinColumn(name = "idPersona")
     private Persona idPersona;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false)
     private estadosTramite estadoTramite;
-   
-      @Column(name = "tipoTramite", nullable = false)
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipoTramite", nullable = false)
     private tiposTramite tipoTramite;
-    
+
     @Column(name = "costo", nullable = true)
-    private double costo;
+    private int costo;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "fechaTramite", nullable = false)
     private Calendar fechaTramite;
-    
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "fechaRealizacionTramite", nullable = true)
     private Calendar fechaRealizacion;
-    
-    
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "idPago")
+    private Pago idPago;
+
     public Tramite() {
     }
 
@@ -58,6 +67,16 @@ public class Tramite implements Serializable {
         this.id = id;
     }
 
+    public Pago getIdPago() {
+        return idPago;
+    }
+
+    public void setIdPago(Pago idPago) {
+        this.idPago = idPago;
+    }
+
+    
+    
     public tiposTramite getTipoTramite() {
         return tipoTramite;
     }
@@ -82,11 +101,11 @@ public class Tramite implements Serializable {
         this.estadoTramite = estadoTramite;
     }
 
-    public double getCosto() {
+    public int getCosto() {
         return costo;
     }
 
-    public void setCosto(double costo) {
+    public void setCosto(int costo) {
         this.costo = costo;
     }
 
@@ -106,8 +125,6 @@ public class Tramite implements Serializable {
         this.fechaRealizacion = fechaRealizacion;
     }
 
-    
-    
     @Override
     public int hashCode() {
         int hash = 0;

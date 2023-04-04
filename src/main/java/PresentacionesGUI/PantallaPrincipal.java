@@ -4,11 +4,17 @@
  */
 package PresentacionesGUI;
 
+import java.util.List;
 import javax.swing.JOptionPane;
+import org.itson.concesionaria.dao.LicenciasDAO;
+import org.itson.concesionaria.dao.TramitesDAO;
+import org.itson.concesionaria.entitys.Tramite;
 import org.itson.concesionaria.utilities.registroMasivoPersonas;
 
 public class PantallaPrincipal extends javax.swing.JFrame {
 
+    LicenciasDAO tramiteDAO = new LicenciasDAO();
+    
     //Declaracion de variables
     public PantallaPrincipal() {
         initComponents();
@@ -46,6 +52,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel2.setText("Registro de carro");
 
         btnRegistrarCarro.setText("Registrar");
+        btnRegistrarCarro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarCarroActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Solicitar Licencia");
 
@@ -82,12 +93,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnGenerarPersonas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -107,11 +112,17 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnVerHistoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnGenerarPersonas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,6 +174,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         rM.registroMasivoPersonas();
     }//GEN-LAST:event_btnGenerarPersonasActionPerformed
+
+    private void btnRegistrarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarCarroActionPerformed
+      RegistroAutomovil registroAuto = new RegistroAutomovil();
+      registroAuto.setVisible(true);
+    }//GEN-LAST:event_btnRegistrarCarroActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGenerarPersonas;

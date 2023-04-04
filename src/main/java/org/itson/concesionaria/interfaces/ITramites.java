@@ -10,9 +10,8 @@ public interface ITramites {
     
     Tramite crearTramite(Persona persona, estadosTramite estadoTramite, tiposTramite tipoTramite, Calendar fechaTramite);
 
-    Tramite cancelarTramite(Persona persona, Calendar fechaVencimiento, Tramite tramite);
+    Tramite cancelarTramite(Tramite tramite, estadosTramite estadoTramite);
 
-    Tramite finalizarTramite(Persona persona, estadosTramite estadoTramite,
-            Calendar fechaVencimiento, Calendar fechaRealizacionTramite, double costo, Tramite tramite);
+    void finalizarTramite( estadosTramite estadoTramite,Calendar fechaRealizacionTramite, int costo, Tramite tramite);
 
 }
