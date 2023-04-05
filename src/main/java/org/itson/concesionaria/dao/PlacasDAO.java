@@ -21,6 +21,8 @@ public class PlacasDAO implements IPlacas{
        em.getEntityManager().getTransaction().begin();
        
        em.getEntityManager().persist(placa);
+       auto.setIdPlacas(placa);
+       em.getEntityManager().merge(auto);
        auto.addPlacas(placa);
        em.getEntityManager().getTransaction().commit();
        

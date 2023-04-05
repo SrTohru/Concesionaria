@@ -1,6 +1,7 @@
 package org.itson.concesionaria.entitys;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import javax.persistence.Column;
@@ -39,10 +40,10 @@ public class Persona implements Serializable {
     private String rfc;
 
     @OneToMany(mappedBy = "persona")
-    private List<Placas> placas;
+    private List<Placas> placas = new ArrayList<>();
 
     @OneToMany(mappedBy = "idPersona")
-    private List<Tramite> tramite;
+    private List<Tramite> tramite = new ArrayList<>();
 
     @OneToOne
     @JoinColumn(name = "idLicencia", nullable = true)

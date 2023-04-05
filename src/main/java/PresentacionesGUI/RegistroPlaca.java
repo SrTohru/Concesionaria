@@ -4,6 +4,10 @@
  */
 package PresentacionesGUI;
 
+import org.itson.concesionaria.dao.AutosDAO;
+import org.itson.concesionaria.entitys.Auto;
+import org.itson.concesionaria.entitys.Persona;
+import org.itson.concesionaria.entitys.Tramite;
 import org.itson.concesionaria.utilities.verificacionesDeSistema;
 
 /**
@@ -11,13 +15,22 @@ import org.itson.concesionaria.utilities.verificacionesDeSistema;
  * @author naely
  */
 public class RegistroPlaca extends javax.swing.JFrame {
-    
-    verificacionesDeSistema verificacionesSitema = new verificacionesDeSistema();
-   
-    public RegistroPlaca() {
-        initComponents();
-    }
 
+    verificacionesDeSistema verificacionesSitema = new verificacionesDeSistema();
+    AutosDAO autoDAO = new AutosDAO();
+    Persona persona = new Persona();
+    Tramite tramite = new Tramite();
+    Auto auto = new Auto();
+
+    public RegistroPlaca(Auto auto, Persona persona, Tramite tramite) {
+        initComponents();
+
+        lblInfoRFC.setText(persona.getRfc());
+        lblInfoPlacas.setText(verificacionesSitema.generarPlacas());
+        this.tramite = tramite;
+        this.auto = auto;
+        this.persona = persona;
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -40,6 +53,11 @@ public class RegistroPlaca extends javax.swing.JFrame {
         lblRFC.setText("RFC: ");
 
         jToggleButton1.setText("Solicitar");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         lblInfoRFC.setText("null data");
 
@@ -112,6 +130,12 @@ public class RegistroPlaca extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         lblInfoPlacas.setText(verificacionesSitema.generarPlacas());
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+
+        autoDAO.registrarAuto(persona, lblInfoPlacas.getText(), tramite, verificacionesSitema.verificarAutoNuevo(auto));
+
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

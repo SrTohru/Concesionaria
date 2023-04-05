@@ -103,9 +103,10 @@ public class verificacionesDeSistema {
 
     public int verificarAutoNuevo(Auto auto) {
         if (auto.getPlacas().size() >= 1) {
-            return costoPlaca.getPLACAS_AUTO_NUEVO();
-        } else {
             return costoPlaca.getPLACAS_AUTO_USADO();
+        } else {
+
+            return costoPlaca.getPLACAS_AUTO_NUEVO();
         }
     }
 }

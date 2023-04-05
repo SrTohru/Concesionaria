@@ -63,9 +63,7 @@ public class Tramite implements Serializable {
         this.idPersona = idPersona;
         this.estadoTramite = estadoTramite;
         this.tipoTramite = tipoTramite;
-        this.costo = costo;
         this.fechaTramite = fechaTramite;
-        this.fechaRealizacion = fechaRealizacion;
     }
     
     public Tramite(Persona idPersona, estadosTramite estadoTramite, tiposTramite tipoTramite, Calendar fechaTramite, Pago idPago) {

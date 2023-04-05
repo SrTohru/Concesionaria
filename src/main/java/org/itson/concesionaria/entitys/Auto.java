@@ -40,12 +40,20 @@ public class Auto implements Serializable {
     private Placas idPlacas;
 
     @OneToMany(mappedBy = "idAuto")
-    private List<Placas> Placas;
+    private List<Placas> Placas = new ArrayList<>();
     
 
     public Auto() {
     }
 
+    public Auto(Licencia idLicencia, Persona idPersona) {
+        this.id = id;
+        this.idLicencia = idLicencia;
+        this.idPersona = idPersona;
+    }
+
+    
+    
     public Auto(Licencia idLicencia, Persona idPersona, Placas idPlacas) {
         this.idLicencia = idLicencia;
         this.idPersona = idPersona;

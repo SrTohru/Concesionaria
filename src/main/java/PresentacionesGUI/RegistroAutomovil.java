@@ -7,6 +7,7 @@ package PresentacionesGUI;
 import java.util.GregorianCalendar;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import org.itson.concesionaria.entitys.Auto;
 import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.entitys.Tramite;
 import org.itson.concesionaria.utilities.costoLicencias;
@@ -165,14 +166,18 @@ public class RegistroAutomovil extends javax.swing.JFrame {
                 || !(txtSerie.getText().isEmpty());
     }
 
+    public Auto obtenerAuto(Persona persona){
+        return new Auto(persona.getLicencia(), persona, null);
+    }
+    
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         if (verificacionDeInformacion()) {
             if(verificacionRFC()){
                 
-//                Persona persona = verificacionesSistema.verificarPersonaPorRFC(txtRFC.getText());
-//                Tramite tramite = new Tramite(persona, estadosTramite.En_Proceso, tiposTramite.Expedicion_De_Placas, new GregorianCalendar());
-//                
-                RegistroPlaca rPlacas = new RegistroPlaca();
+                Persona persona = verificacionesSistema.verificarPersonaPorRFC(txtRFC.getText());
+                Tramite tramite = new Tramite(persona, estadosTramite.En_Proceso, tiposTramite.Expedicion_De_Placas, new GregorianCalendar());
+                
+                RegistroPlaca rPlacas = new RegistroPlaca(obtenerAuto(persona), persona, tramite);
                 
                 rPlacas.setVisible(true);
             }

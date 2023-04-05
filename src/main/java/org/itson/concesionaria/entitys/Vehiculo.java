@@ -29,14 +29,6 @@ public class Vehiculo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     @Column(name = "serie", nullable = false, length = 7)
     private String serie;
 
@@ -73,6 +65,14 @@ public class Vehiculo implements Serializable {
         this.tramite = tramite;
     }
 
+        public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     public Tramite getTramite() {
         return tramite;
     }

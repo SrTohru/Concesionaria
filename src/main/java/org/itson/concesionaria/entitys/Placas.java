@@ -33,8 +33,8 @@ public class Placas implements Serializable {
     @Column(name = "codigoPlacas", nullable = false, unique = true)
     private String codigoPlacas;
 
-    @OneToOne
-    @JoinColumn(name = "idTramite", nullable = false)
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "idTramite")
     private Tramite tramite;
 
     @Column(name = "costo", nullable = false)
@@ -44,13 +44,9 @@ public class Placas implements Serializable {
     @JoinColumn(name = "idPersona", nullable = false)
     private Persona persona;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "idAuto")
     private Auto idAuto;
-
-    @OneToOne()
-    @JoinColumn(name = "idPlacas", nullable = false)
-    private Placas placas;
 
     public Placas() {
     }
@@ -80,6 +76,14 @@ public class Placas implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Tramite getTramite() {
+        return tramite;
+    }
+
+    public void setTramite(Tramite tramite) {
+        this.tramite = tramite;
     }
 
     public Persona getPersona() {
