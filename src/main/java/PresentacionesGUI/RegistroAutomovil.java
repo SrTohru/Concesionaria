@@ -10,10 +10,12 @@ import javax.swing.ImageIcon;
 import org.itson.concesionaria.entitys.Auto;
 import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.entitys.Tramite;
+import org.itson.concesionaria.entitys.Vehiculo;
 import org.itson.concesionaria.utilities.costoLicencias;
 import org.itson.concesionaria.utilities.costoPlacas;
 import org.itson.concesionaria.utilities.estadosTramite;
 import org.itson.concesionaria.utilities.mensajesDeSistema;
+import org.itson.concesionaria.utilities.tipoVehiculo;
 import org.itson.concesionaria.utilities.tiposTramite;
 import org.itson.concesionaria.utilities.verificacionesDeSistema;
 
@@ -171,13 +173,19 @@ public class RegistroAutomovil extends javax.swing.JFrame {
     }
     
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+
+//verificacionesSistema.consultarExistenciaVehiculoPorSerie(txtSerie.getText());
+
         if (verificacionDeInformacion()) {
+
+
             if(verificacionRFC()){
-                
+      
                 Persona persona = verificacionesSistema.verificarPersonaPorRFC(txtRFC.getText());
                 Tramite tramite = new Tramite(persona, estadosTramite.En_Proceso, tiposTramite.Expedicion_De_Placas, new GregorianCalendar());
-                
-                RegistroPlaca rPlacas = new RegistroPlaca(obtenerAuto(persona), persona, tramite);
+                Vehiculo vehiculo = new Vehiculo( txtSerie.getText(), txtMarca.getText(),
+                        txtColor.getText(), txtModelo.getText(), tramite);
+                RegistroPlaca rPlacas = new RegistroPlaca(obtenerAuto(persona),vehiculo, persona, tramite);
                 
                 rPlacas.setVisible(true);
             }

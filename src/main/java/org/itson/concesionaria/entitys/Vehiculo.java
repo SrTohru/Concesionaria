@@ -18,18 +18,19 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import org.itson.concesionaria.utilities.tipoVehiculo;
 
 @Entity
 @Table(name = "vehiculo")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "tipo_vehiculo", discriminatorType = DiscriminatorType.STRING)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_Vehiculo", discriminatorType = DiscriminatorType.STRING)
 public class Vehiculo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "serie", nullable = false, length = 7)
+    @Column(name = "serie", nullable = false, length = 7, unique = true)
     private String serie;
 
     @Column(name = "marca", nullable = false, length = 50)
@@ -44,7 +45,7 @@ public class Vehiculo implements Serializable {
     @OneToOne
     @JoinColumn(name = "tramiteLicencia")
     private Tramite tramite;
-    
+
     public Vehiculo() {
     }
 
@@ -56,7 +57,7 @@ public class Vehiculo implements Serializable {
         this.tramite = tramite;
     }
 
-    public Vehiculo(Long id, String serie, String marca, String color, String modelo,Tramite tramite) {
+    public Vehiculo(Long id,String serie, String marca, String color, String modelo, Tramite tramite) {
         this.id = id;
         this.serie = serie;
         this.marca = marca;
@@ -65,14 +66,14 @@ public class Vehiculo implements Serializable {
         this.tramite = tramite;
     }
 
-        public Long getId() {
+    public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     public Tramite getTramite() {
         return tramite;
     }
@@ -81,8 +82,6 @@ public class Vehiculo implements Serializable {
         this.tramite = tramite;
     }
 
-    
-    
     public String getSerie() {
         return serie;
     }
@@ -115,8 +114,6 @@ public class Vehiculo implements Serializable {
         this.modelo = modelo;
     }
 
-    
-    
     @Override
     public int hashCode() {
         int hash = 0;

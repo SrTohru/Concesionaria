@@ -68,6 +68,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         });
 
         btnSolicitarPlacas.setText("Solicitar");
+        btnSolicitarPlacas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSolicitarPlacasActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Solicitar Placas");
 
@@ -179,6 +184,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
       RegistroAutomovil registroAuto = new RegistroAutomovil();
       registroAuto.setVisible(true);
     }//GEN-LAST:event_btnRegistrarCarroActionPerformed
+
+    private void btnSolicitarPlacasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarPlacasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSolicitarPlacasActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGenerarPersonas;

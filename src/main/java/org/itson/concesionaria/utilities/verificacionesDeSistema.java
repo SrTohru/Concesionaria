@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import org.itson.concesionaria.entitys.Auto;
 import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.entitys.Placas;
+import org.itson.concesionaria.entitys.Vehiculo;
 
 public class verificacionesDeSistema {
 
@@ -58,13 +59,32 @@ public class verificacionesDeSistema {
             return null;
         }
     }
-
+    
     public void desactivarOtrasPlacas(Auto auto, Placas placas) {
         for (int i = 0; i < auto.getPlacas().size(); i++) {
             if (auto.getPlacas().get(i) != placas) {
                 auto.getPlacas().get(i).setEstadosPlaca(estadosPlaca.DESACTIVA);
             }
         }
+    }
+
+    public Vehiculo consultarExistenciaVehiculoPorSerie(String serie) {
+        try {
+            TypedQuery<Vehiculo> query = em.getEntityManager().createQuery(
+                    "SELECT v FROM Vehiculo v WHERE v.serie = :serie AND v.tipoVehiculo = :tipoVehiculo", Vehiculo.class);
+            query.setParameter("serie", serie);
+            query.setParameter("tipoVehiculo", tipoVehiculo.Automovil);
+            Vehiculo vehiculo = query.getSingleResult();
+
+            if (vehiculo != null) {
+                JOptionPane.showMessageDialog(null, "Ese vehiculo si existe");
+                return vehiculo;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ese vehiculo no existe");
+        }
+        return null;
     }
 
     public String generarPlacas() {
