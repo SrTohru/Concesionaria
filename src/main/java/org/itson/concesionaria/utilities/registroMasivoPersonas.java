@@ -12,17 +12,17 @@ public class registroMasivoPersonas {
     entityManager eM = new entityManager();
 
     private static final List<String> nombres = Arrays.asList(
-            "Juan", "María", "Pedro", "Ana", "Luis", "Carmen", "Jorge", "Lorena", "Miguel", "Sofía",
+            "Jose", "Naely", "Pedro", "Ana", "Luis", "Carmen", "Jorge", "Lorena", "Miguel", "Sofía",
             "Pablo", "Claudia", "Fernando", "Isabel", "Mario", "Lucía", "Ricardo", "Laura", "Diego", "Carla"
     );
 
     private static final List<String> apellidosPaternos = Arrays.asList(
-            "González", "Pérez", "Rodríguez", "Hernández", "López", "Martínez", "García", "Sánchez", "Romero", "Fernández",
+            "Hinojosa", "Rubio", "Rodríguez", "Hernández", "López", "Martínez", "García", "Sánchez", "Romero", "Fernández",
             "Vázquez", "Torres", "Jiménez", "Díaz", "Álvarez", "Mendoza", "Ramírez", "Castro", "Ruiz", "Gómez"
     );
 
     private static final List<String> apellidosMaternos = Arrays.asList(
-            "García", "Hernández", "Martínez", "Sánchez", "Ramírez", "Pérez", "Flores", "González", "Jiménez", "Rojas",
+            "Romero", "Morillon", "Martínez", "Sánchez", "Ramírez", "Pérez", "Flores", "González", "Jiménez", "Rojas",
             "López", "Chávez", "Núñez", "Herrera", "Silva", "Morales", "Ortiz", "Gómez", "Vargas", "Medina"
     );
 
