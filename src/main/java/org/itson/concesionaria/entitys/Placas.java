@@ -36,10 +36,8 @@ public class Placas implements Serializable {
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "idTramite")
     private Tramite tramite;
-
-    @Column(name = "costo", nullable = false)
-    private double Costo;
-
+    
+    
     @ManyToOne
     @JoinColumn(name = "idPersona", nullable = false)
     private Persona persona;
@@ -51,23 +49,21 @@ public class Placas implements Serializable {
     public Placas() {
     }
 
-    public Placas(estadosPlaca estadosPlaca, String codigoPlacas, Tramite tramite, double Costo, Persona persona, Auto auto) {
+    public Placas(estadosPlaca estadosPlaca, String codigoPlacas, Tramite tramite, Persona persona, Auto auto) {
         this.estadosPlaca = estadosPlaca;
         this.codigoPlacas = codigoPlacas;
         this.tramite = tramite;
         this.persona = persona;
         this.idAuto = auto;
-        this.Costo = Costo;
     }
 
-    public Placas(Long id, estadosPlaca estadosPlaca, String codigoPlacas, Tramite tramite, Calendar fechaTramite, double Costo, Persona persona, Auto auto) {
+    public Placas(Long id, estadosPlaca estadosPlaca, String codigoPlacas, Tramite tramite, Calendar fechaTramite, Persona persona, Auto auto) {
         this.id = id;
         this.estadosPlaca = estadosPlaca;
         this.codigoPlacas = codigoPlacas;
         this.tramite = tramite;
         this.persona = persona;
         this.idAuto = auto;
-        this.Costo = Costo;
     }
 
     public Long getId() {
@@ -126,13 +122,7 @@ public class Placas implements Serializable {
         this.tramite = tramite;
     }
 
-    public double getCosto() {
-        return Costo;
-    }
-
-    public void setCosto(double Costo) {
-        this.Costo = Costo;
-    }
+ 
 
     @Override
     public int hashCode() {

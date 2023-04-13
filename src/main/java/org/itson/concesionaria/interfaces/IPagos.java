@@ -9,5 +9,5 @@ import org.itson.concesionaria.utilities.tipoDePago;
 public interface IPagos {
     
     Pago registrarPagoLicencia(Licencia licencia,Tramite tramite, tipoDePago tipoPago);
-    Pago registrarPagoPlacas(Placas Placas, tipoDePago tipoPago);
+    Pago registrarPagoPlacas(Placas Placas, tipoDePago tipoPago, Tramite tramite);
 }

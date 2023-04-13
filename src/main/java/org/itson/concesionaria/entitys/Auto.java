@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +21,7 @@ import org.itson.concesionaria.utilities.tipoVehiculo;
 
 @Entity
 @Table(name = "auto")
-@DiscriminatorValue("Automovil")
+@DiscriminatorValue("Auto")
 public class Auto extends Vehiculo implements Serializable {
 
     @Id
@@ -35,7 +37,7 @@ public class Auto extends Vehiculo implements Serializable {
     @JoinColumn(name = "idPersona", nullable = false)
     private Persona idPersona;
 
-    @OneToOne(cascade = { CascadeType.REMOVE})
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "idPlacas", nullable = false)
     private Placas idPlacas;
 

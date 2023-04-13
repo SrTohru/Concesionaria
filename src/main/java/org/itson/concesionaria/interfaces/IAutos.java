@@ -12,5 +12,5 @@ import org.itson.concesionaria.utilities.estadosPlaca;
 
 public interface IAutos {
 //idLicencia, idpersona, idplacas
-    Auto registrarAuto(Persona persona,Vehiculo vehiculo, String codigoPlacas, Tramite tramite, int costo);
+    Auto registrarAuto(Persona persona,Auto auto,String codigoPlacas, Tramite tramite, int costo);
 }

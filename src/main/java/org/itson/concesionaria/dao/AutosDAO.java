@@ -23,18 +23,15 @@ public class AutosDAO implements IAutos {
     TramitesDAO tramiteDAO = new TramitesDAO();
 
     @Override
-    public Auto registrarAuto(Persona persona,Vehiculo vehiculo, String codigoPlacas, Tramite tramite, int costo) {
-        Auto auto = new Auto(persona.getLicencia(), persona);
-
-        placasDAO.registroPlacas(codigoPlacas, estadosPlaca.ACTIVA, tramite, costo, persona, auto);
-        
-        
+    public Auto registrarAuto(Persona persona,Auto auto, String codigoPlacas, Tramite tramite, int costo) {
+       
         
         em.getEntityManager().getTransaction().begin();
-        
-        em.getEntityManager().persist(vehiculo);
-        em.getEntityManager().persist(auto);
 
+        placasDAO.registroPlacas(codigoPlacas, estadosPlaca.ACTIVA, tramite, costo, persona, auto);
+        auto.setTramite(tramite);
+        em.getEntityManager().persist(auto);
+        
         JOptionPane.showConfirmDialog(null, "Se registro el auto");
         em.getEntityManager().getTransaction().commit();
         tramiteDAO.finalizarTramite(estadosTramite.Finalizado, new GregorianCalendar(), costo, tramite);

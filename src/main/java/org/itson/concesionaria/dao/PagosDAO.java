@@ -1,4 +1,3 @@
-
 package org.itson.concesionaria.dao;
 
 import org.itson.concesionaria.entitys.Licencia;
@@ -9,30 +8,42 @@ import org.itson.concesionaria.interfaces.IPagos;
 import org.itson.concesionaria.utilities.entityManager;
 import org.itson.concesionaria.utilities.tipoDePago;
 
-public class PagosDAO implements IPagos{
+public class PagosDAO implements IPagos {
 
     entityManager em = new entityManager();
-    
+
     @Override
     public Pago registrarPagoLicencia(Licencia licencia, Tramite tramite, tipoDePago tipoPago) {
-    em.getEntityManager().getTransaction().begin();
-    
-    Pago pago = new Pago(tramite, tipoPago, licencia);
-   
-    tramite.setIdPago(pago);
-    
-    em.getEntityManager().merge(tramite);
- 
-    
-    em.getEntityManager().persist(pago);
-    em.getEntityManager().getTransaction().commit();
-    
-    return pago;
+
+        Pago pago = new Pago(tramite, tipoPago, licencia);
+
+        em.getEntityManager().getTransaction().begin();
+
+        
+
+        em.getEntityManager().persist(pago);
+        tramite.setIdPago(pago);
+        em.getEntityManager().merge(tramite);
+        em.getEntityManager().getTransaction().commit();
+
+        return pago;
     }
 
     @Override
-    public Pago registrarPagoPlacas(Placas Placas, tipoDePago tipoPago) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Pago registrarPagoPlacas(Placas Placas, tipoDePago tipoPago, Tramite tramite) {
+
+        Pago pago = new Pago(tramite, tipoPago, Placas);
+
+        em.getEntityManager().getTransaction().begin();
+
+        tramite.setIdPago(pago);
+
+        em.getEntityManager().merge(tramite);
+
+        em.getEntityManager().persist(pago);
+        em.getEntityManager().getTransaction().commit();
+
+        return pago;
     }
-    
+
 }

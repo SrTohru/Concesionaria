@@ -1,7 +1,7 @@
 package org.itson.concesionaria;
 
-import PresentacionesGUI.PagoLicencia;
-import PresentacionesGUI.PantallaPrincipal;
+import org.itson.concesionaria.guis.PagoLicencia;
+import org.itson.concesionaria.guis.PantallaPrincipal;
 import java.util.GregorianCalendar;
 import javax.persistence.Persistence;
 import javax.persistence.EntityManagerFactory;

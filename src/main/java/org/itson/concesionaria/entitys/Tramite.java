@@ -49,8 +49,8 @@ public class Tramite implements Serializable {
     private Calendar fechaTramite;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "fechaRealizacionTramite", nullable = true)
-    private Calendar fechaRealizacion;
+    @Column(name = "fechaCambioPlacas", nullable = true)
+    private Calendar fechaCambioPlacas;
 
     @OneToOne()
     @JoinColumn(name = "idPago", nullable = true)
@@ -80,7 +80,7 @@ public class Tramite implements Serializable {
         this.tipoTramite = tipoTramite;
         this.costo = costo;
         this.fechaTramite = fechaTramite;
-        this.fechaRealizacion = fechaRealizacion;
+        this.fechaCambioPlacas = fechaRealizacion;
         this.idPago = idPago;
     }
 
@@ -91,7 +91,7 @@ public class Tramite implements Serializable {
         this.tipoTramite = tipoTramite;
         this.costo = costo;
         this.fechaTramite = fechaTramite;
-        this.fechaRealizacion = fechaRealizacion;
+        this.fechaCambioPlacas = fechaRealizacion;
         this.idPago = idPago;
     }
 
@@ -155,12 +155,12 @@ public class Tramite implements Serializable {
         this.fechaTramite = fechaTramite;
     }
 
-    public Calendar getFechaRealizacion() {
-        return fechaRealizacion;
+    public Calendar getFechaCambioPlacas() {
+        return fechaCambioPlacas;
     }
 
-    public void setFechaRealizacion(Calendar fechaRealizacion) {
-        this.fechaRealizacion = fechaRealizacion;
+    public void setFechaCambioPlacas(Calendar fechaCambioPlacas) {
+        this.fechaCambioPlacas = fechaCambioPlacas;
     }
 
     @Override

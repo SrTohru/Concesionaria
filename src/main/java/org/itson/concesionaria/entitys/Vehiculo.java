@@ -22,9 +22,9 @@ import org.itson.concesionaria.utilities.tipoVehiculo;
 
 @Entity
 @Table(name = "vehiculo")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "tipo_Vehiculo", discriminatorType = DiscriminatorType.STRING)
-public class Vehiculo implements Serializable {
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "tipoVehiculo", discriminatorType = DiscriminatorType.STRING)
+public abstract class Vehiculo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,7 +43,7 @@ public class Vehiculo implements Serializable {
     private String modelo;
 
     @OneToOne
-    @JoinColumn(name = "tramiteLicencia")
+    @JoinColumn(name = "tramiteVehiculo")
     private Tramite tramite;
 
     public Vehiculo() {
@@ -136,7 +136,9 @@ public class Vehiculo implements Serializable {
 
     @Override
     public String toString() {
-        return "org.itson.concesionaria.entitys.Vehiculo[ id=" + id + " ]";
+        return "Vehiculo{" + "id=" + id + ", serie=" + serie + ", marca=" + marca + ", color=" + color + ", modelo=" + modelo + ", tramite=" + tramite + '}';
     }
+
+  
 
 }

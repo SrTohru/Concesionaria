@@ -59,7 +59,7 @@ public class verificacionesDeSistema {
             return null;
         }
     }
-    
+
     public void desactivarOtrasPlacas(Auto auto, Placas placas) {
         for (int i = 0; i < auto.getPlacas().size(); i++) {
             if (auto.getPlacas().get(i) != placas) {
@@ -119,6 +119,17 @@ public class verificacionesDeSistema {
         } catch (Exception ex) {
             return false;
         }
+    }
+
+    public List<Persona> consultarPersonasMedianteInformacion(String nombres, String apellidoPaterno, String apellidoMaterno) {
+        String jpql = "SELECT p FROM Persona p WHERE p.nombres LIKE :nombres AND (p.apellidoPaterno LIKE :apellidoPaterno OR p.apellidoPaterno IS NULL) AND (p.apellidoMaterno LIKE :apellidoMaterno OR p.apellidoMaterno IS NULL)";
+        TypedQuery<Persona> consulta = em.getEntityManager().createQuery(jpql, Persona.class);
+        consulta.setParameter("nombres", "%" + nombres + "%");
+        consulta.setParameter("apellidoPaterno", "%" + apellidoPaterno + "%");
+        consulta.setParameter("apellidoMaterno", "%" + apellidoMaterno + "%");
+
+        return consulta.getResultList();
+
     }
 
     public int verificarAutoNuevo(Auto auto) {
