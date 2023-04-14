@@ -165,7 +165,7 @@ public class RegistroLicencia extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Solicitar);
-        Solicitar.setBounds(170, 190, 87, 35);
+        Solicitar.setBounds(180, 190, 87, 35);
 
         btnSalir.setBackground(new java.awt.Color(204, 204, 204));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -177,7 +177,7 @@ public class RegistroLicencia extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnSalir);
-        btnSalir.setBounds(350, 230, 81, 20);
+        btnSalir.setBounds(380, 240, 60, 20);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 490, 270));
 
@@ -191,8 +191,6 @@ public class RegistroLicencia extends javax.swing.JFrame {
         lblSolicitud.setBounds(30, 50, 310, 32);
         jPanel2.add(jSeparator1);
         jSeparator1.setBounds(30, 80, 260, 10);
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\naely\\Downloads\\Itson\\6to Semestre\\BDAvanzadas\\UC2\\Proyecto Unidad 2\\p2 Licencias\\Concesionaria\\src\\main\\java\\Multimedia\\LICENCIA.png")); // NOI18N
         jPanel2.add(jLabel3);
         jLabel3.setBounds(320, 20, 140, 80);
 

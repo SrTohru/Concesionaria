@@ -62,8 +62,6 @@ public class RegistroAutomovil extends javax.swing.JFrame {
         lblIngresarDatos.setForeground(new java.awt.Color(255, 255, 255));
         lblIngresarDatos.setText("Ingresa los datos del automóvil");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\naely\\Downloads\\Itson\\6to Semestre\\BDAvanzadas\\UC2\\Proyecto Unidad 2\\p2 Licencias\\Concesionaria\\src\\main\\java\\Multimedia\\CIRCULACION - REGISTRO DE AUTOS.png")); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -121,14 +119,14 @@ public class RegistroAutomovil extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnRegistrar);
-        btnRegistrar.setBounds(230, 310, 100, 20);
+        btnRegistrar.setBounds(230, 300, 100, 40);
 
         btnSalir.setBackground(new java.awt.Color(204, 204, 204));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(btnSalir);
-        btnSalir.setBounds(490, 360, 72, 23);
+        btnSalir.setBounds(502, 360, 60, 23);
 
         lblRFC.setText("RFC");
         jPanel1.add(lblRFC);

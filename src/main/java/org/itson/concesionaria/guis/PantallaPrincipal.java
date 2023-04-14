@@ -31,153 +31,177 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnSolicitarLicencia1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        btnRegistrarCarro = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        btnSolicitarLicencia = new javax.swing.JButton();
-        btnSolicitarPlacas = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jPanel1 = new javax.swing.JPanel();
         btnSalir = new javax.swing.JToggleButton();
         btnGenerarPersonas = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
+        btnSolicitarLicencia = new javax.swing.JButton();
+        btnRegistrarCarro = new javax.swing.JButton();
         btnVerHistoria = new javax.swing.JToggleButton();
+        lblRevisarHistorial = new javax.swing.JLabel();
+        lblRegistroCarro = new javax.swing.JLabel();
+        lblSolicitarLicencia = new javax.swing.JLabel();
         btnConsultarPersona = new javax.swing.JButton();
+        btnSolicitarPlacas = new javax.swing.JButton();
+        lblSolicitarPlacas = new javax.swing.JLabel();
         lblConsultarPersona = new javax.swing.JLabel();
-
-        btnSolicitarLicencia1.setText("Solicitar ");
-        btnSolicitarLicencia1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSolicitarLicencia1ActionPerformed(evt);
-            }
-        });
+        jPanel2 = new javax.swing.JPanel();
+        lblBienvenida = new javax.swing.JLabel();
+        lblImagen = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 0));
 
-        jLabel1.setText("Bienvenido a Concesionaria");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(null);
 
-        jLabel2.setText("Registro de carro");
-
-        btnRegistrarCarro.setText("Registrar");
-        btnRegistrarCarro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarCarroActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Solicitar Licencia");
-
-        btnSolicitarLicencia.setText("Solicitar ");
-        btnSolicitarLicencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSolicitarLicenciaActionPerformed(evt);
-            }
-        });
-
-        btnSolicitarPlacas.setText("Solicitar");
-        btnSolicitarPlacas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSolicitarPlacasActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setText("Solicitar Placas");
-
+        btnSalir.setBackground(new java.awt.Color(204, 204, 204));
+        btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSalir.setText("Salir");
+        btnSalir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
+        jPanel1.add(btnSalir);
+        btnSalir.setBounds(470, 280, 65, 22);
 
+        btnGenerarPersonas.setBackground(new java.awt.Color(204, 204, 204));
+        btnGenerarPersonas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnGenerarPersonas.setText("Generar Personas");
+        btnGenerarPersonas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnGenerarPersonas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenerarPersonasActionPerformed(evt);
             }
         });
+        jPanel1.add(btnGenerarPersonas);
+        btnGenerarPersonas.setBounds(10, 280, 130, 20);
 
-        jLabel5.setText("Revisar Historial");
+        btnSolicitarLicencia.setBackground(new java.awt.Color(153, 204, 255));
+        btnSolicitarLicencia.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSolicitarLicencia.setText("Solicitar ");
+        btnSolicitarLicencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnSolicitarLicencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSolicitarLicenciaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSolicitarLicencia);
+        btnSolicitarLicencia.setBounds(40, 60, 220, 18);
 
+        btnRegistrarCarro.setBackground(new java.awt.Color(153, 204, 255));
+        btnRegistrarCarro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnRegistrarCarro.setText("Registrar");
+        btnRegistrarCarro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnRegistrarCarro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarCarroActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRegistrarCarro);
+        btnRegistrarCarro.setBounds(40, 130, 220, 18);
+
+        btnVerHistoria.setBackground(new java.awt.Color(153, 204, 255));
+        btnVerHistoria.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnVerHistoria.setText("Revisar");
+        btnVerHistoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnVerHistoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerHistoriaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVerHistoria);
+        btnVerHistoria.setBounds(40, 210, 220, 18);
 
+        lblRevisarHistorial.setText("Revisar Historial");
+        jPanel1.add(lblRevisarHistorial);
+        lblRevisarHistorial.setBounds(40, 180, 105, 16);
+
+        lblRegistroCarro.setText("Registro de carro");
+        jPanel1.add(lblRegistroCarro);
+        lblRegistroCarro.setBounds(40, 100, 106, 16);
+
+        lblSolicitarLicencia.setText("Solicitar Licencia");
+        jPanel1.add(lblSolicitarLicencia);
+        lblSolicitarLicencia.setBounds(40, 30, 118, 16);
+
+        btnConsultarPersona.setBackground(new java.awt.Color(153, 204, 255));
+        btnConsultarPersona.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnConsultarPersona.setText("Solicitar ");
+        btnConsultarPersona.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnConsultarPersona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarPersonaActionPerformed(evt);
             }
         });
+        jPanel1.add(btnConsultarPersona);
+        btnConsultarPersona.setBounds(290, 60, 220, 18);
+
+        btnSolicitarPlacas.setBackground(new java.awt.Color(153, 204, 255));
+        btnSolicitarPlacas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSolicitarPlacas.setText("Solicitar");
+        btnSolicitarPlacas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnSolicitarPlacas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSolicitarPlacasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSolicitarPlacas);
+        btnSolicitarPlacas.setBounds(290, 130, 220, 18);
+
+        lblSolicitarPlacas.setText("Solicitar Placas");
+        jPanel1.add(lblSolicitarPlacas);
+        lblSolicitarPlacas.setBounds(290, 100, 110, 16);
 
         lblConsultarPersona.setText("Consultar persona");
+        jPanel1.add(lblConsultarPersona);
+        lblConsultarPersona.setBounds(290, 30, 118, 16);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRegistrarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnSolicitarLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblConsultarPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnConsultarPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnGenerarPersonas)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnSolicitarPlacas, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnVerHistoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(11, Short.MAX_VALUE))
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 540, 320));
+
+        jPanel2.setBackground(new java.awt.Color(153, 0, 0));
+
+        lblBienvenida.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblBienvenida.setForeground(new java.awt.Color(255, 255, 255));
+        lblBienvenida.setText("Bienvenido a Concesionaria");
+
+        lblImagen.setIcon(new javax.swing.ImageIcon("C:\\Users\\naely\\Downloads\\Itson\\6to Semestre\\BDAvanzadas\\UC2\\Proyecto Unidad 2\\p2 Licencias\\Concesionaria\\src\\main\\java\\org\\itson\\concesionaria\\multimedia\\SERVICIOS .png")); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblBienvenida, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+                    .addComponent(jSeparator3))
+                .addGap(41, 41, 41)
+                .addComponent(lblImagen)
+                .addGap(12, 12, 12))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(lblConsultarPersona))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSolicitarLicencia)
-                    .addComponent(btnConsultarPersona))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRegistrarCarro)
-                .addGap(29, 29, 29)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(btnSolicitarPlacas)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addComponent(btnVerHistoria)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalir)
-                    .addComponent(btnGenerarPersonas))
-                .addGap(24, 24, 24))
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblImagen))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(lblBienvenida)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(51, 51, 51))
         );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 560, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -209,13 +233,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSolicitarPlacasActionPerformed
 
-    private void btnSolicitarLicencia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarLicencia1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSolicitarLicencia1ActionPerformed
-
     private void btnConsultarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPersonaActionPerformed
       new ConsultaPersona().setVisible(true);
     }//GEN-LAST:event_btnConsultarPersonaActionPerformed
+
+    private void btnVerHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerHistoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVerHistoriaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultarPersona;
@@ -223,15 +247,18 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrarCarro;
     private javax.swing.JToggleButton btnSalir;
     private javax.swing.JButton btnSolicitarLicencia;
-    private javax.swing.JButton btnSolicitarLicencia1;
     private javax.swing.JButton btnSolicitarPlacas;
     private javax.swing.JToggleButton btnVerHistoria;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel lblBienvenida;
     private javax.swing.JLabel lblConsultarPersona;
+    private javax.swing.JLabel lblImagen;
+    private javax.swing.JLabel lblRegistroCarro;
+    private javax.swing.JLabel lblRevisarHistorial;
+    private javax.swing.JLabel lblSolicitarLicencia;
+    private javax.swing.JLabel lblSolicitarPlacas;
     // End of variables declaration//GEN-END:variables
 }
