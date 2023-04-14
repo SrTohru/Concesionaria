@@ -68,17 +68,16 @@ public class verificacionesDeSistema {
         }
     }
 
-    public Vehiculo consultarExistenciaVehiculoPorSerie(String serie) {
+    public Auto consultarExistenciaVehiculoPorSerie(String serie) {
         try {
-            TypedQuery<Vehiculo> query = em.getEntityManager().createQuery(
-                    "SELECT v FROM Vehiculo v WHERE v.serie = :serie AND v.tipoVehiculo = :tipoVehiculo", Vehiculo.class);
+            TypedQuery<Auto> query = em.getEntityManager().createQuery(
+                    "SELECT v FROM Auto v WHERE v.serie = :serie", Auto.class);
             query.setParameter("serie", serie);
-            query.setParameter("tipoVehiculo", tipoVehiculo.Automovil);
-            Vehiculo vehiculo = query.getSingleResult();
+            Auto auto = query.getSingleResult();
 
-            if (vehiculo != null) {
+            if (auto != null) {
                 JOptionPane.showMessageDialog(null, "Ese vehiculo si existe");
-                return vehiculo;
+                return auto;
             }
 
         } catch (Exception e) {
@@ -121,13 +120,26 @@ public class verificacionesDeSistema {
         }
     }
 
+    public Auto verificarExistenciaAutoPorSerie(String serie){
+        
+        Auto autoEncontrado = em.getEntityManager().find(Auto.class, serie);
+
+        if (autoEncontrado == null) {
+            System.out.println("No se encontró un auto con la serie " + serie);
+        } else {
+            System.out.println("Se encontró un auto con la serie " + serie + ": " + autoEncontrado);
+        }
+        return null;
+    }
+    
+    
     public List<Persona> consultarPersonasMedianteInformacion(String nombres, String apellidoPaterno, String apellidoMaterno) {
         String jpql = "SELECT p FROM Persona p WHERE p.nombres LIKE :nombres AND (p.apellidoPaterno LIKE :apellidoPaterno OR p.apellidoPaterno IS NULL) AND (p.apellidoMaterno LIKE :apellidoMaterno OR p.apellidoMaterno IS NULL)";
         TypedQuery<Persona> consulta = em.getEntityManager().createQuery(jpql, Persona.class);
         consulta.setParameter("nombres", "%" + nombres + "%");
         consulta.setParameter("apellidoPaterno", "%" + apellidoPaterno + "%");
         consulta.setParameter("apellidoMaterno", "%" + apellidoMaterno + "%");
-
+    
         return consulta.getResultList();
 
     }

@@ -49,7 +49,7 @@ public class LicenciasDAO implements ILicencias {
     }
 
     public List<Tramite> test() {
-        Persona persona = eM.getEntityManager().find(Persona.class, 10L);
+        Persona persona = eM.getEntityManager().find(Persona.class,15L);
 
         List<Tramite> tramites = eM.getEntityManager().createQuery(
                 "SELECT t FROM Tramite t WHERE t.idPersona = :persona",
