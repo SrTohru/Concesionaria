@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,8 +21,8 @@ import org.itson.concesionaria.utilities.tipoVehiculo;
 
 @Entity
 @Table(name = "auto")
-@DiscriminatorValue("tipoAuto")
-public class Auto implements Serializable {
+@DiscriminatorValue("Auto")
+public class Auto extends Vehiculo implements Serializable {
 
     @Id
     @Column(name = "id")
@@ -41,18 +43,15 @@ public class Auto implements Serializable {
 
     @OneToMany(mappedBy = "idAuto")
     private List<Placas> Placas = new ArrayList<>();
-    
+   
 
     public Auto() {
     }
 
     public Auto(Licencia idLicencia, Persona idPersona) {
-        this.id = id;
         this.idLicencia = idLicencia;
         this.idPersona = idPersona;
     }
-
-    
     
     public Auto(Licencia idLicencia, Persona idPersona, Placas idPlacas) {
         this.idLicencia = idLicencia;

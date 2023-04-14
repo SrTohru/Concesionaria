@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import org.itson.concesionaria.entitys.Auto;
 import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.entitys.Placas;
+import org.itson.concesionaria.entitys.Vehiculo;
 
 public class verificacionesDeSistema {
 
@@ -67,6 +68,25 @@ public class verificacionesDeSistema {
         }
     }
 
+    public Vehiculo consultarExistenciaVehiculoPorSerie(String serie) {
+        try {
+            TypedQuery<Vehiculo> query = em.getEntityManager().createQuery(
+                    "SELECT v FROM Vehiculo v WHERE v.serie = :serie AND v.tipoVehiculo = :tipoVehiculo", Vehiculo.class);
+            query.setParameter("serie", serie);
+            query.setParameter("tipoVehiculo", tipoVehiculo.Automovil);
+            Vehiculo vehiculo = query.getSingleResult();
+
+            if (vehiculo != null) {
+                JOptionPane.showMessageDialog(null, "Ese vehiculo si existe");
+                return vehiculo;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ese vehiculo no existe");
+        }
+        return null;
+    }
+
     public String generarPlacas() {
         StringBuilder sb = new StringBuilder();
         do {
@@ -99,6 +119,17 @@ public class verificacionesDeSistema {
         } catch (Exception ex) {
             return false;
         }
+    }
+
+    public List<Persona> consultarPersonasMedianteInformacion(String nombres, String apellidoPaterno, String apellidoMaterno) {
+        String jpql = "SELECT p FROM Persona p WHERE p.nombres LIKE :nombres AND (p.apellidoPaterno LIKE :apellidoPaterno OR p.apellidoPaterno IS NULL) AND (p.apellidoMaterno LIKE :apellidoMaterno OR p.apellidoMaterno IS NULL)";
+        TypedQuery<Persona> consulta = em.getEntityManager().createQuery(jpql, Persona.class);
+        consulta.setParameter("nombres", "%" + nombres + "%");
+        consulta.setParameter("apellidoPaterno", "%" + apellidoPaterno + "%");
+        consulta.setParameter("apellidoMaterno", "%" + apellidoMaterno + "%");
+
+        return consulta.getResultList();
+
     }
 
     public int verificarAutoNuevo(Auto auto) {

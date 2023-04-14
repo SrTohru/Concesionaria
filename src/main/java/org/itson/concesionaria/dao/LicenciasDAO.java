@@ -36,9 +36,13 @@ public class LicenciasDAO implements ILicencias {
         eM.getEntityManager().find(Persona.class, persona.getId()).setLicencia(licencia);
 
         eM.getEntityManager().getTransaction().commit();
-
+            
+        
+        tramite.setFechaCambioPlacas(new GregorianCalendar());
+        
         JOptionPane.showMessageDialog(null, "Exitosamente");
         JOptionPane.showMessageDialog(null, "Registro pago");
+        
         pagoDAO.registrarPagoLicencia(licencia, tramite, tipoDePago.Pago_Licencia);
 
         return licencia;

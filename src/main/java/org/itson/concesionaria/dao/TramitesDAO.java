@@ -39,7 +39,6 @@ public class TramitesDAO implements ITramites {
     public void finalizarTramite(estadosTramite estadoTramite, Calendar fechaRealizacionTramite, int costo, Tramite tramite) {
 
         tramite.setEstadoTramite(estadoTramite);
-        tramite.setFechaRealizacion(fechaRealizacionTramite);
         tramite.setCosto(costo);
         
         em.getEntityManager().getTransaction().begin();
