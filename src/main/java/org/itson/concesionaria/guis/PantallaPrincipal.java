@@ -46,6 +46,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         btnVerHistoria = new javax.swing.JToggleButton();
         btnConsultarPersona = new javax.swing.JButton();
         lblConsultarPersona = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         btnSolicitarLicencia1.setText("Solicitar ");
         btnSolicitarLicencia1.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +114,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         lblConsultarPersona.setText("Consultar persona");
 
+        jButton1.setText("Consultar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,7 +167,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSolicitarLicencia)
-                    .addComponent(btnConsultarPersona))
+                    .addComponent(btnConsultarPersona)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -217,6 +226,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
       new ConsultaPersona().setVisible(true);
     }//GEN-LAST:event_btnConsultarPersonaActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       new ConsultaPersona().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultarPersona;
     private javax.swing.JButton btnGenerarPersonas;
@@ -226,6 +239,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnSolicitarLicencia1;
     private javax.swing.JButton btnSolicitarPlacas;
     private javax.swing.JToggleButton btnVerHistoria;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
