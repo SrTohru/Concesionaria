@@ -86,10 +86,9 @@ public class RegistroLicencia extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenu1 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblSolicitudDatos = new javax.swing.JLabel();
+        lblRFC = new javax.swing.JLabel();
         txtRFC = new javax.swing.JTextField();
         lblVigencia = new javax.swing.JLabel();
         añosVigencia = new javax.swing.JComboBox<>();
@@ -100,9 +99,7 @@ public class RegistroLicencia extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         lblSolicitud = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel4 = new javax.swing.JLabel();
-
-        jMenu1.setText("jMenu1");
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Solicitud de Licencia");
@@ -112,14 +109,14 @@ public class RegistroLicencia extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setText("Porfavor ingresa los datos que se solicitan a continuación");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(10, 10, 452, 16);
+        lblSolicitudDatos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblSolicitudDatos.setText("Porfavor ingresa los datos que se solicita a continuación");
+        jPanel1.add(lblSolicitudDatos);
+        lblSolicitudDatos.setBounds(20, 20, 452, 20);
 
-        jLabel1.setText("RFC");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 50, 37, 16);
+        lblRFC.setText("RFC");
+        jPanel1.add(lblRFC);
+        lblRFC.setBounds(30, 60, 37, 16);
 
         txtRFC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,11 +124,11 @@ public class RegistroLicencia extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtRFC);
-        txtRFC.setBounds(40, 50, 267, 22);
+        txtRFC.setBounds(60, 60, 267, 22);
 
         lblVigencia.setText("Vigencia");
         jPanel1.add(lblVigencia);
-        lblVigencia.setBounds(320, 50, 60, 16);
+        lblVigencia.setBounds(30, 100, 60, 16);
 
         añosVigencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 Año", "2 Años", "3 Años" }));
         añosVigencia.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -144,11 +141,11 @@ public class RegistroLicencia extends javax.swing.JFrame {
             }
         });
         jPanel1.add(añosVigencia);
-        añosVigencia.setBounds(380, 50, 72, 22);
+        añosVigencia.setBounds(90, 100, 72, 22);
 
         lblDiscapacitado.setText("¿Eres discapacitado?");
         jPanel1.add(lblDiscapacitado);
-        lblDiscapacitado.setBounds(20, 90, 130, 16);
+        lblDiscapacitado.setBounds(30, 140, 130, 16);
 
         checkBoxDiscapacitado.setText("Si");
         checkBoxDiscapacitado.addActionListener(new java.awt.event.ActionListener() {
@@ -157,7 +154,7 @@ public class RegistroLicencia extends javax.swing.JFrame {
             }
         });
         jPanel1.add(checkBoxDiscapacitado);
-        checkBoxDiscapacitado.setBounds(30, 110, 140, 20);
+        checkBoxDiscapacitado.setBounds(30, 160, 140, 20);
 
         Solicitar.setBackground(new java.awt.Color(204, 204, 204));
         Solicitar.setText("Solicitar");
@@ -168,21 +165,21 @@ public class RegistroLicencia extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Solicitar);
-        Solicitar.setBounds(190, 140, 87, 35);
+        Solicitar.setBounds(170, 190, 87, 35);
 
         btnSalir.setBackground(new java.awt.Color(204, 204, 204));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSalir.setText("Salir");
-        btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSalir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
         jPanel1.add(btnSalir);
-        btnSalir.setBounds(390, 180, 81, 20);
+        btnSalir.setBounds(350, 230, 81, 20);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 490, 210));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 490, 270));
 
         jPanel2.setBackground(new java.awt.Color(153, 0, 0));
         jPanel2.setLayout(null);
@@ -195,11 +192,11 @@ public class RegistroLicencia extends javax.swing.JFrame {
         jPanel2.add(jSeparator1);
         jSeparator1.setBounds(30, 80, 260, 10);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\naely\\Downloads\\Itson\\6to Semestre\\BDAvanzadas\\UC2\\Proyecto Unidad 2\\p2 Licencias\\Concesionaria\\src\\main\\java\\Multimedia\\LICENCIA.png")); // NOI18N
-        jPanel2.add(jLabel4);
-        jLabel4.setBounds(360, 20, 470, 510);
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\naely\\Downloads\\Itson\\6to Semestre\\BDAvanzadas\\UC2\\Proyecto Unidad 2\\p2 Licencias\\Concesionaria\\src\\main\\java\\Multimedia\\LICENCIA.png")); // NOI18N
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(320, 20, 140, 80);
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 510, 100));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 510, 120));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -252,15 +249,14 @@ public class RegistroLicencia extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> añosVigencia;
     private javax.swing.JToggleButton btnSalir;
     private javax.swing.JCheckBox checkBoxDiscapacitado;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblDiscapacitado;
+    private javax.swing.JLabel lblRFC;
     private javax.swing.JLabel lblSolicitud;
+    private javax.swing.JLabel lblSolicitudDatos;
     private javax.swing.JLabel lblVigencia;
     private javax.swing.JTextField txtRFC;
     // End of variables declaration//GEN-END:variables

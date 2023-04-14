@@ -108,20 +108,20 @@ public class RegistroAutomovil extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setText("Porfavor ingresa los datos que se te solicitan a continuación");
+        jLabel1.setText("Porfavor ingresa los datos que se solicita a continuación");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(50, 50, 423, 16);
 
         btnRegistrar.setBackground(new java.awt.Color(204, 204, 204));
         btnRegistrar.setText("Registrar");
-        btnRegistrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRegistrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
             }
         });
         jPanel1.add(btnRegistrar);
-        btnRegistrar.setBounds(240, 310, 100, 20);
+        btnRegistrar.setBounds(230, 310, 100, 20);
 
         btnSalir.setBackground(new java.awt.Color(204, 204, 204));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
