@@ -86,45 +86,52 @@ public class RegistroLicencia extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblDiscapacitado = new javax.swing.JLabel();
+        jMenu1 = new javax.swing.JMenu();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtRFC = new javax.swing.JTextField();
         lblVigencia = new javax.swing.JLabel();
+        añosVigencia = new javax.swing.JComboBox<>();
+        lblDiscapacitado = new javax.swing.JLabel();
+        checkBoxDiscapacitado = new javax.swing.JCheckBox();
         Solicitar = new javax.swing.JButton();
         btnSalir = new javax.swing.JToggleButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         lblSolicitud = new javax.swing.JLabel();
-        txtRFC = new javax.swing.JTextField();
-        añosVigencia = new javax.swing.JComboBox<>();
-        checkBoxDiscapacitado = new javax.swing.JCheckBox();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
+
+        jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Solicitud de Licencia");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblDiscapacitado.setText("¿Eres discapacitado?");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(null);
 
-        lblVigencia.setText("Vigencia");
-
-        Solicitar.setText("Solicitar");
-        Solicitar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SolicitarActionPerformed(evt);
-            }
-        });
-
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setText("Porfavor ingresa los datos que se solicitan a continuación");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(10, 10, 452, 16);
 
         jLabel1.setText("RFC");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(10, 50, 37, 16);
 
-        jLabel2.setText("Porfavor ingresa los datos que se te solicitan a continuación");
+        txtRFC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRFCActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtRFC);
+        txtRFC.setBounds(40, 50, 267, 22);
 
-        lblSolicitud.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblSolicitud.setText("Solicitud de Licencia");
+        lblVigencia.setText("Vigencia");
+        jPanel1.add(lblVigencia);
+        lblVigencia.setBounds(320, 50, 60, 16);
 
         añosVigencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 Año", "2 Años", "3 Años" }));
         añosVigencia.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -136,6 +143,12 @@ public class RegistroLicencia extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
+        jPanel1.add(añosVigencia);
+        añosVigencia.setBounds(380, 50, 72, 22);
+
+        lblDiscapacitado.setText("¿Eres discapacitado?");
+        jPanel1.add(lblDiscapacitado);
+        lblDiscapacitado.setBounds(20, 90, 130, 16);
 
         checkBoxDiscapacitado.setText("Si");
         checkBoxDiscapacitado.addActionListener(new java.awt.event.ActionListener() {
@@ -143,66 +156,50 @@ public class RegistroLicencia extends javax.swing.JFrame {
                 checkBoxDiscapacitadoActionPerformed(evt);
             }
         });
+        jPanel1.add(checkBoxDiscapacitado);
+        checkBoxDiscapacitado.setBounds(30, 110, 140, 20);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblVigencia)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(añosVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblDiscapacitado)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(checkBoxDiscapacitado)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Solicitar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(lblSolicitud)
-                .addGap(6, 6, 6)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblVigencia)
-                        .addComponent(añosVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(txtRFC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(lblDiscapacitado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(checkBoxDiscapacitado)
-                .addGap(18, 18, 18)
-                .addComponent(Solicitar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalir)
-                .addContainerGap())
-        );
+        Solicitar.setBackground(new java.awt.Color(204, 204, 204));
+        Solicitar.setText("Solicitar");
+        Solicitar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Solicitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SolicitarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Solicitar);
+        Solicitar.setBounds(190, 140, 87, 35);
+
+        btnSalir.setBackground(new java.awt.Color(204, 204, 204));
+        btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSalir);
+        btnSalir.setBounds(390, 180, 81, 20);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 490, 210));
+
+        jPanel2.setBackground(new java.awt.Color(153, 0, 0));
+        jPanel2.setLayout(null);
+
+        lblSolicitud.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblSolicitud.setForeground(new java.awt.Color(255, 255, 255));
+        lblSolicitud.setText("Solicitud de Licencia");
+        jPanel2.add(lblSolicitud);
+        lblSolicitud.setBounds(30, 50, 310, 32);
+        jPanel2.add(jSeparator1);
+        jSeparator1.setBounds(30, 80, 260, 10);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\naely\\Downloads\\Itson\\6to Semestre\\BDAvanzadas\\UC2\\Proyecto Unidad 2\\p2 Licencias\\Concesionaria\\src\\main\\java\\Multimedia\\LICENCIA.png")); // NOI18N
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(360, 20, 470, 510);
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 510, 100));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -245,6 +242,10 @@ public class RegistroLicencia extends javax.swing.JFrame {
 
     }//GEN-LAST:event_checkBoxDiscapacitadoActionPerformed
 
+    private void txtRFCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRFCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRFCActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Solicitar;
@@ -253,6 +254,10 @@ public class RegistroLicencia extends javax.swing.JFrame {
     private javax.swing.JCheckBox checkBoxDiscapacitado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblDiscapacitado;
     private javax.swing.JLabel lblSolicitud;
