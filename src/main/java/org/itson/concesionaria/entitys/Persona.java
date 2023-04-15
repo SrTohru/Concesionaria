@@ -39,12 +39,18 @@ public class Persona implements Serializable {
     @Column(name = "rfc", nullable = false, length = 13, unique = true)
     private String rfc;
 
+    
+    
     @OneToMany(mappedBy = "persona")
     private List<Placas> placas = new ArrayList<>();
 
     @OneToMany(mappedBy = "idPersona")
     private List<Tramite> tramite = new ArrayList<>();
 
+    @OneToMany(mappedBy = "persona")
+    private List<Licencia> Licencias = new ArrayList<>();
+
+    
     @OneToOne
     @JoinColumn(name = "idLicencia", nullable = true)
     private Licencia licencia;
@@ -90,6 +96,17 @@ public class Persona implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    public List<Licencia> getLicencias() {
+        return Licencias;
+    }
+
+    public void setLicencias(List<Licencia> Licencias) {
+        this.Licencias = Licencias;
+    }
+
+    
+
+    
     public List<Tramite> getTramite() {
         return tramite;
     }

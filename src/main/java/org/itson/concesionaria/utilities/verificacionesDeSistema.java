@@ -11,6 +11,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.swing.JOptionPane;
 import org.itson.concesionaria.entitys.Auto;
+import org.itson.concesionaria.entitys.Licencia;
 import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.entitys.Placas;
 import org.itson.concesionaria.entitys.Vehiculo;
@@ -68,6 +69,40 @@ public class verificacionesDeSistema {
         }
     }
 
+    public boolean tieneLicenciasRegistradas(Persona persona) {
+
+        boolean tieneLicencias = false;
+
+        Query q = em.getEntityManager().createQuery("SELECT l FROM Licencia l WHERE l.persona.id = :personaId");
+        q.setParameter("personaId", persona.getId());
+        List<Licencia> licencias = q.getResultList();
+
+        if (!licencias.isEmpty()) {
+            tieneLicencias = true;
+
+        }
+
+        return tieneLicencias;
+    }
+
+    public void desactivarOtrasLicencias(Persona Persona) {
+
+        TypedQuery<Licencia> query = em.getEntityManager().createQuery(
+                "SELECT l FROM Licencia l WHERE l.persona.id = :persona AND l.estadosLicencia = :estadosLicencia",
+                Licencia.class);
+        query.setParameter("persona", Persona.getId());
+        query.setParameter("estadosLicencia", estadosLicencia.ACTIVA);
+
+        List<Licencia> licenciasActivas = query.getResultList();
+
+        if (!licenciasActivas.isEmpty()) {
+            for (Licencia lic : licenciasActivas) {
+                lic.setEstadosLicencia(estadosLicencia.DESACTIVA);
+                em.getEntityManager().merge(lic);
+            }
+        }
+    }
+
     public Auto consultarExistenciaVehiculoPorSerie(String serie) {
         try {
             TypedQuery<Auto> query = em.getEntityManager().createQuery(
@@ -120,8 +155,8 @@ public class verificacionesDeSistema {
         }
     }
 
-    public Auto verificarExistenciaAutoPorSerie(String serie){
-        
+    public Auto verificarExistenciaAutoPorSerie(String serie) {
+
         Auto autoEncontrado = em.getEntityManager().find(Auto.class, serie);
 
         if (autoEncontrado == null) {
@@ -131,15 +166,14 @@ public class verificacionesDeSistema {
         }
         return null;
     }
-    
-    
+
     public List<Persona> consultarPersonasMedianteInformacion(String nombres, String apellidoPaterno, String apellidoMaterno) {
         String jpql = "SELECT p FROM Persona p WHERE p.nombres LIKE :nombres AND (p.apellidoPaterno LIKE :apellidoPaterno OR p.apellidoPaterno IS NULL) AND (p.apellidoMaterno LIKE :apellidoMaterno OR p.apellidoMaterno IS NULL)";
         TypedQuery<Persona> consulta = em.getEntityManager().createQuery(jpql, Persona.class);
         consulta.setParameter("nombres", "%" + nombres + "%");
         consulta.setParameter("apellidoPaterno", "%" + apellidoPaterno + "%");
         consulta.setParameter("apellidoMaterno", "%" + apellidoMaterno + "%");
-    
+
         return consulta.getResultList();
 
     }
