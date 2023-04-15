@@ -22,6 +22,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.itson.concesionaria.utilities.discapacidadPersona;
+import org.itson.concesionaria.utilities.estadosLicencia;
 
 @Entity
 @Table(name = "licencia")
@@ -38,34 +39,61 @@ public class Licencia implements Serializable {
     @OneToOne
     @JoinColumn(name = "idPersona", nullable = false)
     private Persona idPersona;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "discapacidad", nullable = false)
     private discapacidadPersona discapacidad;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estadoLicencia", nullable = false)
+    private estadosLicencia estadosLicencia;
 
     @OneToOne
     @JoinColumn(name = "idTramite")
     private Tramite tramite;
 
+    @ManyToOne
+    @JoinColumn(name = "persona", nullable = false)
+    private Persona persona;
+
     public Licencia() {
     }
 
-    public Licencia(Calendar fechaVigencia, Persona idPersona, discapacidadPersona discapacidad, Tramite tramite) {
+    public Licencia(Calendar fechaVigencia, Persona idPersona, discapacidadPersona discapacidad, estadosLicencia estadosLicencia, Tramite tramite) {
         this.fechaVigencia = fechaVigencia;
         this.idPersona = idPersona;
         this.discapacidad = discapacidad;
-
+        this.estadosLicencia = estadosLicencia;
         this.tramite = tramite;
     }
 
-    public Licencia(Long id, Calendar fechaVigencia, Persona idPersona, discapacidadPersona discapacidad, Tramite tramite) {
+    public Licencia(Long id, Calendar fechaVigencia, Persona idPersona, discapacidadPersona discapacidad, estadosLicencia estadosLicencia, Tramite tramite) {
         this.id = id;
         this.fechaVigencia = fechaVigencia;
         this.idPersona = idPersona;
         this.discapacidad = discapacidad;
+        this.estadosLicencia = estadosLicencia;
         this.tramite = tramite;
     }
 
+    public estadosLicencia getEstadosLicencia() {
+        return estadosLicencia;
+    }
+
+    public void setEstadosLicencia(estadosLicencia estadosLicencia) {
+        this.estadosLicencia = estadosLicencia;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
+
+    
+    
     public Tramite getTramite() {
         return tramite;
     }

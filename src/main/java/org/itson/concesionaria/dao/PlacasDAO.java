@@ -25,10 +25,12 @@ public class PlacasDAO implements IPlacas {
               
         em.getEntityManager().persist(placa);
         auto.setIdPlacas(placa);
-        em.getEntityManager().merge(auto);
         auto.addPlacas(placa);
+        auto.setTramite(tramite);
+        em.getEntityManager().merge(auto);
         
-        pagosDAO.registrarPagoPlacas(placa, tipoDePago.Pago_Placas, tramite);
+        
+       // pagosDAO.registrarPagoPlacas(placa, tipoDePago.Pago_Placas, tramite);
         verificacionSistema.desactivarOtrasPlacas(auto, placa);
 
         

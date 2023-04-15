@@ -33,6 +33,7 @@ public class registroMasivoPersonas {
 
             for (int i = 1; i <= 20; i++) {
                 Persona persona = new Persona();
+
                 Random rand = new Random();
                 String nombre = nombres.get(rand.nextInt(nombres.size()));
                 String apellidoPaterno = apellidosPaternos.get(rand.nextInt(apellidosPaternos.size()));
@@ -41,7 +42,7 @@ public class registroMasivoPersonas {
                 persona.setNombres(nombre);
                 persona.setApellidoPaterno(apellidoPaterno);
                 persona.setApellidoMaterno(apellidoMaterno);
-                
+
                 int num1 = rand.nextInt(9);
                 int num2 = rand.nextInt(9);
                 int num3 = rand.nextInt(9);
@@ -50,7 +51,11 @@ public class registroMasivoPersonas {
                 persona.setTelefono(telefono);
                 persona.setRfc("ITSONRFC" + i);
 
-                persona.setFechaNacimiento(new GregorianCalendar(2003, 01, 01));
+                int año = rand.nextInt(41) + 1970;
+                int mes = rand.nextInt(12);
+                int dia = rand.nextInt(30);
+                
+                persona.setFechaNacimiento(new GregorianCalendar(año, mes, dia));
 
                 eM.getEntityManager().persist(persona);
             }
@@ -58,9 +63,6 @@ public class registroMasivoPersonas {
             eM.getEntityManager().getTransaction().commit();
             JOptionPane.showMessageDialog(null, "Se han registrado a 20 personas aleatoreas exitosamente.");
         } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(null, "Debugg: Ocurrió un error al intentar insertar los datos:", "Quitar este mensaje al finalizar desarrollo", JOptionPane.INFORMATION_MESSAGE);
-            JOptionPane.showMessageDialog(null, e.getMessage());
             eM.getEntityManager().getTransaction().rollback();
         } finally {
             eM.getEntityManager().close();
