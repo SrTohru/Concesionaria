@@ -207,28 +207,36 @@ public class RegistroLicencia extends javax.swing.JFrame {
         if (allInformationRequiered()) {
             Persona persona = verificador.verificarPersonaPorRFC(txtRFC.getText());
             int vigenciaAños = obtenerVigencia();
-            if (persona != null) {
 
-                GregorianCalendar fecha = new GregorianCalendar();
+            if (verificador.tieneLicenciasRegistradas(persona)) {
+                if (mensajesSistema.preguntarCrearNuevaLicencia()) {
+                    if (persona != null) {
 
-                Tramite tramite = tramitesDAO.crearTramite(persona, estadosTramite.En_Proceso, tiposTramite.Expedicion_De_Licencia, fecha);
+                        GregorianCalendar fecha = new GregorianCalendar();
 
-                fecha.add(GregorianCalendar.YEAR, vigenciaAños);
-                if (discapacidad()) {
-                    PagoLicencia pagoLicencia = new PagoLicencia(persona, tramite, calcularCostoLicencia(), fecha, discapacidadPersona.Discapacitada);
-                    pagoLicencia.setVisible(true);
-                } else {
-                    PagoLicencia pagoLicencia = new PagoLicencia(persona, tramite, calcularCostoLicencia(), fecha, discapacidadPersona.No_Discapacitada);
-                    pagoLicencia.setVisible(true);
+                        Tramite tramite = tramitesDAO.crearTramite(persona, estadosTramite.En_Proceso, tiposTramite.Expedicion_De_Licencia, fecha);
+
+                        fecha.add(GregorianCalendar.YEAR, vigenciaAños);
+                        if (discapacidad()) {
+                            PagoLicencia pagoLicencia = new PagoLicencia(persona, tramite, calcularCostoLicencia(), fecha, discapacidadPersona.Discapacitada);
+                            pagoLicencia.setVisible(true);
+                        } else {
+                            PagoLicencia pagoLicencia = new PagoLicencia(persona, tramite, calcularCostoLicencia(), fecha, discapacidadPersona.No_Discapacitada);
+                            pagoLicencia.setVisible(true);
+                        }
+                        dispose();
+                    } else {
+                        mensajesSistema.mensajeDeFaltaInformacion();
+                    }
                 }
                 dispose();
-            } else {
-                mensajesSistema.mensajeDeFaltaInformacion();
             }
+
+
     }//GEN-LAST:event_SolicitarActionPerformed
     }
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        if (verificador.preguntaCerrar() == true) {
+        if (mensajesSistema.preguntaCerrar() == true) {
             this.dispose();
         }
     }//GEN-LAST:event_btnSalirActionPerformed

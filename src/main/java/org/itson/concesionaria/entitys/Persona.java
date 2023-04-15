@@ -62,6 +62,15 @@ public class Persona implements Serializable {
     public Persona() {
     }
 
+    public Persona(String nombres, String apellidoPaterno, String apellidoMaterno, String telefono, String rfc, Calendar fechaNacimiento) {
+        this.nombres = nombres;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.telefono = telefono;
+        this.rfc = rfc;
+        this.fechaNacimiento = fechaNacimiento;
+    }
+    
     public Persona(String nombres, String apellidoPaterno, String apellidoMaterno, String telefono, String rfc, List<Placas> placas, List<Tramite> tramite, Calendar fechaNacimiento) {
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;
@@ -102,6 +111,10 @@ public class Persona implements Serializable {
 
     public void setLicencias(List<Licencia> Licencias) {
         this.Licencias = Licencias;
+    }
+    
+    public void addLicencias(Licencia licencia){
+        this.Licencias.add(licencia);
     }
 
     

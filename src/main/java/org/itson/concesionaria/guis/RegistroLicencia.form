@@ -223,12 +223,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\naely\Downloads\Itson\6to Semestre\BDAvanzadas\UC2\Proyecto Unidad 2\p2 Licencias\Concesionaria\src\main\java\org\itson\concesionaria\multimedia\LICENCIA.png"/>
-            </Property>
-          </Properties>
+        <Component class="javax.swing.JLabel" name="jLabel3">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="290" y="30" width="140" height="70"/>

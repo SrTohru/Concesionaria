@@ -46,7 +46,7 @@ public class Licencia implements Serializable {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "estadoLicencia", nullable = false)
-    private estadosLicencia estadosLicencia;
+    private estadosLicencia estadoLicencia;
 
     @OneToOne
     @JoinColumn(name = "idTramite")
@@ -63,7 +63,7 @@ public class Licencia implements Serializable {
         this.fechaVigencia = fechaVigencia;
         this.idPersona = idPersona;
         this.discapacidad = discapacidad;
-        this.estadosLicencia = estadosLicencia;
+        this.estadoLicencia = estadosLicencia;
         this.tramite = tramite;
     }
 
@@ -72,16 +72,16 @@ public class Licencia implements Serializable {
         this.fechaVigencia = fechaVigencia;
         this.idPersona = idPersona;
         this.discapacidad = discapacidad;
-        this.estadosLicencia = estadosLicencia;
+        this.estadoLicencia = estadosLicencia;
         this.tramite = tramite;
     }
 
-    public estadosLicencia getEstadosLicencia() {
-        return estadosLicencia;
+    public estadosLicencia getEstadoLicencia() {
+        return estadoLicencia;
     }
 
-    public void setEstadosLicencia(estadosLicencia estadosLicencia) {
-        this.estadosLicencia = estadosLicencia;
+    public void setEstadoLicencia(estadosLicencia estadoLicencia) {
+        this.estadoLicencia = estadoLicencia;
     }
 
     public Persona getPersona() {
@@ -156,7 +156,9 @@ public class Licencia implements Serializable {
 
     @Override
     public String toString() {
-        return "org.itson.concesionaria.entitys.Licencia[ id=" + id + " ]";
+        return "Licencia{" + "id=" + id + ", idPersona=" + idPersona + ", discapacidad=" + discapacidad + ", estadoLicencia=" + estadoLicencia + ", tramite=" + tramite + '}';
     }
+
+
 
 }

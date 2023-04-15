@@ -1,13 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package org.itson.concesionaria.interfaces;
 
-/**
- *
- * @author PC
- */
+import java.util.Calendar;
+import org.itson.concesionaria.entitys.Persona;
+
 public interface IPersona {
     
+    
+    public Persona registrarPersona(String nombre, String apellidoPaterno, String apellidoMaterno, String numeroTelefono, String rfc, Calendar fechaNacimiento);
 }

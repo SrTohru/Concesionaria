@@ -13,6 +13,7 @@ import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.entitys.Tramite;
 import org.itson.concesionaria.utilities.discapacidadPersona;
 import org.itson.concesionaria.utilities.estadosTramite;
+import org.itson.concesionaria.utilities.mensajesDeSistema;
 import org.itson.concesionaria.utilities.verificacionesDeSistema;
 
 /**
@@ -20,16 +21,18 @@ import org.itson.concesionaria.utilities.verificacionesDeSistema;
  * @author usuario
  */
 public class PagoLicencia extends javax.swing.JFrame {
+
     LicenciasDAO licenciasDAO = new LicenciasDAO();
     TramitesDAO tramiteDAO = new TramitesDAO();
     Tramite tramite = new Tramite();
     Persona persona = new Persona();
     Calendar fecha = new GregorianCalendar();
-    int costo;
     discapacidadPersona discapacidad;
     verificacionesDeSistema verificacionSistema = new verificacionesDeSistema();
-    
-    public PagoLicencia(Persona persona,Tramite tramite, int costo, Calendar vigencia, discapacidadPersona discapacidad) {
+    mensajesDeSistema mds = new mensajesDeSistema();
+    int costo;
+
+    public PagoLicencia(Persona persona, Tramite tramite, int costo, Calendar vigencia, discapacidadPersona discapacidad) {
         initComponents();
         this.tramite = tramite;
         this.persona = persona;
@@ -37,12 +40,9 @@ public class PagoLicencia extends javax.swing.JFrame {
         this.costo = costo;
         this.discapacidad = discapacidad;
         lblRFC.setText(persona.getRfc());
-        lblCosto.setText(""+ costo);
-        
-        
-        
+        lblCosto.setText("" + costo);
+
     }
-   
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -119,25 +119,28 @@ public class PagoLicencia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
-        if(verificacionSistema.preguntaConfirmar()){
+        if (mds.preguntaConfirmar()) {
             JOptionPane.showMessageDialog(null, "Confirmada");
-            licenciasDAO.registrarLicencia(persona, fecha,discapacidad, costo, tramite);
-            
+            licenciasDAO.registrarLicencia(persona, fecha, discapacidad, costo, tramite);
+
             Calendar fechaRealizacion = new GregorianCalendar();
-            
+
             tramiteDAO.finalizarTramite(estadosTramite.Finalizado, fechaRealizacion, costo, tramite);
             dispose();
         }
     }//GEN-LAST:event_btnPagarActionPerformed
 
-    private void btnCancelarTramiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarTramiteActionPerformed
-        if(verificacionSistema.preguntaCancelarTramite()){
-            JOptionPane.showMessageDialog(null, "Confirmada");
+    private void btnCancelarTramiteActionPerformed(java.awt.event.ActionEvent evt) {
+        if (mds.preguntaCancelarTramite()) {
+        }
+    }
+
+    private void btSalirActionPerformed(java.awt.event.ActionEvent evt) {
+        if (mds.preguntaCancelarTramite()) {
             tramiteDAO.cancelarTramite(tramite, estadosTramite.Cancelado);
             dispose();
         }
-    }//GEN-LAST:event_btnCancelarTramiteActionPerformed
-
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

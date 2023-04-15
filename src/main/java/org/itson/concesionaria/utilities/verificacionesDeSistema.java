@@ -34,20 +34,6 @@ public class verificacionesDeSistema {
         }
     }
 
-    public boolean preguntaCerrar() {
-        int respuestaCliente = JOptionPane.showConfirmDialog(null, "¿Realmente desea cerrar el programa?", "Cerrar programa", JOptionPane.YES_NO_OPTION);
-        return respuestaCliente == 0;
-    }
-
-    public boolean preguntaConfirmar() {
-        int respuestaCliente = JOptionPane.showConfirmDialog(null, "¿Realmente desea registrar esta licencia?", "Confirmacion de pago", JOptionPane.YES_NO_OPTION);
-        return respuestaCliente == 0;
-    }
-
-    public boolean preguntaCancelarTramite() {
-        int respuestaCliente = JOptionPane.showConfirmDialog(null, "¿Realmente desea cancelar este tramite?", "Confirmacion de cancelacion", JOptionPane.YES_NO_OPTION);
-        return respuestaCliente == 0;
-    }
 
     public Persona verificarPersonaPorRFC(String rfc) {
         try {
@@ -88,18 +74,22 @@ public class verificacionesDeSistema {
     public void desactivarOtrasLicencias(Persona Persona) {
 
         TypedQuery<Licencia> query = em.getEntityManager().createQuery(
-                "SELECT l FROM Licencia l WHERE l.persona.id = :persona AND l.estadosLicencia = :estadosLicencia",
+                "SELECT l FROM Licencia l WHERE l.persona = :persona AND l.estadoLicencia = :estadoLicencia",
                 Licencia.class);
-        query.setParameter("persona", Persona.getId());
-        query.setParameter("estadosLicencia", estadosLicencia.ACTIVA);
+        query.setParameter("persona", Persona);
+        query.setParameter("estadoLicencia", estadosLicencia.ACTIVA);
 
         List<Licencia> licenciasActivas = query.getResultList();
 
         if (!licenciasActivas.isEmpty()) {
+            em.getEntityManager().getTransaction().begin();
             for (Licencia lic : licenciasActivas) {
-                lic.setEstadosLicencia(estadosLicencia.DESACTIVA);
+
+                lic.setEstadoLicencia(estadosLicencia.DESACTIVA);
                 em.getEntityManager().merge(lic);
+
             }
+            em.getEntityManager().getTransaction().commit();
         }
     }
 

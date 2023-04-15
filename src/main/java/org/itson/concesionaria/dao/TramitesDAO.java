@@ -16,34 +16,49 @@ public class TramitesDAO implements ITramites {
 
     @Override
     public Tramite crearTramite(Persona persona, estadosTramite estadoTramite, tiposTramite tipoTramite, Calendar fechaTramite) {
-        Tramite tramite = new Tramite(persona, estadoTramite, tipoTramite, fechaTramite);
 
-        em.getEntityManager().getTransaction().begin();
-        em.getEntityManager().persist(tramite);
-        em.getEntityManager().find(Persona.class, persona.getId()).addTramite(tramite);
-        em.getEntityManager().getTransaction().commit();
+        try {
+            Tramite tramite = new Tramite(persona, estadoTramite, tipoTramite, fechaTramite);
 
-        return tramite;
+            em.getEntityManager().getTransaction().begin();
+            em.getEntityManager().persist(tramite);
+            em.getEntityManager().find(Persona.class, persona.getId()).addTramite(tramite);
+            em.getEntityManager().getTransaction().commit();
+
+            return tramite;
+        } catch (Exception e) {
+            em.getEntityManager().getTransaction().rollback();
+            return null;
+        }
     }
 
     @Override
     public Tramite cancelarTramite(Tramite tramite, estadosTramite estadoTramite) {
-        tramite.setEstadoTramite(estadoTramite);
-        em.getEntityManager().getTransaction().begin();
-        em.getEntityManager().merge(tramite);
-        em.getEntityManager().getTransaction().commit();
-        return tramite;
+
+        try {
+            tramite.setEstadoTramite(estadoTramite);
+            em.getEntityManager().getTransaction().begin();
+            em.getEntityManager().merge(tramite);
+            em.getEntityManager().getTransaction().commit();
+            return tramite;
+        } catch (Exception e) {
+            em.getEntityManager().getTransaction().rollback();
+            return null;
+        }
     }
 
     @Override
     public void finalizarTramite(estadosTramite estadoTramite, Calendar fechaRealizacionTramite, int costo, Tramite tramite) {
+        try {
+            tramite.setEstadoTramite(estadoTramite);
+            tramite.setCosto(costo);
 
-        tramite.setEstadoTramite(estadoTramite);
-        tramite.setCosto(costo);
-        
-        em.getEntityManager().getTransaction().begin();
-        em.getEntityManager().merge(tramite);
-        em.getEntityManager().getTransaction().commit();
+            em.getEntityManager().getTransaction().begin();
+            em.getEntityManager().merge(tramite);
+            em.getEntityManager().getTransaction().commit();
+        } catch (Exception e) {
+            em.getEntityManager().getTransaction().rollback();
+        }
 
     }
 

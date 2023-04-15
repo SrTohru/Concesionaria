@@ -39,9 +39,9 @@ public class registroMasivoPersonas {
                 String apellidoPaterno = apellidosPaternos.get(rand.nextInt(apellidosPaternos.size()));
                 String apellidoMaterno = apellidosMaternos.get(rand.nextInt(apellidosMaternos.size()));
 
-                persona.setNombres(nombre);
-                persona.setApellidoPaterno(apellidoPaterno);
-                persona.setApellidoMaterno(apellidoMaterno);
+                persona.setNombres(encriptador.encriptar(nombre));
+                persona.setApellidoPaterno(encriptador.encriptar(apellidoPaterno));
+                persona.setApellidoMaterno(encriptador.encriptar(apellidoMaterno));
 
                 int num1 = rand.nextInt(9);
                 int num2 = rand.nextInt(9);

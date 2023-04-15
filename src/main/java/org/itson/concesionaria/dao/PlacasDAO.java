@@ -16,25 +16,27 @@ public class PlacasDAO implements IPlacas {
     entityManager em = new entityManager();
     verificacionesDeSistema verificacionSistema = new verificacionesDeSistema();
     PagosDAO pagosDAO = new PagosDAO();
+
     @Override
     public Placas registroPlacas(String codigoPlacas, estadosPlaca estadoPlaca, Tramite tramite, int costo, Persona persona, Auto auto) {
+        try {
+            em.getEntityManager().getTransaction().begin();
 
-        em.getEntityManager().getTransaction().begin();
-        
-        Placas placa = new Placas(estadoPlaca, codigoPlacas, tramite, persona, auto);
-              
-        em.getEntityManager().persist(placa);
-        auto.setIdPlacas(placa);
-        auto.addPlacas(placa);
-        auto.setTramite(tramite);
-        em.getEntityManager().merge(auto);
-        
-        
-       // pagosDAO.registrarPagoPlacas(placa, tipoDePago.Pago_Placas, tramite);
-        verificacionSistema.desactivarOtrasPlacas(auto, placa);
+            Placas placa = new Placas(estadoPlaca, codigoPlacas, tramite, persona, auto);
 
-        
-        return placa;
+            em.getEntityManager().persist(placa);
+            auto.setIdPlacas(placa);
+            auto.addPlacas(placa);
+            auto.setTramite(tramite);
+            em.getEntityManager().merge(auto);
+            
+            verificacionSistema.desactivarOtrasPlacas(auto, placa);
+
+            return placa;
+        } catch (Exception e) {
+            em.getEntityManager().getTransaction().rollback();
+            return null;
+        }
     }
 
     @Override

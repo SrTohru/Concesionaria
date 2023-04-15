@@ -22,39 +22,54 @@ public class LicenciasDAO implements ILicencias {
     TramitesDAO tramitesDAO = new TramitesDAO();
     PagosDAO pagoDAO = new PagosDAO();
     verificacionesDeSistema verificacionesSistema = new verificacionesDeSistema();
-    
+
     @Override
     public Licencia registrarLicencia(Persona persona, Calendar fechaVencimiento, discapacidadPersona discapacidad, int costo, Tramite tramite) {
-        
-       if(verificacionesSistema.tieneLicenciasRegistradas(persona)){
-           verificacionesSistema.desactivarOtrasLicencias(persona);
-       }
-        
-        
-        eM.getEntityManager().getTransaction().begin();
-       
-        Licencia licencia = new Licencia(fechaVencimiento, persona, discapacidad, estadosLicencia.ACTIVA, tramite);
 
-        eM.getEntityManager().persist(licencia);
+        try {
+            verificacionesSistema.desactivarOtrasLicencias(persona);
+            
+            eM.getEntityManager().getTransaction().begin();
 
-        tramitesDAO.finalizarTramite(estadosTramite.Finalizado, fechaVencimiento, costo, tramite);
-        licencia.setPersona(persona);
-        eM.getEntityManager().find(Persona.class, persona.getId()).setLicencia(licencia);
+            
+            
+            Licencia licencia = new Licencia(fechaVencimiento, persona, discapacidad, estadosLicencia.ACTIVA, tramite);
 
-        eM.getEntityManager().getTransaction().commit();
-  
-        pagoDAO.registrarPagoLicencia(licencia, tramite, tipoDePago.Pago_Licencia);
+            eM.getEntityManager().persist(licencia);
 
-        return licencia;
+            tramitesDAO.finalizarTramite(estadosTramite.Finalizado, fechaVencimiento, costo, tramite);
+            licencia.setPersona(persona);
+            eM.getEntityManager().find(Persona.class, persona.getId()).setLicencia(licencia);
+            persona.addLicencias(licencia);
+            eM.getEntityManager().getTransaction().commit();
+
+            pagoDAO.registrarPagoLicencia(licencia, tramite, tipoDePago.Pago_Licencia);
+
+            return licencia;
+        } catch (Exception e) {
+            eM.getEntityManager().getTransaction().rollback();
+            return null;
+        }
+
+    }
+
+    public List<Licencia> test2() {
+        Persona personas = eM.getEntityManager().find(Persona.class, 18L);
+
+        List<Licencia> Persona = eM.getEntityManager().createQuery(
+                "SELECT t FROM Licencia t Where t.idPersona = :id",
+                Licencia.class
+        ).setParameter("id", personas).getResultList();
+        return Persona;
     }
 
     public List<Tramite> test() {
-        Persona persona = eM.getEntityManager().find(Persona.class,15L);
+        Persona persona = eM.getEntityManager().find(Persona.class, 18L);
 
         List<Tramite> tramites = eM.getEntityManager().createQuery(
-                "SELECT t FROM Tramite t WHERE t.idPersona = :persona",
+                "SELECT t FROM Tramite t WHERE t.idPersona = :idPersona",
                 Tramite.class
-        ).setParameter("persona", persona).getResultList();
+        ).setParameter("idPersona", persona).getResultList();
         return tramites;
     }
 
