@@ -42,26 +42,29 @@ public class PagoLicencia extends javax.swing.JFrame {
         
         
     }
+   
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblCobro = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         lblInfoRFC = new javax.swing.JLabel();
         btnPagar = new javax.swing.JToggleButton();
-        btSalir = new javax.swing.JButton();
+        btnCancelarTramite = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblCosto = new javax.swing.JLabel();
         lblRFC = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lblCobro = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        lblCobro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblCobro.setText("Pago Licencia");
-
+        lblInfoRFC.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblInfoRFC.setText("RFC");
+        getContentPane().add(lblInfoRFC);
+        lblInfoRFC.setBounds(30, 90, 30, 16);
 
         btnPagar.setText("Pagar");
         btnPagar.addActionListener(new java.awt.event.ActionListener() {
@@ -69,72 +72,50 @@ public class PagoLicencia extends javax.swing.JFrame {
                 btnPagarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnPagar);
+        btnPagar.setBounds(40, 190, 90, 23);
 
-        btSalir.setText("Cancelar tramite");
-        btSalir.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelarTramite.setBackground(new java.awt.Color(204, 204, 204));
+        btnCancelarTramite.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCancelarTramite.setText("Cancelar tramite");
+        btnCancelarTramite.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCancelarTramite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSalirActionPerformed(evt);
+                btnCancelarTramiteActionPerformed(evt);
             }
         });
+        getContentPane().add(btnCancelarTramite);
+        btnCancelarTramite.setBounds(227, 240, 130, 22);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Costo");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(30, 130, 37, 16);
 
         lblCosto.setText("Null data");
+        getContentPane().add(lblCosto);
+        lblCosto.setBounds(90, 130, 48, 16);
 
         lblRFC.setText("Null data");
+        getContentPane().add(lblRFC);
+        lblRFC.setBounds(90, 90, 48, 16);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btSalir)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblCosto))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblInfoRFC)
-                                .addGap(33, 33, 33)
-                                .addComponent(lblRFC)))
-                        .addContainerGap(201, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCobro)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(lblCobro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblInfoRFC)
-                    .addComponent(lblRFC))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lblCosto))
-                .addGap(18, 18, 18)
-                .addComponent(btnPagar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addComponent(btSalir)
-                .addContainerGap())
-        );
+        jPanel1.setBackground(new java.awt.Color(153, 0, 0));
+        jPanel1.setLayout(null);
+
+        lblCobro.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblCobro.setForeground(new java.awt.Color(255, 255, 255));
+        lblCobro.setText("Pago Licencia");
+        jPanel1.add(lblCobro);
+        lblCobro.setBounds(20, 20, 180, 32);
+        jPanel1.add(jSeparator1);
+        jSeparator1.setBounds(20, 60, 179, 10);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, -10, 370, 80);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
@@ -149,20 +130,21 @@ public class PagoLicencia extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPagarActionPerformed
 
-    private void btSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirActionPerformed
+    private void btnCancelarTramiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarTramiteActionPerformed
         if(verificacionSistema.preguntaCancelarTramite()){
             JOptionPane.showMessageDialog(null, "Confirmada");
             tramiteDAO.cancelarTramite(tramite, estadosTramite.Cancelado);
             dispose();
         }
-    }//GEN-LAST:event_btSalirActionPerformed
+    }//GEN-LAST:event_btnCancelarTramiteActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btSalir;
+    private javax.swing.JButton btnCancelarTramite;
     private javax.swing.JToggleButton btnPagar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblCobro;
     private javax.swing.JLabel lblCosto;

@@ -7,6 +7,7 @@ package org.itson.concesionaria.guis;
 import java.util.GregorianCalendar;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import org.itson.concesionaria.entitys.Auto;
 import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.entitys.Tramite;
@@ -35,11 +36,9 @@ public class RegistroAutomovil extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         lblIngresarDatos = new javax.swing.JLabel();
-        jSeparator = new javax.swing.JSeparator();
-        jLabel4 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
+        lblDatos = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblIngresaDatos = new javax.swing.JLabel();
         btnRegistrar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         lblRFC = new javax.swing.JLabel();
@@ -52,6 +51,8 @@ public class RegistroAutomovil extends javax.swing.JFrame {
         lblSerie = new javax.swing.JLabel();
         txtColor = new javax.swing.JTextField();
         lblColor = new javax.swing.JLabel();
+        lblLinea = new javax.swing.JLabel();
+        txtLinea = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -62,55 +63,44 @@ public class RegistroAutomovil extends javax.swing.JFrame {
         lblIngresarDatos.setForeground(new java.awt.Color(255, 255, 255));
         lblIngresarDatos.setText("Ingresa los datos del automóvil");
 
+        lblDatos.setIcon(new javax.swing.ImageIcon("C:\\Users\\naely\\Downloads\\Itson\\6to Semestre\\BDAvanzadas\\UC2\\Proyecto Unidad 2\\p2 Licencias\\Concesionaria\\src\\main\\java\\org\\itson\\concesionaria\\multimedia\\CIRCULACION - REGISTRO DE AUTOS.png")); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lblIngresarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 8, Short.MAX_VALUE))
-                            .addComponent(jSeparator1))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
-                        .addGap(24, 24, 24))))
+                .addComponent(lblIngresarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(lblDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(34, 34, 34))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(lblIngresarDatos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel4)))
-                .addGap(28, 28, 28)
-                .addComponent(jSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addComponent(lblIngresarDatos))
+                    .addComponent(lblDatos))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 570, 110));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 580, 110));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setText("Porfavor ingresa los datos que se solicita a continuación");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(50, 50, 423, 16);
+        lblIngresaDatos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblIngresaDatos.setText("Porfavor ingresa los datos que se solicita a continuación");
+        jPanel1.add(lblIngresaDatos);
+        lblIngresaDatos.setBounds(50, 50, 423, 16);
 
         btnRegistrar.setBackground(new java.awt.Color(204, 204, 204));
+        btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRegistrar.setText("Registrar");
         btnRegistrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -119,14 +109,19 @@ public class RegistroAutomovil extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnRegistrar);
-        btnRegistrar.setBounds(230, 300, 100, 40);
+        btnRegistrar.setBounds(230, 380, 100, 40);
 
         btnSalir.setBackground(new java.awt.Color(204, 204, 204));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnSalir);
-        btnSalir.setBounds(502, 360, 60, 23);
+        btnSalir.setBounds(520, 430, 60, 23);
 
         lblRFC.setText("RFC");
         jPanel1.add(lblRFC);
@@ -134,33 +129,40 @@ public class RegistroAutomovil extends javax.swing.JFrame {
         jPanel1.add(txtRFC);
         txtRFC.setBounds(80, 90, 410, 22);
 
-        lblModelo.setText("Modelo");
+        lblModelo.setText("Modelo (año)");
         jPanel1.add(lblModelo);
-        lblModelo.setBounds(70, 140, 50, 16);
+        lblModelo.setBounds(50, 210, 90, 16);
         jPanel1.add(txtModelo);
-        txtModelo.setBounds(70, 170, 190, 22);
+        txtModelo.setBounds(50, 240, 190, 22);
         jPanel1.add(txtMarca);
-        txtMarca.setBounds(310, 170, 190, 22);
+        txtMarca.setBounds(50, 170, 190, 22);
 
         lblMarca.setText("Marca");
         jPanel1.add(lblMarca);
-        lblMarca.setBounds(310, 140, 70, 20);
+        lblMarca.setBounds(50, 140, 70, 20);
         jPanel1.add(txtSerie);
-        txtSerie.setBounds(70, 240, 190, 22);
+        txtSerie.setBounds(310, 170, 190, 22);
 
-        lblSerie.setText("Serie");
+        lblSerie.setText("Serie (numerología)");
         jPanel1.add(lblSerie);
-        lblSerie.setBounds(70, 210, 30, 16);
+        lblSerie.setBounds(310, 140, 120, 16);
         jPanel1.add(txtColor);
-        txtColor.setBounds(310, 240, 190, 22);
+        txtColor.setBounds(50, 310, 190, 22);
 
         lblColor.setText("Color");
         jPanel1.add(lblColor);
-        lblColor.setBounds(310, 210, 30, 16);
+        lblColor.setBounds(50, 280, 30, 16);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 60, 570, 410));
+        lblLinea.setText("Linea");
+        jPanel1.add(lblLinea);
+        lblLinea.setBounds(310, 210, 70, 16);
+        jPanel1.add(txtLinea);
+        txtLinea.setBounds(310, 240, 190, 22);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 80, 600, 460));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public boolean verificacionRFC() {
@@ -205,23 +207,34 @@ public class RegistroAutomovil extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        preguntaCerrar();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    public void preguntaCerrar() {
+        int respuestaCliente = JOptionPane.showConfirmDialog(null, "¿Realmente desea salir del registro?", "Salir", JOptionPane.YES_NO_OPTION);
+        if (respuestaCliente == 0) {
+            this.dispose();
+        }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JSeparator jSeparator;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblColor;
+    private javax.swing.JLabel lblDatos;
+    private javax.swing.JLabel lblIngresaDatos;
     private javax.swing.JLabel lblIngresarDatos;
+    private javax.swing.JLabel lblLinea;
     private javax.swing.JLabel lblMarca;
     private javax.swing.JLabel lblModelo;
     private javax.swing.JLabel lblRFC;
     private javax.swing.JLabel lblSerie;
     private javax.swing.JTextField txtColor;
+    private javax.swing.JTextField txtLinea;
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtRFC;

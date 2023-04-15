@@ -33,7 +33,6 @@ public class RegistroPlaca extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         lblRFC = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
@@ -41,13 +40,16 @@ public class RegistroPlaca extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         lblPlacas = new javax.swing.JLabel();
         lblInfoPlacas = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Solicitud de Placas");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 16, -1, -1));
 
         lblRFC.setText("RFC: ");
+        getContentPane().add(lblRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 95, -1, -1));
 
         jToggleButton1.setText("Solicitar");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -55,8 +57,10 @@ public class RegistroPlaca extends javax.swing.JFrame {
                 jToggleButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, -1, -1));
 
         lblInfoRFC.setText("null data");
+        getContentPane().add(lblInfoRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
 
         jButton1.setText("Generar placas");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -64,64 +68,30 @@ public class RegistroPlaca extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, -1, -1));
 
         lblPlacas.setText("Placas:");
+        getContentPane().add(lblPlacas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
         lblInfoPlacas.setText("null data");
+        getContentPane().add(lblInfoPlacas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(jLabel1)
-                        .addGap(5, 5, 5)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(lblRFC)
-                        .addGap(40, 40, 40)
-                        .addComponent(lblInfoRFC))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jToggleButton1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblPlacas)))
-                        .addGap(26, 26, 26)
-                        .addComponent(lblInfoPlacas)))
-                .addContainerGap(160, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRFC)
-                    .addComponent(lblInfoRFC))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(lblPlacas)
-                    .addComponent(lblInfoPlacas))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
-                .addComponent(jToggleButton1)
-                .addGap(24, 24, 24))
-        );
+        jPanel1.setBackground(new java.awt.Color(153, 0, 0));
+        jPanel1.setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Solicitud de Placas");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(30, 40, 230, 32);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 420, 90));
+
+        jButton2.setText("Salir");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
@@ -137,7 +107,9 @@ public class RegistroPlaca extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel lblInfoPlacas;

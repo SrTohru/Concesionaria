@@ -5,6 +5,7 @@
 package org.itson.concesionaria.guis;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.utilities.verificacionesDeSistema;
@@ -38,7 +39,7 @@ public class ConsultaPersona extends javax.swing.JFrame {
         txtApellidoPaterno = new javax.swing.JTextField();
         txtApellidoMaterno = new javax.swing.JTextField();
         txtRFC = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -68,14 +69,19 @@ public class ConsultaPersona extends javax.swing.JFrame {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 111, -1));
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 111, -1));
         getContentPane().add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 169, -1));
         getContentPane().add(txtApellidoPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 169, -1));
         getContentPane().add(txtApellidoMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 169, -1));
         getContentPane().add(txtRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 169, -1));
 
-        jButton1.setText("Salir");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, -1, -1));
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, -1, -1));
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -112,6 +118,7 @@ public class ConsultaPersona extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1060, 90));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public void añadirPersonasLista(List<Persona> personas) {
@@ -124,14 +131,25 @@ DefaultTableModel modeloTabla = ((DefaultTableModel) this.tabla.getModel());
 
         }
     }
+    
+     public void preguntaCerrar() {
+        int respuestaCliente = JOptionPane.showConfirmDialog(null, "¿Realmente desea cerrar el programa?", "Cerrar programa", JOptionPane.YES_NO_OPTION);
+        if (respuestaCliente == 0) {
+            System.exit(0);
+        }
+    }
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         añadirPersonasLista(verificacionesSistema.consultarPersonasMedianteInformacion(txtNombres.getText(), txtApellidoPaterno.getText(), txtApellidoMaterno.getText()));
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        preguntaCerrar();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
