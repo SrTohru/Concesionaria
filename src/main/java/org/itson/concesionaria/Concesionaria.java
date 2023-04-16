@@ -8,16 +8,16 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityManager;
 import org.itson.concesionaria.entitys.Licencia;
 import org.itson.concesionaria.entitys.Persona;
-import org.itson.concesionaria.utilities.entityManager;
+import org.itson.concesionaria.utilities.eManager;
 
 public class Concesionaria {
 
     public static void main(String[] args) {   
-        entityManager eManager = new entityManager();
         
-        eManager.getEntityManager();
-      
-      
+        eManager entityManager = new eManager();
+        
+       
+        
         PantallaPrincipal p = new PantallaPrincipal();
         p.setVisible(true);
 }

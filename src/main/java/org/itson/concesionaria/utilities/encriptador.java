@@ -8,23 +8,23 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class encriptador {
 
-    private static final String clave = "EstaEsMiClaveSecreta";
-    private static final String algoritmo = "AES/ECB/PKCS5Padding";
+    private static String ALGORITHM = "AES";
+    private static byte[] KEY = "claveAleatoria16".getBytes();
 
-    public static String encriptar(String texto) throws Exception {
-        SecretKeySpec key = new SecretKeySpec(clave.getBytes(), "AES");
-        Cipher cipher = Cipher.getInstance(algoritmo);
-        cipher.init(Cipher.ENCRYPT_MODE, key);
-        byte[] textoEncriptado = cipher.doFinal(texto.getBytes());
-            return Base64.getEncoder().encodeToString(textoEncriptado);
+    public static String encriptar(String valueToEncrypt) throws Exception {
+        SecretKeySpec keySpec = new SecretKeySpec(KEY, ALGORITHM);
+        Cipher cipher = Cipher.getInstance(ALGORITHM);
+        cipher.init(Cipher.ENCRYPT_MODE, keySpec);
+        byte[] encryptedValue = cipher.doFinal(valueToEncrypt.getBytes());
+        return Base64.getEncoder().encodeToString(encryptedValue);
     }
 
-    public static String desencriptar(String textoEncriptado) throws Exception {
-        SecretKeySpec key = new SecretKeySpec(clave.getBytes(), "AES");
-        Cipher cipher = Cipher.getInstance(algoritmo);
-        cipher.init(Cipher.DECRYPT_MODE, key);
-        byte[] textoDesencriptado = cipher.doFinal(Base64.getDecoder().decode(textoEncriptado));
-        return new String(textoDesencriptado);
+    public static String desencriptar(String encryptedValue) throws Exception {
+        SecretKeySpec keySpec = new SecretKeySpec(KEY, ALGORITHM);
+        Cipher cipher = Cipher.getInstance(ALGORITHM);
+        cipher.init(Cipher.DECRYPT_MODE, keySpec);
+        byte[] decodedValue = Base64.getDecoder().decode(encryptedValue);
+        byte[] decryptedValue = cipher.doFinal(decodedValue);
+        return new String(decryptedValue);
     }
-
 }

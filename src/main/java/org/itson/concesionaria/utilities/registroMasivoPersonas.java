@@ -5,11 +5,12 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Random;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
 import org.itson.concesionaria.entitys.Persona;
 
 public class registroMasivoPersonas {
 
-    entityManager eM = new entityManager();
+    eManager eM = new eManager();
 
     private static final List<String> nombres = Arrays.asList(
             "Jose", "Naely", "Pedro", "Ana", "Luis", "Carmen", "Jorge", "Lorena", "Miguel", "Sofía",
@@ -61,8 +62,9 @@ public class registroMasivoPersonas {
             }
 
             eM.getEntityManager().getTransaction().commit();
-            JOptionPane.showMessageDialog(null, "Se han registrado a 20 personas aleatoreas exitosamente.");
+            showMessageDialog(null, "Se han registrado a 20 personas aleatoreas exitosamente.");
         } catch (Exception e) {
+            showMessageDialog(null, e.getMessage());
             eM.getEntityManager().getTransaction().rollback();
         } finally {
             eM.getEntityManager().close();

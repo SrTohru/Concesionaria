@@ -5,14 +5,14 @@ import javax.swing.JOptionPane;
 import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.entitys.Tramite;
 import org.itson.concesionaria.interfaces.ITramites;
-import org.itson.concesionaria.utilities.entityManager;
+import org.itson.concesionaria.utilities.eManager;
 import org.itson.concesionaria.utilities.estadosTramite;
 import org.itson.concesionaria.utilities.tipoDePago;
 import org.itson.concesionaria.utilities.tiposTramite;
 
 public class TramitesDAO implements ITramites {
 
-    private entityManager em = new entityManager();
+    private eManager em = new eManager();
 
     @Override
     public Tramite crearTramite(Persona persona, estadosTramite estadoTramite, tiposTramite tipoTramite, Calendar fechaTramite) {

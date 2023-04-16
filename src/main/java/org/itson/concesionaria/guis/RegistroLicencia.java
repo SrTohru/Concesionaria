@@ -15,7 +15,8 @@ import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.entitys.Tramite;
 import org.itson.concesionaria.utilities.costoLicencias;
 import org.itson.concesionaria.utilities.discapacidadPersona;
-import org.itson.concesionaria.utilities.entityManager;
+import org.itson.concesionaria.utilities.eManager;
+import org.itson.concesionaria.utilities.encriptador;
 import org.itson.concesionaria.utilities.estadosTramite;
 import org.itson.concesionaria.utilities.mensajesDeSistema;
 import org.itson.concesionaria.utilities.tiposTramite;
@@ -205,7 +206,9 @@ public class RegistroLicencia extends javax.swing.JFrame {
 
     private void SolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SolicitarActionPerformed
         if (allInformationRequiered()) {
+
             Persona persona = verificador.verificarPersonaPorRFC(txtRFC.getText());
+
             int vigenciaAños = obtenerVigencia();
 
             if (verificador.tieneLicenciasRegistradas(persona)) {
@@ -228,7 +231,29 @@ public class RegistroLicencia extends javax.swing.JFrame {
                     } else {
                         mensajesSistema.mensajeDeFaltaInformacion();
                     }
+
+                    dispose();
                 }
+            } else {
+                if (persona != null) {
+
+                    GregorianCalendar fecha = new GregorianCalendar();
+
+                    Tramite tramite = tramitesDAO.crearTramite(persona, estadosTramite.En_Proceso, tiposTramite.Expedicion_De_Licencia, fecha);
+
+                    fecha.add(GregorianCalendar.YEAR, vigenciaAños);
+                    if (discapacidad()) {
+                        PagoLicencia pagoLicencia = new PagoLicencia(persona, tramite, calcularCostoLicencia(), fecha, discapacidadPersona.Discapacitada);
+                        pagoLicencia.setVisible(true);
+                    } else {
+                        PagoLicencia pagoLicencia = new PagoLicencia(persona, tramite, calcularCostoLicencia(), fecha, discapacidadPersona.No_Discapacitada);
+                        pagoLicencia.setVisible(true);
+                    }
+                    dispose();
+                } else {
+                    mensajesSistema.mensajeDeFaltaInformacion();
+                }
+
                 dispose();
             }
 

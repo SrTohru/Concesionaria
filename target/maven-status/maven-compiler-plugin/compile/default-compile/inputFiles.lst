@@ -2,11 +2,11 @@ C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson
 C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\guis\testForms.java
 C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\dao\TramitesDAO.java
 C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\utilities\estadosTramite.java
+C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\entitys\Reportes.java
 C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\utilities\jasperReportCreator.java
 C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\dao\LicenciasDAO.java
 C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\guis\PagoLicencia.java
 C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\interfaces\IPagos.java
-C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\utilities\entityManager.java
 C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\utilities\mensajesDeSistema.java
 C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\utilities\discapacidadPersona.java
 C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\dao\PersonasDAO.java
@@ -33,9 +33,11 @@ C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson
 C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\utilities\tipoVehiculo.java
 C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\entitys\Vehiculo.java
 C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\entitys\Placas.java
+C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\utilities\eManager.java
 C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\entitys\Tramite.java
 C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\guis\SolicitarPlacas.java
 C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\guis\RegistroAutomovil.java
+C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\utilities\estadosLicencia.java
 C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\guis\ConsultaPersona.java
 C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\guis\PagoPlaca.java
 C:\Users\PC\Documents\NetBeansProjects\db3\Concesionaria\src\main\java\org\itson\concesionaria\utilities\registroMasivoPersonas.java

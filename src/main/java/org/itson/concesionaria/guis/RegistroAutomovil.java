@@ -47,12 +47,12 @@ public class RegistroAutomovil extends javax.swing.JFrame {
         txtModelo = new javax.swing.JTextField();
         txtMarca = new javax.swing.JTextField();
         lblMarca = new javax.swing.JLabel();
-        txtSerie = new javax.swing.JTextField();
         lblSerie = new javax.swing.JLabel();
         txtColor = new javax.swing.JTextField();
         lblColor = new javax.swing.JLabel();
         lblLinea = new javax.swing.JLabel();
         txtLinea = new javax.swing.JTextField();
+        txtSerie = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -62,8 +62,6 @@ public class RegistroAutomovil extends javax.swing.JFrame {
         lblIngresarDatos.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblIngresarDatos.setForeground(new java.awt.Color(255, 255, 255));
         lblIngresarDatos.setText("Ingresa los datos del automóvil");
-
-        lblDatos.setIcon(new javax.swing.ImageIcon("C:\\Users\\naely\\Downloads\\Itson\\6to Semestre\\BDAvanzadas\\UC2\\Proyecto Unidad 2\\p2 Licencias\\Concesionaria\\src\\main\\java\\org\\itson\\concesionaria\\multimedia\\CIRCULACION - REGISTRO DE AUTOS.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -140,8 +138,6 @@ public class RegistroAutomovil extends javax.swing.JFrame {
         lblMarca.setText("Marca");
         jPanel1.add(lblMarca);
         lblMarca.setBounds(50, 140, 70, 20);
-        jPanel1.add(txtSerie);
-        txtSerie.setBounds(310, 170, 190, 22);
 
         lblSerie.setText("Serie (numerología)");
         jPanel1.add(lblSerie);
@@ -159,6 +155,19 @@ public class RegistroAutomovil extends javax.swing.JFrame {
         jPanel1.add(txtLinea);
         txtLinea.setBounds(310, 240, 190, 22);
 
+        try {
+            txtSerie.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("UUU-###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtSerie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSerieActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtSerie);
+        txtSerie.setBounds(310, 170, 190, 22);
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 80, 600, 460));
 
         pack();
@@ -175,7 +184,7 @@ public class RegistroAutomovil extends javax.swing.JFrame {
                 || !(txtMarca.getText().isEmpty())
                 || !(txtModelo.getText().isEmpty())
                 || !(txtRFC.getText().isEmpty())
-                || !(txtSerie.getText().isEmpty());
+                || !(txtSerie.getText().isEmpty() && txtSerie.getText().length() == 7);
     }
 
     public Auto obtenerAuto(Persona persona) {
@@ -192,15 +201,33 @@ public class RegistroAutomovil extends javax.swing.JFrame {
 
 //verificacionesSistema.consultarExistenciaVehiculoPorSerie(txtSerie.getText());
         if (verificacionDeInformacion()) {
+            Persona persona = verificacionesSistema.verificarPersonaPorRFC(txtRFC.getText());
+            if (persona != null) {
+                if (verificacionesSistema.cuentaConLicenciaActiva(persona)) {
+                    Auto autoVerificado = verificacionesSistema.consultarExistenciaVehiculoPorSerie(txtSerie.getText());
 
-            if (verificacionRFC()) {
+                    if (autoVerificado != null) {
+                        if (existenciaAuto() == 0) {
 
-                Persona persona = verificacionesSistema.verificarPersonaPorRFC(txtRFC.getText());
-                Tramite tramite = new Tramite(persona, estadosTramite.En_Proceso, tiposTramite.Expedicion_De_Placas, new GregorianCalendar());
+                            Tramite tramite = new Tramite(persona, estadosTramite.En_Proceso, tiposTramite.Expedicion_De_Placas, new GregorianCalendar());
 
-                RegistroPlaca rPlacas = new RegistroPlaca(obtenerAuto(persona), persona, tramite);
+                            RegistroPlaca rPlacas = new RegistroPlaca(autoVerificado, persona, tramite, true);
 
-                rPlacas.setVisible(true);
+                            rPlacas.setVisible(true);
+                        }
+                        dispose();
+                    } else {
+
+                        Tramite tramite = new Tramite(persona, estadosTramite.En_Proceso, tiposTramite.Expedicion_De_Placas, new GregorianCalendar());
+
+                        RegistroPlaca rPlacas = new RegistroPlaca(obtenerAuto(persona), persona, tramite, false);
+
+                        rPlacas.setVisible(true);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Lo siento, no puede registrar un auto sin tener una licencia activa.");
+                }
+
             }
         } else {
             mensajesSistema.mensajeDeFaltaInformacion();
@@ -210,6 +237,14 @@ public class RegistroAutomovil extends javax.swing.JFrame {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         preguntaCerrar();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void txtSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSerieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSerieActionPerformed
+
+    public int existenciaAuto() {
+        return JOptionPane.showConfirmDialog(null, "¿Ese automovil ya existe y cuenta con placas, desea asignarle unas nuevas placas?", "ADVERTENCIA", JOptionPane.YES_NO_OPTION);
+    }
 
     public void preguntaCerrar() {
         int respuestaCliente = JOptionPane.showConfirmDialog(null, "¿Realmente desea salir del registro?", "Salir", JOptionPane.YES_NO_OPTION);
@@ -238,6 +273,6 @@ public class RegistroAutomovil extends javax.swing.JFrame {
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtRFC;
-    private javax.swing.JTextField txtSerie;
+    private javax.swing.JFormattedTextField txtSerie;
     // End of variables declaration//GEN-END:variables
 }

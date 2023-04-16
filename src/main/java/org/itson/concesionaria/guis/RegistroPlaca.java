@@ -18,12 +18,14 @@ public class RegistroPlaca extends javax.swing.JFrame {
     Persona persona = new Persona();
     Tramite tramite = new Tramite();
     Auto auto = new Auto();
-
-    public RegistroPlaca(Auto auto, Persona persona, Tramite tramite) {
+    String codigoPlacas = verificacionesSitema.generarPlacas();
+    boolean actualizacionPlacas;
+    
+    public RegistroPlaca(Auto auto, Persona persona, Tramite tramite, boolean actualizacionPlacas) {
         initComponents();
-        
+        this.actualizacionPlacas = this.actualizacionPlacas;
         lblInfoRFC.setText(persona.getRfc());
-        lblInfoPlacas.setText(verificacionesSitema.generarPlacas());
+        lblInfoPlacas.setText(codigoPlacas);
         this.tramite = tramite;
         this.auto = auto;
         this.persona = persona;
@@ -45,12 +47,11 @@ public class RegistroPlaca extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Solicitud de Placas");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 16, -1, -1));
 
         lblRFC.setText("RFC: ");
-        getContentPane().add(lblRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 95, -1, -1));
+        getContentPane().add(lblRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
         jToggleButton1.setText("Solicitar");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -58,18 +59,18 @@ public class RegistroPlaca extends javax.swing.JFrame {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, -1, -1));
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
 
         lblInfoRFC.setText("null data");
-        getContentPane().add(lblInfoRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+        getContentPane().add(lblInfoRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
 
-        jButton1.setText("Generar placas");
+        jButton1.setText("Generar otras placas");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
         lblPlacas.setText("Placas:");
         getContentPane().add(lblPlacas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
@@ -89,7 +90,12 @@ public class RegistroPlaca extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 420, 90));
 
         jButton2.setText("Salir");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, -1, -1));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -97,13 +103,24 @@ public class RegistroPlaca extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
 
-        autoDAO.registrarAuto(persona,auto, lblInfoPlacas.getText(), tramite, verificacionesSitema.verificarAutoNuevo(auto));
+        if(actualizacionPlacas = true){
+            new PagoPlaca(tramite, auto, persona, verificacionesSitema.verificarAutoNuevo(auto), codigoPlacas, true).setVisible(true);
+        }else{
+            new PagoPlaca(tramite, auto, persona, verificacionesSitema.verificarAutoNuevo(auto), codigoPlacas, true).setVisible(true);
+        }
+        
 
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        lblInfoPlacas.setText(verificacionesSitema.generarPlacas());
+
+        codigoPlacas = verificacionesSitema.generarPlacas();
+        lblInfoPlacas.setText(codigoPlacas);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

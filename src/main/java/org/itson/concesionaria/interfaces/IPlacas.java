@@ -10,5 +10,5 @@ public interface IPlacas {
 
     Placas registroPlacas(String codigoPlacas, estadosPlaca estadoPlaca, Tramite tramite, int costo, Persona persona, Auto auto);
     
-    Placas actualizarPlacas(estadosPlaca estadoPlaca, Tramite tramite, int costo, Persona persona, Auto auto, Placas placas);
+    Placas actualizarPlacas(String codigoPlacas, estadosPlaca estadoPlaca, Tramite tramite, int costo, Persona persona, Auto auto);
 }

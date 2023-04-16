@@ -37,7 +37,7 @@ public class Auto extends Vehiculo implements Serializable {
     @JoinColumn(name = "idPersona", nullable = false)
     private Persona idPersona;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToOne()
     @JoinColumn(name = "idPlacas", nullable = false)
     private Placas idPlacas;
 

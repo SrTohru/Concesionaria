@@ -4,6 +4,10 @@
  */
 package org.itson.concesionaria.guis;
 
+import static org.itson.concesionaria.entitys.Licencia_.persona;
+import org.itson.concesionaria.entitys.Persona;
+import org.itson.concesionaria.utilities.jasperReportCreator;
+
 /**
  *
  * @author naely
@@ -39,6 +43,7 @@ public class Reporte extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSalir.setText("Salir");
@@ -69,6 +74,11 @@ public class Reporte extends javax.swing.JFrame {
 
         btnGenerarPDF.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnGenerarPDF.setText("Generar PDF");
+        btnGenerarPDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarPDFActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnGenerarPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 470, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
@@ -92,11 +102,9 @@ public class Reporte extends javax.swing.JFrame {
         btnCrear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCrear.setText("Crear");
         jPanel1.add(btnCrear);
-        btnCrear.setBounds(220, 70, 72, 23);
+        btnCrear.setBounds(220, 70, 60, 22);
         jPanel1.add(jSeparator1);
         jSeparator1.setBounds(30, 50, 140, 10);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\naely\\Downloads\\Itson\\6to Semestre\\BDAvanzadas\\UC2\\Proyecto Unidad 2\\p2 Licencias\\Concesionaria\\src\\main\\java\\org\\itson\\concesionaria\\multimedia\\REPORTES.png")); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(470, 0, 150, 120);
 
@@ -105,6 +113,15 @@ public class Reporte extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGenerarPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarPDFActionPerformed
+        jasperReportCreator jrc = new jasperReportCreator();
+        Persona persona;
+        try {
+            jrc.generarReporte();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnGenerarPDFActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

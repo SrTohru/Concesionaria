@@ -8,6 +8,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.itson.concesionaria.entitys.Persona;
+import org.itson.concesionaria.utilities.encriptador;
 import org.itson.concesionaria.utilities.verificacionesDeSistema;
 
 /**
@@ -70,6 +71,12 @@ public class ConsultaPersona extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 111, -1));
+
+        txtNombres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombresActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 169, -1));
         getContentPane().add(txtApellidoPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 169, -1));
         getContentPane().add(txtApellidoMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 169, -1));
@@ -122,20 +129,24 @@ public class ConsultaPersona extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void añadirPersonasLista(List<Persona> personas) {
-DefaultTableModel modeloTabla = ((DefaultTableModel) this.tabla.getModel());
-        modeloTabla.setRowCount(0);
-        for (Persona persona : personas) {
-            Object[] fila = {persona.getNombres(), persona.getApellidoPaterno(),
-                persona.getApellidoMaterno(), persona.getRfc()};
-            modeloTabla.addRow(fila);
+        try {
+            DefaultTableModel modeloTabla = ((DefaultTableModel) this.tabla.getModel());
+            modeloTabla.setRowCount(0);
+            for (Persona persona : personas) {
+                Object[] fila = {encriptador.desencriptar(persona.getNombres()), encriptador.desencriptar(persona.getApellidoPaterno()),
+                    encriptador.desencriptar(persona.getApellidoMaterno()), persona.getRfc()};
+                modeloTabla.addRow(fila);
 
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al añadir a las personas a la lista");
         }
     }
-    
-     public void preguntaCerrar() {
+
+    public void preguntaCerrar() {
         int respuestaCliente = JOptionPane.showConfirmDialog(null, "¿Realmente desea cerrar el programa?", "Cerrar programa", JOptionPane.YES_NO_OPTION);
         if (respuestaCliente == 0) {
-            System.exit(0);
+            dispose();
         }
     }
 
@@ -146,6 +157,10 @@ DefaultTableModel modeloTabla = ((DefaultTableModel) this.tabla.getModel());
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         preguntaCerrar();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void txtNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombresActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

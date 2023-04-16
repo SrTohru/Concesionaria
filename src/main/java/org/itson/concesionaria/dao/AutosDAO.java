@@ -9,7 +9,7 @@ import org.itson.concesionaria.entitys.Placas;
 import org.itson.concesionaria.entitys.Tramite;
 import org.itson.concesionaria.entitys.Vehiculo;
 import org.itson.concesionaria.interfaces.IAutos;
-import org.itson.concesionaria.utilities.entityManager;
+import org.itson.concesionaria.utilities.eManager;
 import org.itson.concesionaria.utilities.estadosPlaca;
 import org.itson.concesionaria.utilities.estadosTramite;
 import org.itson.concesionaria.utilities.tipoDePago;
@@ -20,7 +20,7 @@ public class AutosDAO implements IAutos {
 
     PlacasDAO placasDAO = new PlacasDAO();
     verificacionesDeSistema verificacionesSistema = new verificacionesDeSistema();
-    entityManager em = new entityManager();
+    eManager em = new eManager();
     TramitesDAO tramiteDAO = new TramitesDAO();
     PagosDAO pagosDAO = new PagosDAO();
 
@@ -33,11 +33,12 @@ public class AutosDAO implements IAutos {
 
             em.getEntityManager().persist(auto);
 
-            JOptionPane.showConfirmDialog(null, "Se registro el auto");
             em.getEntityManager().getTransaction().commit();
             tramiteDAO.finalizarTramite(estadosTramite.Finalizado, new GregorianCalendar(), costo, tramite);
 
             pagosDAO.registrarPagoPlacas(placa, tipoDePago.Pago_Placas, tramite);
+            
+            JOptionPane.showMessageDialog(null, "Se ha registrado exitosamente su automovil y sus placas.");
             return auto;
 
         } catch (Exception e) {

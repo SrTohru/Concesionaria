@@ -1,56 +1,56 @@
 package org.itson.concesionaria.entitys;
 
 public class Reportes {
-    private String serie;
-    private String marca;
-    private String color;
-    private String modelo;
+    private String tipoTramite;
+    private String nombreCompleto;
+    private String costo;
+    private String fechaExpedicion;
 
     public Reportes() {
     }
 
-    public Reportes(String serie, String marca, String color, String modelo) {
-        this.serie = serie;
-        this.marca = marca;
-        this.color = color;
-        this.modelo = modelo;
+    public Reportes(String tipoTramite, String nombreCompleto, String costo, String fechaExpedicion) {
+        this.tipoTramite = tipoTramite;
+        this.nombreCompleto = nombreCompleto;
+        this.costo = costo;
+        this.fechaExpedicion = fechaExpedicion;
     }
 
-    public String getSerie() {
-        return serie;
+    public String getTipoTramite() {
+        return tipoTramite;
     }
 
-    public void setSerie(String serie) {
-        this.serie = serie;
+    public void setTipoTramite(String tipoTramite) {
+        this.tipoTramite = tipoTramite;
     }
 
-    public String getMarca() {
-        return marca;
+    public String getNombreCompleto() {
+        return nombreCompleto;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
     }
 
-    public String getColor() {
-        return color;
+    public String getCosto() {
+        return costo;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setCosto(String costo) {
+        this.costo = costo;
     }
 
-    public String getModelo() {
-        return modelo;
+    public String getFechaExpedicion() {
+        return fechaExpedicion;
     }
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+    public void setFechaExpedicion(String fechaExpedicion) {
+        this.fechaExpedicion = fechaExpedicion;
     }
 
     @Override
     public String toString() {
-        return "Reportes{" + "serie=" + serie + ", marca=" + marca + ", color=" + color + ", modelo=" + modelo + '}';
+        return "Reportes{" + "serie=" + tipoTramite + ", marca=" + nombreCompleto + ", color=" + costo + ", modelo=" + fechaExpedicion + '}';
     }
     
 }

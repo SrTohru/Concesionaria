@@ -4,13 +4,13 @@ import java.util.Calendar;
 import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.interfaces.IPersona;
 import org.itson.concesionaria.utilities.encriptador;
-import org.itson.concesionaria.utilities.entityManager;
+import org.itson.concesionaria.utilities.eManager;
 import org.itson.concesionaria.utilities.mensajesDeSistema;
 import org.itson.concesionaria.utilities.verificacionesDeSistema;
 
 public class PersonasDAO implements IPersona {
 
-    entityManager em = new entityManager();
+    eManager em = new eManager();
     verificacionesDeSistema vds = new verificacionesDeSistema();
     mensajesDeSistema mds = new mensajesDeSistema();
     encriptador enc = new encriptador(); 
@@ -25,7 +25,7 @@ public class PersonasDAO implements IPersona {
                 return null;
             }
 
-            Persona persona = new Persona(enc.encriptar(nombre), enc.encriptar(apellidoPaterno), enc.encriptar(apellidoMaterno), enc.encriptar(numeroTelefono), enc.encriptar(rfc), fechaNacimiento);
+            Persona persona = new Persona(enc.encriptar(nombre), enc.encriptar(apellidoPaterno), enc.encriptar(apellidoMaterno), enc.encriptar(numeroTelefono), rfc, fechaNacimiento);
 
             em.getEntityManager().persist(persona);
 

@@ -6,14 +6,14 @@ import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.entitys.Placas;
 import org.itson.concesionaria.entitys.Tramite;
 import org.itson.concesionaria.interfaces.IPlacas;
-import org.itson.concesionaria.utilities.entityManager;
+import org.itson.concesionaria.utilities.eManager;
 import org.itson.concesionaria.utilities.estadosPlaca;
 import org.itson.concesionaria.utilities.tipoDePago;
 import org.itson.concesionaria.utilities.verificacionesDeSistema;
 
 public class PlacasDAO implements IPlacas {
 
-    entityManager em = new entityManager();
+    eManager em = new eManager();
     verificacionesDeSistema verificacionSistema = new verificacionesDeSistema();
     PagosDAO pagosDAO = new PagosDAO();
 
@@ -29,9 +29,9 @@ public class PlacasDAO implements IPlacas {
             auto.addPlacas(placa);
             auto.setTramite(tramite);
             em.getEntityManager().merge(auto);
-            
+            em.getEntityManager().getTransaction().commit();
             verificacionSistema.desactivarOtrasPlacas(auto, placa);
-
+            pagosDAO.registrarPagoPlacas(placa, tipoDePago.Pago_Placas, tramite);
             return placa;
         } catch (Exception e) {
             em.getEntityManager().getTransaction().rollback();
@@ -40,8 +40,24 @@ public class PlacasDAO implements IPlacas {
     }
 
     @Override
-    public Placas actualizarPlacas(estadosPlaca estadoPlaca, Tramite tramite, int costo, Persona personja, Auto auto, Placas placas) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Placas actualizarPlacas(String codigoPlacas, estadosPlaca estadoPlaca, Tramite tramite, int costo, Persona persona, Auto auto) {
+        try {
+            em.getEntityManager().getTransaction().begin();
+
+            Placas placa = new Placas(estadoPlaca, codigoPlacas, tramite, persona, auto);
+
+            em.getEntityManager().persist(placa);
+            auto.setIdPlacas(placa);
+            auto.addPlacas(placa);
+            em.getEntityManager().merge(auto);
+
+            verificacionSistema.desactivarOtrasPlacas(auto, placa);
+            pagosDAO.registrarPagoPlacas(placa, tipoDePago.Pago_Placas, tramite);
+            return placa;
+        } catch (Exception e) {
+            em.getEntityManager().getTransaction().rollback();
+            return null;
+        }
     }
 
 }

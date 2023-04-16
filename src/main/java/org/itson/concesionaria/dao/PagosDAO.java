@@ -5,13 +5,13 @@ import org.itson.concesionaria.entitys.Pago;
 import org.itson.concesionaria.entitys.Placas;
 import org.itson.concesionaria.entitys.Tramite;
 import org.itson.concesionaria.interfaces.IPagos;
-import org.itson.concesionaria.utilities.entityManager;
+import org.itson.concesionaria.utilities.eManager;
 import org.itson.concesionaria.utilities.tipoDePago;
 
 public class PagosDAO implements IPagos {
 
-    entityManager em = new entityManager();
-
+    eManager em = new eManager();
+    
     @Override
     public Pago registrarPagoLicencia(Licencia licencia, Tramite tramite, tipoDePago tipoPago) {
         try {
@@ -23,7 +23,8 @@ public class PagosDAO implements IPagos {
             tramite.setIdPago(pago);
             em.getEntityManager().merge(tramite);
             em.getEntityManager().getTransaction().commit();
-
+            
+            
             return pago;
         } catch (Exception e) {
             em.getEntityManager().getTransaction().rollback();

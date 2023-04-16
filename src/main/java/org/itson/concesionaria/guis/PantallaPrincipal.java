@@ -13,7 +13,7 @@ import org.itson.concesionaria.utilities.registroMasivoPersonas;
 
 public class PantallaPrincipal extends javax.swing.JFrame {
 
-    LicenciasDAO tramiteDAO = new LicenciasDAO();
+   
     
     //Declaracion de variables
     public PantallaPrincipal() {
@@ -45,6 +45,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         btnSolicitarPlacas = new javax.swing.JButton();
         lblSolicitarPlacas = new javax.swing.JLabel();
         lblConsultarPersona = new javax.swing.JLabel();
+        btnSolicitarPlacas1 = new javax.swing.JButton();
+        lblSolicitarPlacas1 = new javax.swing.JLabel();
+        btnReporte = new javax.swing.JButton();
+        lblReporte = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lblBienvenida = new javax.swing.JLabel();
         lblImagen = new javax.swing.JLabel();
@@ -162,6 +166,38 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jPanel1.add(lblConsultarPersona);
         lblConsultarPersona.setBounds(290, 30, 118, 16);
 
+        btnSolicitarPlacas1.setBackground(new java.awt.Color(153, 204, 255));
+        btnSolicitarPlacas1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSolicitarPlacas1.setText("Solicitar");
+        btnSolicitarPlacas1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnSolicitarPlacas1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSolicitarPlacas1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSolicitarPlacas1);
+        btnSolicitarPlacas1.setBounds(290, 130, 220, 18);
+
+        lblSolicitarPlacas1.setText("Solicitar Placas");
+        jPanel1.add(lblSolicitarPlacas1);
+        lblSolicitarPlacas1.setBounds(290, 100, 110, 16);
+
+        btnReporte.setBackground(new java.awt.Color(153, 204, 255));
+        btnReporte.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnReporte.setText("Generar");
+        btnReporte.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnReporte);
+        btnReporte.setBounds(290, 210, 220, 18);
+
+        lblReporte.setText("Generar reporte");
+        jPanel1.add(lblReporte);
+        lblReporte.setBounds(290, 180, 110, 16);
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 540, 320));
 
         jPanel2.setBackground(new java.awt.Color(153, 0, 0));
@@ -170,14 +206,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         lblBienvenida.setForeground(new java.awt.Color(255, 255, 255));
         lblBienvenida.setText("Bienvenido a Concesionaria");
 
-        lblImagen.setIcon(new javax.swing.ImageIcon("C:\\Users\\naely\\Downloads\\Itson\\6to Semestre\\BDAvanzadas\\UC2\\Proyecto Unidad 2\\p2 Licencias\\Concesionaria\\src\\main\\java\\org\\itson\\concesionaria\\multimedia\\SERVICIOS .png")); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(161, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblBienvenida, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
                     .addComponent(jSeparator3))
@@ -242,13 +276,23 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVerHistoriaActionPerformed
 
+    private void btnSolicitarPlacas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarPlacas1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSolicitarPlacas1ActionPerformed
+
+    private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
+        new Reporte().setVisible(true);
+    }//GEN-LAST:event_btnReporteActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultarPersona;
     private javax.swing.JButton btnGenerarPersonas;
     private javax.swing.JButton btnRegistrarCarro;
+    private javax.swing.JButton btnReporte;
     private javax.swing.JToggleButton btnSalir;
     private javax.swing.JButton btnSolicitarLicencia;
     private javax.swing.JButton btnSolicitarPlacas;
+    private javax.swing.JButton btnSolicitarPlacas1;
     private javax.swing.JToggleButton btnVerHistoria;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -258,8 +302,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblConsultarPersona;
     private javax.swing.JLabel lblImagen;
     private javax.swing.JLabel lblRegistroCarro;
+    private javax.swing.JLabel lblReporte;
     private javax.swing.JLabel lblRevisarHistorial;
     private javax.swing.JLabel lblSolicitarLicencia;
     private javax.swing.JLabel lblSolicitarPlacas;
+    private javax.swing.JLabel lblSolicitarPlacas1;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,7 +8,7 @@ import org.itson.concesionaria.entitys.Licencia;
 import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.entitys.Placas;
 
-@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-04-14T15:17:38")
+@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-04-16T03:06:46")
 @StaticMetamodel(Auto.class)
 public class Auto_ extends Vehiculo_ {
 

@@ -7,6 +7,7 @@ package org.itson.concesionaria.guis;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
 import org.itson.concesionaria.dao.LicenciasDAO;
 import org.itson.concesionaria.dao.TramitesDAO;
 import org.itson.concesionaria.entitys.Persona;
@@ -59,12 +60,14 @@ public class PagoLicencia extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(null);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         lblInfoRFC.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblInfoRFC.setText("RFC");
-        getContentPane().add(lblInfoRFC);
-        lblInfoRFC.setBounds(30, 90, 30, 16);
 
         btnPagar.setText("Pagar");
         btnPagar.addActionListener(new java.awt.event.ActionListener() {
@@ -72,8 +75,6 @@ public class PagoLicencia extends javax.swing.JFrame {
                 btnPagarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnPagar);
-        btnPagar.setBounds(40, 190, 90, 23);
 
         btnCancelarTramite.setBackground(new java.awt.Color(204, 204, 204));
         btnCancelarTramite.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -84,21 +85,13 @@ public class PagoLicencia extends javax.swing.JFrame {
                 btnCancelarTramiteActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCancelarTramite);
-        btnCancelarTramite.setBounds(227, 240, 130, 22);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Costo");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 130, 37, 16);
 
         lblCosto.setText("Null data");
-        getContentPane().add(lblCosto);
-        lblCosto.setBounds(90, 130, 48, 16);
 
         lblRFC.setText("Null data");
-        getContentPane().add(lblRFC);
-        lblRFC.setBounds(90, 90, 48, 16);
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
         jPanel1.setLayout(null);
@@ -111,8 +104,46 @@ public class PagoLicencia extends javax.swing.JFrame {
         jPanel1.add(jSeparator1);
         jSeparator1.setBounds(20, 60, 179, 10);
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, -10, 370, 80);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(lblInfoRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(lblRFC))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addComponent(lblCosto))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(227, 227, 227)
+                .addComponent(btnCancelarTramite, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblInfoRFC)
+                    .addComponent(lblRFC))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(lblCosto))
+                .addGap(44, 44, 44)
+                .addComponent(btnPagar)
+                .addGap(28, 28, 28)
+                .addComponent(btnCancelarTramite)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
 
         pack();
         setLocationRelativeTo(null);
@@ -127,11 +158,20 @@ public class PagoLicencia extends javax.swing.JFrame {
 
             tramiteDAO.finalizarTramite(estadosTramite.Finalizado, fechaRealizacion, costo, tramite);
             dispose();
+          
         }
     }//GEN-LAST:event_btnPagarActionPerformed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+       if(tramite.getEstadoTramite() != estadosTramite.Finalizado){
+           tramiteDAO.cancelarTramite(tramite, estadosTramite.Cancelado);
+       }
+    }//GEN-LAST:event_formWindowClosed
+
     private void btnCancelarTramiteActionPerformed(java.awt.event.ActionEvent evt) {
         if (mds.preguntaCancelarTramite()) {
+            tramiteDAO.cancelarTramite(tramite, estadosTramite.Cancelado);
+            dispose();
         }
     }
 

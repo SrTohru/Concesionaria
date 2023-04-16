@@ -10,7 +10,7 @@ import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.entitys.Tramite;
 import org.itson.concesionaria.interfaces.ILicencias;
 import org.itson.concesionaria.utilities.discapacidadPersona;
-import org.itson.concesionaria.utilities.entityManager;
+import org.itson.concesionaria.utilities.eManager;
 import org.itson.concesionaria.utilities.estadosLicencia;
 import org.itson.concesionaria.utilities.estadosTramite;
 import org.itson.concesionaria.utilities.tipoDePago;
@@ -18,7 +18,7 @@ import org.itson.concesionaria.utilities.verificacionesDeSistema;
 
 public class LicenciasDAO implements ILicencias {
 
-    entityManager eM = new entityManager();
+    eManager eM = new eManager();
     TramitesDAO tramitesDAO = new TramitesDAO();
     PagosDAO pagoDAO = new PagosDAO();
     verificacionesDeSistema verificacionesSistema = new verificacionesDeSistema();
@@ -44,6 +44,8 @@ public class LicenciasDAO implements ILicencias {
             eM.getEntityManager().getTransaction().commit();
 
             pagoDAO.registrarPagoLicencia(licencia, tramite, tipoDePago.Pago_Licencia);
+            
+            JOptionPane.showMessageDialog(null, "Se ha registrado exitosamente su licencia.");
 
             return licencia;
         } catch (Exception e) {

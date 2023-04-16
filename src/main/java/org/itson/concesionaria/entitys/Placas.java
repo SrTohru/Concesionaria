@@ -42,7 +42,7 @@ public class Placas implements Serializable {
     @JoinColumn(name = "idPersona", nullable = false)
     private Persona persona;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne()
     @JoinColumn(name = "idAuto")
     private Auto idAuto;
 
