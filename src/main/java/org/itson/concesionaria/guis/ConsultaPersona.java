@@ -36,6 +36,7 @@ public class ConsultaPersona extends javax.swing.JFrame {
     private void initComponents() {
 
         jTextField4 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
         txtInfoBusqueda = new javax.swing.JTextField();
@@ -51,19 +52,24 @@ public class ConsultaPersona extends javax.swing.JFrame {
 
         jTextField4.setText("jTextField4");
 
+        jButton2.setText("jButton2");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Tipo de busqueda:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 120, -1));
 
+        jToggleButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jToggleButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jToggleButton1.setText("Consultar");
+        jToggleButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 111, -1));
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 111, -1));
 
         txtInfoBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,6 +243,7 @@ public class ConsultaPersona extends javax.swing.JFrame {
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> comboBoxSeleccionBusqueda;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

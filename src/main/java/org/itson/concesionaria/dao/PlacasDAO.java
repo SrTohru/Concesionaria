@@ -1,5 +1,6 @@
 package org.itson.concesionaria.dao;
 
+import java.awt.HeadlessException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.itson.concesionaria.entitys.Auto;
@@ -35,7 +36,7 @@ public class PlacasDAO implements IPlacas {
             verificacionSistema.desactivarOtrasPlacas(auto);
             pagosDAO.registrarPagoPlacas(placa, tipoDePago.Pago_Placas, tramite);
             return placa;
-        } catch (Exception e) {
+        } catch (HeadlessException e) {
             em.getEntityManager().getTransaction().rollback();
             return null;
         }

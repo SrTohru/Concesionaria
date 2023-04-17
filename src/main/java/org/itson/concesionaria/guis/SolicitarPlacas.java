@@ -70,12 +70,10 @@ public class SolicitarPlacas extends javax.swing.JFrame {
         lblSolicitud.setBounds(10, 20, 204, 32);
         jPanel1.add(jSeparator1);
         jSeparator1.setBounds(10, 50, 171, 3);
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\naely\\Downloads\\Itson\\6to Semestre\\BDAvanzadas\\UC2\\Proyecto Unidad 2\\p2 Licencias\\Concesionaria\\src\\main\\java\\org\\itson\\concesionaria\\multimedia\\CONSULTA.png")); // NOI18N
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(220, 0, 130, 70);
+        jLabel3.setBounds(290, 0, 130, 70);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 70));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 70));
 
         pack();
         setLocationRelativeTo(null);

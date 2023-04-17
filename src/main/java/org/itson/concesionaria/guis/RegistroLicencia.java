@@ -87,7 +87,7 @@ public class RegistroLicencia extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lblSolicitudDatos = new javax.swing.JLabel();
         lblRFC = new javax.swing.JLabel();
@@ -101,7 +101,7 @@ public class RegistroLicencia extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         lblSolicitud = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Solicitud de Licencia");
@@ -167,7 +167,7 @@ public class RegistroLicencia extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Solicitar);
-        Solicitar.setBounds(180, 190, 87, 35);
+        Solicitar.setBounds(160, 190, 87, 35);
 
         btnSalir.setBackground(new java.awt.Color(204, 204, 204));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -193,10 +193,8 @@ public class RegistroLicencia extends javax.swing.JFrame {
         lblSolicitud.setBounds(30, 50, 310, 32);
         jPanel2.add(jSeparator1);
         jSeparator1.setBounds(30, 80, 260, 10);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\naely\\Downloads\\Itson\\6to Semestre\\BDAvanzadas\\UC2\\Proyecto Unidad 2\\p2 Licencias\\Concesionaria\\src\\main\\java\\org\\itson\\concesionaria\\multimedia\\LICENCIA.png")); // NOI18N
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(290, 30, 140, 70);
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(290, 30, 140, 70);
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 510, 120));
 
@@ -284,8 +282,8 @@ public class RegistroLicencia extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> añosVigencia;
     private javax.swing.JToggleButton btnSalir;
     private javax.swing.JCheckBox checkBoxDiscapacitado;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;

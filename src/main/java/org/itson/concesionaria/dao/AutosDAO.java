@@ -1,5 +1,6 @@
 package org.itson.concesionaria.dao;
 
+import java.awt.HeadlessException;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import org.itson.concesionaria.entitys.Auto;
@@ -41,7 +42,7 @@ public class AutosDAO implements IAutos {
             JOptionPane.showMessageDialog(null, "Se ha registrado exitosamente su automovil y sus placas.");
             return auto;
 
-        } catch (Exception e) {
+        } catch (HeadlessException e) {
             em.getEntityManager().getTransaction().rollback();
             return null;
         }

@@ -1,5 +1,6 @@
 package org.itson.concesionaria.dao;
 
+import java.awt.HeadlessException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -48,7 +49,7 @@ public class LicenciasDAO implements ILicencias {
             JOptionPane.showMessageDialog(null, "Se ha registrado exitosamente su licencia.");
 
             return licencia;
-        } catch (Exception e) {
+        } catch (HeadlessException e) {
             eM.getEntityManager().getTransaction().rollback();
             return null;
         }

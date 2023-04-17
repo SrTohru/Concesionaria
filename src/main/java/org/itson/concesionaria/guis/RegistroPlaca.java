@@ -45,6 +45,7 @@ public class RegistroPlaca extends javax.swing.JFrame {
         lblInfoPlacas = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -52,32 +53,38 @@ public class RegistroPlaca extends javax.swing.JFrame {
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 16, -1, -1));
 
         lblRFC.setText("RFC: ");
-        getContentPane().add(lblRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+        getContentPane().add(lblRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
+        jToggleButton1.setBackground(new java.awt.Color(102, 204, 0));
+        jToggleButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jToggleButton1.setText("Solicitar");
+        jToggleButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 100, -1));
 
         lblInfoRFC.setText("null data");
-        getContentPane().add(lblInfoRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
+        getContentPane().add(lblInfoRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
 
+        jButton1.setBackground(new java.awt.Color(255, 153, 0));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setText("Generar otras placas");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 140, -1));
 
         lblPlacas.setText("Placas:");
-        getContentPane().add(lblPlacas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        getContentPane().add(lblPlacas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
         lblInfoPlacas.setText("null data");
-        getContentPane().add(lblInfoPlacas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, -1));
+        getContentPane().add(lblInfoPlacas, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
         jPanel1.setLayout(null);
@@ -87,16 +94,21 @@ public class RegistroPlaca extends javax.swing.JFrame {
         jLabel1.setText("Solicitud de Placas");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(30, 40, 230, 32);
+        jPanel1.add(jSeparator2);
+        jSeparator2.setBounds(30, 70, 250, 10);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 420, 90));
 
+        jButton2.setBackground(new java.awt.Color(204, 204, 204));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton2.setText("Salir");
+        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 70, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -132,6 +144,7 @@ public class RegistroPlaca extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel lblInfoPlacas;
     private javax.swing.JLabel lblInfoRFC;

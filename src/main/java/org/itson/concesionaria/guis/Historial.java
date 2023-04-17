@@ -47,7 +47,7 @@ public class Historial extends javax.swing.JFrame {
 
         jMenuItem1.setText("jMenuItem1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -57,8 +57,11 @@ public class Historial extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 20, 150, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 57, 109, 10));
 
+        jButton2.setBackground(new java.awt.Color(204, 0, 51));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText(" < Retroceder");
+        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -83,7 +86,7 @@ public class Historial extends javax.swing.JFrame {
         jLabel2.setText("Mostrar por:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 89, -1));
 
-        jToggleButton2.setBackground(new java.awt.Color(204, 204, 204));
+        jToggleButton2.setBackground(new java.awt.Color(204, 204, 0));
         jToggleButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jToggleButton2.setText("Generar Reporte");
         jToggleButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -122,10 +125,13 @@ public class Historial extends javax.swing.JFrame {
         jPanel2.add(jScrollPane1);
         jScrollPane1.setBounds(20, 20, 351, 341);
 
+        jButton1.setBackground(new java.awt.Color(0, 204, 51));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Avanzar >");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.add(jButton1);
-        jButton1.setBounds(200, 370, 110, 23);
+        jButton1.setBounds(200, 370, 110, 22);
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 540, 430));
 
