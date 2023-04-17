@@ -184,7 +184,13 @@ public class ConsultaPersona extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         try {
             JOptionPane.showMessageDialog(null, "lo presionaste");
-            añadirPersonasLista(verificacionesSistema.consultarPersonasMedianteInformacion(encriptador.encriptar(txtInfoBusqueda.getText()), tipoDeBusqueda));
+            if (tipoDeBusqueda == tipoBusqueda.BUSQUEDA_POR_RFC) {
+                añadirPersonasLista(verificacionesSistema.consultarPersonasMedianteInformacion(txtInfoBusqueda.getText(), tipoDeBusqueda));
+
+            } else {
+                añadirPersonasLista(verificacionesSistema.consultarPersonasMedianteInformacion(encriptador.encriptar(txtInfoBusqueda.getText()), tipoDeBusqueda));
+
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -226,16 +232,16 @@ public class ConsultaPersona extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int filaSeleccionada = tabla.getSelectedRow();
-       JOptionPane.showMessageDialog(null, tabla.getValueAt(filaSeleccionada, 3).toString());
-        Persona persona = verificacionesSistema.consultarPersonaMedianteRFC(tabla.getValueAt(filaSeleccionada, 3).toString(), tipoBusqueda.BUSQUEDA_POR_RFC);
+        JOptionPane.showMessageDialog(null, tabla.getValueAt(filaSeleccionada, 3).toString());
+        Persona persona = verificacionesSistema.obtenerPersonaPorRFC(tabla.getValueAt(filaSeleccionada, 3).toString());
         JOptionPane.showMessageDialog(null, persona);
-        if(persona != null){
-             new Reporte(persona).setVisible(true);
-        }else{
+        if (persona != null) {
+            new Reporte(persona).setVisible(true);
+        } else {
             JOptionPane.showMessageDialog(null, "Error");
         }
-       
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

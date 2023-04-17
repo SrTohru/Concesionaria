@@ -38,12 +38,11 @@ public class jasperReportCreator {
     String url = "C:\\Users\\PC\\JaspersoftWorkspace\\MyReports\\JasperReport.Jrxml";
 
     encriptador enc = new encriptador();
+  public void generarReporte(Persona persona) throws FileNotFoundException, JRException {
 
-    public void test(Persona persona) throws FileNotFoundException, JRException {
-   
-        JRBeanCollectionDataSource items = new JRBeanCollectionDataSource(verificarPersonaPorRFC(persona));
+        JRBeanCollectionDataSource items = new JRBeanCollectionDataSource(consultarTramitesPersona(persona));
 
-        Map<String, Object> params = new HashMap<String, Object>();
+        Map<String, Object> params = new HashMap<>();
 
         params.put("CollectionBeanParam", items);
 
@@ -57,28 +56,44 @@ public class jasperReportCreator {
 
         JasperViewer.viewReport(print, false);
     }
+    
+        public void generarReportePorTipo(Persona persona, tiposTramite tipo) throws FileNotFoundException, JRException {
 
+        JRBeanCollectionDataSource items = new JRBeanCollectionDataSource(consultarTramitesPersonaPorTipo(persona, tipo));
 
-    public List<Reportes> verificarPersonaPorRFC(Persona persona) {
-       
+        Map<String, Object> params = new HashMap<>();
+
+        params.put("CollectionBeanParam", items);
+
+        InputStream input = new FileInputStream(new File(url));
+
+        JasperDesign desing = JRXmlLoader.load(input);
+
+        JasperReport report = JasperCompileManager.compileReport(desing);
+
+        JasperPrint print = JasperFillManager.fillReport(report, params, new JREmptyDataSource());
+
+        JasperViewer.viewReport(print, false);
+    }
+   public List<Reportes> consultarTramitesPersona(Persona persona) {
+
         TypedQuery<Tramite> query = em.getEntityManager().createQuery(
                 "SELECT t  FROM Tramite t WHERE t.idPersona = :persona AND t.estadoTramite = :estadoTramite", Tramite.class);
-        
+
         query.setParameter("persona", persona);
         query.setParameter("estadoTramite", estadosTramite.Finalizado);
-        
-        List<Reportes> list = new ArrayList<Reportes>();
-        
+
+        List<Reportes> list = new ArrayList<>();
+
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
-
             for (int i = 0; i < query.getResultList().size(); i++) {
-                
-                String fechaString = sdf.format( query.getResultList().get(i).getFechaTramite().getTime());
-                
+
+                String fechaString = sdf.format(query.getResultList().get(i).getFechaTramite().getTime());
+
                 Reportes rep = new Reportes(query.getResultList().get(i).getTipoTramite() + "",
-                        encriptador.desencriptar(query.getResultList().get(i).getIdPersona().getNombres()) + " " + encriptador.desencriptar(query.getResultList().get(i).getIdPersona().getApellidoPaterno()) + " " + encriptador.desencriptar(query.getResultList().get(i).getIdPersona().getApellidoPaterno()),
+                        encriptador.desencriptar(query.getResultList().get(i).getIdPersona().getNombres()) + " " + encriptador.desencriptar(query.getResultList().get(i).getIdPersona().getApellidoPaterno()) + " " + encriptador.desencriptar(query.getResultList().get(i).getIdPersona().getApellidoMaterno()),
                         query.getResultList().get(i).getCosto() + "",
                         fechaString);
                 System.out.println(rep);
@@ -86,22 +101,37 @@ public class jasperReportCreator {
             }
         } catch (Exception e) {
         }
-
-//        String consulta = "SELECT p FROM Vehiculo p";
-//        TypedQuery<Vehiculo> query = em.getEntityManager().createQuery(consulta, Vehiculo.class);
-//        List<Reportes> list = new ArrayList<Reportes>();
-//
-//        for (int i = 0; i < query.getResultList().size(); i++) {
-//           Reportes rep =  new Reportes(query.getResultList().get(i).getSerie(),
-//                    query.getResultList().get(i).getMarca(), 
-//                    query.getResultList().get(i).getColor(), 
-//                    query.getResultList().get(i).getModelo());
-//            System.out.println(rep);
-//            list.add(rep);
-//        }
-//
-//        return list;
         return list;
     }
+    
+    public List<Reportes> consultarTramitesPersonaPorTipo(Persona persona, tiposTramite tipo) {
+
+    TypedQuery<Tramite> query = em.getEntityManager().createQuery(
+            "SELECT t FROM Tramite t WHERE t.idPersona = :persona AND t.estadoTramite = :estadoTramite AND t.tipoTramite = :tipo", Tramite.class);
+
+    query.setParameter("persona", persona);
+    query.setParameter("estadoTramite", estadosTramite.Finalizado);
+    query.setParameter("tipo", tipo);
+
+    List<Reportes> list = new ArrayList<>();
+
+    try {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+
+        for (int i = 0; i < query.getResultList().size(); i++) {
+
+            String fechaString = sdf.format(query.getResultList().get(i).getFechaTramite().getTime());
+
+            Reportes rep = new Reportes(query.getResultList().get(i).getTipoTramite() + "",
+                    encriptador.desencriptar(query.getResultList().get(i).getIdPersona().getNombres()) + " " + encriptador.desencriptar(query.getResultList().get(i).getIdPersona().getApellidoPaterno()) + " " + encriptador.desencriptar(query.getResultList().get(i).getIdPersona().getApellidoMaterno()),
+                    query.getResultList().get(i).getCosto() + "",
+                    fechaString);
+            System.out.println(rep);
+            list.add(rep);
+        }
+    } catch (Exception e) {
+    }
+    return list;
+}
 
 }

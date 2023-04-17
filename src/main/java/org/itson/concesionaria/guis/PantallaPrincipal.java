@@ -37,8 +37,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         btnGenerarPersonas = new javax.swing.JButton();
         btnSolicitarLicencia = new javax.swing.JButton();
         btnRegistrarCarro = new javax.swing.JButton();
-        btnVerHistoria = new javax.swing.JToggleButton();
-        lblRevisarHistorial = new javax.swing.JLabel();
         lblRegistroCarro = new javax.swing.JLabel();
         lblSolicitarLicencia = new javax.swing.JLabel();
         btnConsultarPersona = new javax.swing.JButton();
@@ -107,22 +105,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(btnRegistrarCarro);
         btnRegistrarCarro.setBounds(40, 130, 220, 18);
-
-        btnVerHistoria.setBackground(new java.awt.Color(153, 204, 255));
-        btnVerHistoria.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnVerHistoria.setText("Revisar");
-        btnVerHistoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnVerHistoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerHistoriaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnVerHistoria);
-        btnVerHistoria.setBounds(40, 210, 220, 18);
-
-        lblRevisarHistorial.setText("Revisar Historial");
-        jPanel1.add(lblRevisarHistorial);
-        lblRevisarHistorial.setBounds(40, 180, 105, 16);
 
         lblRegistroCarro.setText("Registro de carro");
         jPanel1.add(lblRegistroCarro);
@@ -247,16 +229,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarCarroActionPerformed
 
     private void btnSolicitarPlacasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarPlacasActionPerformed
-        // TODO add your handling code here:
+        new SolicitarPlacas().setVisible(true);
     }//GEN-LAST:event_btnSolicitarPlacasActionPerformed
 
     private void btnConsultarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPersonaActionPerformed
       new ConsultaPersona().setVisible(true);
     }//GEN-LAST:event_btnConsultarPersonaActionPerformed
-
-    private void btnVerHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerHistoriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVerHistoriaActionPerformed
 
     private void btnSolicitarPlacas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarPlacas1ActionPerformed
         // TODO add your handling code here:
@@ -270,7 +248,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnSolicitarLicencia;
     private javax.swing.JButton btnSolicitarPlacas;
     private javax.swing.JButton btnSolicitarPlacas1;
-    private javax.swing.JToggleButton btnVerHistoria;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
@@ -279,7 +256,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblConsultarPersona;
     private javax.swing.JLabel lblImagen;
     private javax.swing.JLabel lblRegistroCarro;
-    private javax.swing.JLabel lblRevisarHistorial;
     private javax.swing.JLabel lblSolicitarLicencia;
     private javax.swing.JLabel lblSolicitarPlacas;
     private javax.swing.JLabel lblSolicitarPlacas1;

@@ -211,30 +211,20 @@ public class verificacionesDeSistema {
             return null;
         }
     }
-    
-    public Persona consultarPersonaMedianteRFC(String valorBusqueda, tipoBusqueda tipoBusqueda) {
-        try {
-            String jpql = "SELECT p FROM Persona p WHERE ";
 
-            switch (tipoBusqueda) {
-                case BUSQUEDA_POR_RFC:
-                    jpql += "p.rfc LIKE :valorBusqueda";
-                    break;
-                default:
-                    throw new IllegalArgumentException("Tipo de búsqueda no válido");
-            }
-
-            TypedQuery<Persona> consulta = em.getEntityManager().createQuery(jpql, Persona.class);
-            consulta.setParameter("valorBusqueda", "%" + valorBusqueda + "%");
-            Persona persona = consulta.getSingleResult();
-            System.out.println(persona.getNombres());
-            return persona;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return null;
-        }
+ public Persona obtenerPersonaPorRFC(String rfc) {
+    try {
+        String jpql = "SELECT p FROM Persona p WHERE p.rfc = :rfc";
+        TypedQuery<Persona> consulta = em.getEntityManager().createQuery(jpql, Persona.class);
+        consulta.setParameter("rfc", rfc);
+        Persona persona = consulta.getSingleResult();
+        return persona;
+    } catch (NoResultException ex) {
+        // Si no se encuentra una persona con el RFC especificado, se devuelve null
+        return null;
     }
-    
+}
+
 
 // public List<Persona> consultarPersonasMedianteInformacion(String nombres, String apellidoPaterno, String apellidoMaterno, String rfc) {
 //        try {

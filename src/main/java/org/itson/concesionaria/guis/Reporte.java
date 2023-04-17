@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import static org.itson.concesionaria.entitys.Licencia_.persona;
 import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.utilities.jasperReportCreator;
+import org.itson.concesionaria.utilities.tiposTramite;
 
 /**
  *
@@ -95,7 +96,7 @@ public class Reporte extends javax.swing.JFrame {
         jPanel1.add(lblTipoTramite);
         lblTipoTramite.setBounds(40, 70, 130, 16);
 
-        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Placas", "Licencias", " " }));
+        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Licencia", "Placas" }));
         jPanel1.add(cbxTipo);
         cbxTipo.setBounds(130, 70, 82, 22);
 
@@ -115,20 +116,39 @@ public class Reporte extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGenerarPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarPDFActionPerformed
-        jasperReportCreator jrc = new jasperReportCreator();
-        
+    jasperReportCreator jrc = new jasperReportCreator();
+
         try {
-            if(persona != null)
-            {
-                   jrc.test(persona);
-            }else{
+            if (persona != null) {
+                if (obtenerTipoTramite() == tiposTramite.Expedicion_De_Licencia) {
+                    jrc.generarReportePorTipo(persona, tiposTramite.Expedicion_De_Licencia);
+                }else  if (obtenerTipoTramite() == tiposTramite.Expedicion_De_Placas) {
+                    jrc.generarReportePorTipo(persona, tiposTramite.Expedicion_De_Placas);
+                }else{
+                    jrc.generarReporte(persona);
+                }
+
+            } else {
                 JOptionPane.showMessageDialog(null, "persona nula");
             }
-         
+
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnGenerarPDFActionPerformed
+    public tiposTramite obtenerTipoTramite() {
+        switch (cbxTipo.getSelectedIndex()) {
+            case 0:
+                return null;
+            case 1:
+                return tiposTramite.Expedicion_De_Licencia;
 
+            case 2:
+                return tiposTramite.Expedicion_De_Placas;
+
+            default:
+                throw new AssertionError();
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrear;

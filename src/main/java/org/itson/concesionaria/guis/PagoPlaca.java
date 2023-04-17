@@ -207,20 +207,24 @@ public class PagoPlaca extends javax.swing.JFrame {
         if (mds.preguntaConfirmar()) {
             JOptionPane.showMessageDialog(null, actualizacionPlacas);
             if (actualizacionPlacas == true) {
-                JOptionPane.showMessageDialog(null, "Confirmada 1");
                
                 placasDAO.actualizarPlacas(codigoPlacas, estadosPlaca.ACTIVA, tramite, costo, persona, auto);
                 Calendar fechaRealizacion = new GregorianCalendar();
 
                 tramiteDAO.finalizarTramite(estadosTramite.Finalizado, fechaRealizacion, costo, tramite);
+                
+                JOptionPane.showMessageDialog(null, "Se ha realizado el pago correctamente :)");
+                
                 dispose();
             } else {
-                JOptionPane.showMessageDialog(null, "Confirmada 2");
                 autoDAO.registrarAuto(persona, auto, codigoPlacas, tramite, costo);
 
                 Calendar fechaRealizacion = new GregorianCalendar();
 
                 tramiteDAO.finalizarTramite(estadosTramite.Finalizado, fechaRealizacion, costo, tramite);
+                
+                JOptionPane.showMessageDialog(null, "Se ha realizado el pago correctamente :)");
+                
                 dispose();
             }
 
