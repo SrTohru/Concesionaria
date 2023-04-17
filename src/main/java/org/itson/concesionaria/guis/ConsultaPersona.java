@@ -6,9 +6,11 @@ package org.itson.concesionaria.guis;
 
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.utilities.encriptador;
+import org.itson.concesionaria.utilities.tipoBusqueda;
 import org.itson.concesionaria.utilities.verificacionesDeSistema;
 
 /**
@@ -18,12 +20,15 @@ import org.itson.concesionaria.utilities.verificacionesDeSistema;
 public class ConsultaPersona extends javax.swing.JFrame {
 
     verificacionesDeSistema verificacionesSistema = new verificacionesDeSistema();
+    tipoBusqueda tipoDeBusqueda = tipoBusqueda.BUSQUEDA_POR_NOMBRE;
 
     public ConsultaPersona() {
 
         initComponents();
+
         DefaultTableModel modeloTabla = ((DefaultTableModel) this.tabla.getModel());
         modeloTabla.setRowCount(0);
+        lblInfoSeleccion.setText("Nombre:");
     }
 
     @SuppressWarnings("unchecked")
@@ -32,37 +37,25 @@ public class ConsultaPersona extends javax.swing.JFrame {
 
         jTextField4 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
-        txtNombres = new javax.swing.JTextField();
-        txtApellidoPaterno = new javax.swing.JTextField();
-        txtApellidoMaterno = new javax.swing.JTextField();
-        txtRFC = new javax.swing.JTextField();
+        txtInfoBusqueda = new javax.swing.JTextField();
         btnSalir = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        comboBoxSeleccionBusqueda = new javax.swing.JComboBox<>();
+        lblInfoSeleccion = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         jTextField4.setText("jTextField4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Nombre");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 86, -1));
-
-        jLabel3.setText("Apellido Paterno");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 151, -1));
-
-        jLabel4.setText("Apellido Materno");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 119, -1));
-
-        jLabel5.setText("Fecha de nacimiento");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 138, -1));
+        jLabel2.setText("Tipo de busqueda:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 120, -1));
 
         jToggleButton1.setText("Consultar");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -70,17 +63,14 @@ public class ConsultaPersona extends javax.swing.JFrame {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 111, -1));
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 111, -1));
 
-        txtNombres.addActionListener(new java.awt.event.ActionListener() {
+        txtInfoBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombresActionPerformed(evt);
+                txtInfoBusquedaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 169, -1));
-        getContentPane().add(txtApellidoPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 169, -1));
-        getContentPane().add(txtApellidoMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 169, -1));
-        getContentPane().add(txtRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 169, -1));
+        getContentPane().add(txtInfoBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 169, -1));
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +78,7 @@ public class ConsultaPersona extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, -1, -1));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, -1, -1));
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -100,15 +90,31 @@ public class ConsultaPersona extends javax.swing.JFrame {
             new String [] {
                 "Nombres", "Apellido Paterno", "Apellido Materno", "RFC"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tabla);
         if (tabla.getColumnModel().getColumnCount() > 0) {
             tabla.getColumnModel().getColumn(0).setResizable(false);
             tabla.getColumnModel().getColumn(1).setResizable(false);
+            tabla.getColumnModel().getColumn(2).setResizable(false);
             tabla.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, -1, 357));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, 357));
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
         jPanel1.setForeground(new java.awt.Color(204, 0, 0));
@@ -122,7 +128,26 @@ public class ConsultaPersona extends javax.swing.JFrame {
         jPanel1.add(jSeparator1);
         jSeparator1.setBounds(20, 70, 240, 10);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1060, 90));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 898, 90));
+
+        comboBoxSeleccionBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por nombre", "Por apellido Paterno", "Por apellido Materno", "Por RFC" }));
+        comboBoxSeleccionBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxSeleccionBusquedaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(comboBoxSeleccionBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+
+        lblInfoSeleccion.setText("Null data");
+        getContentPane().add(lblInfoSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+
+        jButton1.setText("Historial de la persona");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 362, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -151,34 +176,76 @@ public class ConsultaPersona extends javax.swing.JFrame {
     }
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        añadirPersonasLista(verificacionesSistema.consultarPersonasMedianteInformacion(txtNombres.getText(), txtApellidoPaterno.getText(), txtApellidoMaterno.getText()));
+        try {
+            JOptionPane.showMessageDialog(null, "lo presionaste");
+            añadirPersonasLista(verificacionesSistema.consultarPersonasMedianteInformacion(encriptador.encriptar(txtInfoBusqueda.getText()), tipoDeBusqueda));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         preguntaCerrar();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void txtNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresActionPerformed
+    private void txtInfoBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInfoBusquedaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombresActionPerformed
+    }//GEN-LAST:event_txtInfoBusquedaActionPerformed
+
+    private void comboBoxSeleccionBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxSeleccionBusquedaActionPerformed
+
+        int itemSeleccionado = comboBoxSeleccionBusqueda.getSelectedIndex();
+        switch (itemSeleccionado) {
+            case 0:
+                lblInfoSeleccion.setText("Nombre:");
+                tipoDeBusqueda = tipoBusqueda.BUSQUEDA_POR_NOMBRE;
+                break;
+            case 1:
+                lblInfoSeleccion.setText("Apellido Paterno:");
+                tipoDeBusqueda = tipoBusqueda.BUSQUEDA_POR_APELLIDO_PATERNO;
+                break;
+            case 2:
+                lblInfoSeleccion.setText("Apellido Materno:");
+                tipoDeBusqueda = tipoBusqueda.BUSQUEDA_POR_APELLIDO_MATERNO;
+                break;
+            case 3:
+                lblInfoSeleccion.setText("RFC:");
+                tipoDeBusqueda = tipoBusqueda.BUSQUEDA_POR_RFC;
+                break;
+            default:
+                break;
+        }
+    }//GEN-LAST:event_comboBoxSeleccionBusquedaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int filaSeleccionada = tabla.getSelectedRow();
+       JOptionPane.showMessageDialog(null, tabla.getValueAt(filaSeleccionada, 3).toString());
+        Persona persona = verificacionesSistema.consultarPersonaMedianteRFC(tabla.getValueAt(filaSeleccionada, 3).toString(), tipoBusqueda.BUSQUEDA_POR_RFC);
+        JOptionPane.showMessageDialog(null, persona);
+        if(persona != null){
+             new Reporte(persona).setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+       
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalir;
+    private javax.swing.JComboBox<String> comboBoxSeleccionBusqueda;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel lblInfoSeleccion;
     private javax.swing.JTable tabla;
-    private javax.swing.JTextField txtApellidoMaterno;
-    private javax.swing.JTextField txtApellidoPaterno;
-    private javax.swing.JTextField txtNombres;
-    private javax.swing.JTextField txtRFC;
+    private javax.swing.JTextField txtInfoBusqueda;
     // End of variables declaration//GEN-END:variables
 }

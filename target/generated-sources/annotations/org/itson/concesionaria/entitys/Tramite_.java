@@ -9,7 +9,7 @@ import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.utilities.estadosTramite;
 import org.itson.concesionaria.utilities.tiposTramite;
 
-@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-04-16T03:06:46")
+@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-04-16T17:41:29")
 @StaticMetamodel(Tramite.class)
 public class Tramite_ { 
 

@@ -208,7 +208,6 @@ public class RegistroAutomovil extends javax.swing.JFrame {
 
                     if (autoVerificado != null) {
                         if (existenciaAuto() == 0) {
-
                             Tramite tramite = new Tramite(persona, estadosTramite.En_Proceso, tiposTramite.Expedicion_De_Placas, new GregorianCalendar());
 
                             RegistroPlaca rPlacas = new RegistroPlaca(autoVerificado, persona, tramite, true);
@@ -243,7 +242,7 @@ public class RegistroAutomovil extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSerieActionPerformed
 
     public int existenciaAuto() {
-        return JOptionPane.showConfirmDialog(null, "¿Ese automovil ya existe y cuenta con placas, desea asignarle unas nuevas placas?", "ADVERTENCIA", JOptionPane.YES_NO_OPTION);
+        return JOptionPane.showConfirmDialog(null, "¿Esa serie de automovil ya existe y cuenta con placas, desea asignarle unas nuevas placas?", "ADVERTENCIA", JOptionPane.YES_NO_OPTION);
     }
 
     public void preguntaCerrar() {

@@ -9,11 +9,13 @@ import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManager;
 import net.sf.jasperreports.engine.JRException;
 import org.itson.concesionaria.dao.LicenciasDAO;
 import org.itson.concesionaria.entitys.Licencia;
 import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.entitys.Tramite;
+import org.itson.concesionaria.utilities.eManager;
 import org.itson.concesionaria.utilities.jasperReportCreator;
 import org.itson.concesionaria.utilities.verificacionesDeSistema;
 
@@ -155,7 +157,9 @@ public class testForms extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
-            jrc.test();
+            eManager em = new eManager();
+            Persona persona = em.getEntityManager().find(Persona.class, 6L);
+            jrc.test(persona);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(testForms.class.getName()).log(Level.SEVERE, null, ex);
         } catch (JRException ex) {

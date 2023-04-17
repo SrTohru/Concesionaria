@@ -30,9 +30,9 @@ public class AutosDAO implements IAutos {
             em.getEntityManager().getTransaction().begin();
 
             Placas placa = placasDAO.registroPlacas(codigoPlacas, estadosPlaca.ACTIVA, tramite, costo, persona, auto);
-
+            auto.setTramite(tramite);
             em.getEntityManager().persist(auto);
-
+            
             em.getEntityManager().getTransaction().commit();
             tramiteDAO.finalizarTramite(estadosTramite.Finalizado, new GregorianCalendar(), costo, tramite);
 

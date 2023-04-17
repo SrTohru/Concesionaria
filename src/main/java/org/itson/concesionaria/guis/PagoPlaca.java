@@ -42,7 +42,8 @@ public class PagoPlaca extends javax.swing.JFrame {
 
     public PagoPlaca(Tramite tramite, Auto auto, Persona persona, int costo, String codigoPlacas, boolean actualizacionPlacas) {
         initComponents();
-        actualizacionPlacas = this.actualizacionPlacas;
+        this.actualizacionPlacas = actualizacionPlacas;
+         JOptionPane.showMessageDialog(null, actualizacionPlacas);
         this.auto = auto;
         this.tramite = tramite;
         this.persona = persona;
@@ -199,9 +200,9 @@ public class PagoPlaca extends javax.swing.JFrame {
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
         if (mds.preguntaConfirmar()) {
-
-            if (actualizacionPlacas = true) {
-                JOptionPane.showMessageDialog(null, "Confirmada");
+            JOptionPane.showMessageDialog(null, actualizacionPlacas);
+            if (actualizacionPlacas == true) {
+                JOptionPane.showMessageDialog(null, "Confirmada 1");
                
                 placasDAO.actualizarPlacas(codigoPlacas, estadosPlaca.ACTIVA, tramite, costo, persona, auto);
                 Calendar fechaRealizacion = new GregorianCalendar();
@@ -209,7 +210,7 @@ public class PagoPlaca extends javax.swing.JFrame {
                 tramiteDAO.finalizarTramite(estadosTramite.Finalizado, fechaRealizacion, costo, tramite);
                 dispose();
             } else {
-                JOptionPane.showMessageDialog(null, "Confirmada");
+                JOptionPane.showMessageDialog(null, "Confirmada 2");
                 autoDAO.registrarAuto(persona, auto, codigoPlacas, tramite, costo);
 
                 Calendar fechaRealizacion = new GregorianCalendar();

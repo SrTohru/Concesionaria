@@ -1,5 +1,6 @@
 package org.itson.concesionaria.dao;
 
+import java.util.List;
 import javax.swing.JOptionPane;
 import org.itson.concesionaria.entitys.Auto;
 import org.itson.concesionaria.entitys.Persona;
@@ -20,6 +21,7 @@ public class PlacasDAO implements IPlacas {
     @Override
     public Placas registroPlacas(String codigoPlacas, estadosPlaca estadoPlaca, Tramite tramite, int costo, Persona persona, Auto auto) {
         try {
+            JOptionPane.showMessageDialog(null, "Registo de placas");
             em.getEntityManager().getTransaction().begin();
 
             Placas placa = new Placas(estadoPlaca, codigoPlacas, tramite, persona, auto);
@@ -30,7 +32,7 @@ public class PlacasDAO implements IPlacas {
             auto.setTramite(tramite);
             em.getEntityManager().merge(auto);
             em.getEntityManager().getTransaction().commit();
-            verificacionSistema.desactivarOtrasPlacas(auto, placa);
+            verificacionSistema.desactivarOtrasPlacas(auto);
             pagosDAO.registrarPagoPlacas(placa, tipoDePago.Pago_Placas, tramite);
             return placa;
         } catch (Exception e) {
@@ -44,16 +46,22 @@ public class PlacasDAO implements IPlacas {
         try {
             em.getEntityManager().getTransaction().begin();
 
-            Placas placa = new Placas(estadoPlaca, codigoPlacas, tramite, persona, auto);
+            // Obtener todas las placas anteriores del auto y establecer su estado como "expirado"
+            verificacionSistema.desactivarOtrasPlacas(auto);
 
-            em.getEntityManager().persist(placa);
-            auto.setIdPlacas(placa);
-            auto.addPlacas(placa);
+            // Crear la nueva placa y guardarla en la base de datos
+            Placas nuevaPlaca = new Placas(estadoPlaca, codigoPlacas, tramite, persona, auto);
+            em.getEntityManager().persist(nuevaPlaca);
+
+            // Actualizar el auto con la nueva placa y guardar los cambios en la base de datos
+            auto.setIdPlacas(nuevaPlaca);
+            auto.addPlacas(nuevaPlaca);
+            auto.setTramite(tramite);
             em.getEntityManager().merge(auto);
+            em.getEntityManager().getTransaction().commit();
+            pagosDAO.registrarPagoPlacas(nuevaPlaca, tipoDePago.Pago_Placas, tramite);
 
-            verificacionSistema.desactivarOtrasPlacas(auto, placa);
-            pagosDAO.registrarPagoPlacas(placa, tipoDePago.Pago_Placas, tramite);
-            return placa;
+            return nuevaPlaca;
         } catch (Exception e) {
             em.getEntityManager().getTransaction().rollback();
             return null;

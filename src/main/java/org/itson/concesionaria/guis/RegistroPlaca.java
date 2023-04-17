@@ -4,6 +4,7 @@
  */
 package org.itson.concesionaria.guis;
 
+import javax.swing.JOptionPane;
 import org.itson.concesionaria.dao.AutosDAO;
 import org.itson.concesionaria.entitys.Auto;
 import org.itson.concesionaria.entitys.Persona;
@@ -20,10 +21,10 @@ public class RegistroPlaca extends javax.swing.JFrame {
     Auto auto = new Auto();
     String codigoPlacas = verificacionesSitema.generarPlacas();
     boolean actualizacionPlacas;
-    
+
     public RegistroPlaca(Auto auto, Persona persona, Tramite tramite, boolean actualizacionPlacas) {
         initComponents();
-        this.actualizacionPlacas = this.actualizacionPlacas;
+        this.actualizacionPlacas = actualizacionPlacas;
         lblInfoRFC.setText(persona.getRfc());
         lblInfoPlacas.setText(codigoPlacas);
         this.tramite = tramite;
@@ -102,13 +103,15 @@ public class RegistroPlaca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-
-        if(actualizacionPlacas = true){
-            new PagoPlaca(tramite, auto, persona, verificacionesSitema.verificarAutoNuevo(auto), codigoPlacas, true).setVisible(true);
-        }else{
-            new PagoPlaca(tramite, auto, persona, verificacionesSitema.verificarAutoNuevo(auto), codigoPlacas, true).setVisible(true);
+        JOptionPane.showMessageDialog(null, actualizacionPlacas);
+        if (actualizacionPlacas == true) {
+            new PagoPlaca(tramite, auto, persona, verificacionesSitema.verificarAutoNuevo(auto), codigoPlacas, actualizacionPlacas).setVisible(true);
+            dispose();
+        } else {
+            new PagoPlaca(tramite, auto, persona, verificacionesSitema.verificarAutoNuevo(auto), codigoPlacas, actualizacionPlacas).setVisible(true);
+            dispose();
         }
-        
+
 
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 

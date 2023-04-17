@@ -4,6 +4,7 @@
  */
 package org.itson.concesionaria.guis;
 
+import javax.swing.JOptionPane;
 import static org.itson.concesionaria.entitys.Licencia_.persona;
 import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.utilities.jasperReportCreator;
@@ -14,10 +15,9 @@ import org.itson.concesionaria.utilities.jasperReportCreator;
  */
 public class Reporte extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Reporte
-     */
-    public Reporte() {
+    Persona persona;
+    public Reporte(Persona persona) {
+        this.persona = persona;
         initComponents();
     }
 
@@ -79,7 +79,7 @@ public class Reporte extends javax.swing.JFrame {
                 btnGenerarPDFActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGenerarPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 470, -1, -1));
+        getContentPane().add(btnGenerarPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 470, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
         jPanel1.setLayout(null);
@@ -116,9 +116,15 @@ public class Reporte extends javax.swing.JFrame {
 
     private void btnGenerarPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarPDFActionPerformed
         jasperReportCreator jrc = new jasperReportCreator();
-        Persona persona;
+        
         try {
-            jrc.generarReporte();
+            if(persona != null)
+            {
+                   jrc.test(persona);
+            }else{
+                JOptionPane.showMessageDialog(null, "persona nula");
+            }
+         
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnGenerarPDFActionPerformed

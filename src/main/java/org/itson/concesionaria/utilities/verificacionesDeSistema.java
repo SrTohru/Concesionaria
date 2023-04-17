@@ -16,6 +16,10 @@ import org.itson.concesionaria.entitys.Licencia;
 import org.itson.concesionaria.entitys.Persona;
 import org.itson.concesionaria.entitys.Placas;
 import org.itson.concesionaria.entitys.Vehiculo;
+import static org.itson.concesionaria.utilities.tipoBusqueda.BUSQUEDA_POR_APELLIDO_MATERNO;
+import static org.itson.concesionaria.utilities.tipoBusqueda.BUSQUEDA_POR_APELLIDO_PATERNO;
+import static org.itson.concesionaria.utilities.tipoBusqueda.BUSQUEDA_POR_NOMBRE;
+import static org.itson.concesionaria.utilities.tipoBusqueda.BUSQUEDA_POR_RFC;
 
 public class verificacionesDeSistema {
 
@@ -47,24 +51,11 @@ public class verificacionesDeSistema {
         }
     }
 
-    public void desactivarOtrasPlacas(Auto auto, Placas placas) {
-        TypedQuery<Placas> query = em.getEntityManager().createQuery(
-                "SELECT l FROM Placas l WHERE l.idAuto = :auto AND l.estadosPlaca = :estadosPlaca",
-                Placas.class);
-        query.setParameter("auto", auto.getId());
-        query.setParameter("estadosPlaca", estadosPlaca.ACTIVA);
-
-        List<Placas> placasActivas = query.getResultList();
-
-        if (!placasActivas.isEmpty()) {
-            em.getEntityManager().getTransaction().begin();
-            for (Placas placa : placasActivas) {
-
-                placa.setEstadosPlaca(estadosPlaca.DESACTIVA);
-                em.getEntityManager().merge(placa);
-
-            }
-            em.getEntityManager().getTransaction().commit();
+    public void desactivarOtrasPlacas(Auto auto) {
+        List<Placas> placasAnteriores = auto.getPlacas();
+        for (Placas placaAnterior : placasAnteriores) {
+            placaAnterior.setEstadosPlaca(estadosPlaca.DESACTIVA);
+            em.getEntityManager().merge(placaAnterior);
         }
     }
 
@@ -186,22 +177,86 @@ public class verificacionesDeSistema {
         return null;
     }
 
-    public List<Persona> consultarPersonasMedianteInformacion(String nombres, String apellidoPaterno, String apellidoMaterno) {
+    public List<Persona> consultarPersonasMedianteInformacion(String valorBusqueda, tipoBusqueda tipoBusqueda) {
         try {
-            String jpql = "SELECT p FROM Persona p WHERE p.nombres LIKE :nombres AND (p.apellidoPaterno LIKE :apellidoPaterno OR p.apellidoPaterno IS NULL) AND (p.apellidoMaterno LIKE :apellidoMaterno OR p.apellidoMaterno IS NULL)";
-            TypedQuery<Persona> consulta = em.getEntityManager().createQuery(jpql, Persona.class);
-            consulta.setParameter("nombres", "%" + encriptador.encriptar(nombres) + "%");
-            consulta.setParameter("apellidoPaterno", "%" + encriptador.encriptar(apellidoPaterno) + "%");
-            consulta.setParameter("apellidoMaterno", "%" + encriptador.encriptar(apellidoMaterno) + "%");
+            String jpql = "SELECT p FROM Persona p WHERE ";
 
+            switch (tipoBusqueda) {
+                case BUSQUEDA_POR_NOMBRE:
+                    jpql += "p.nombres LIKE :valorBusqueda";
+                    break;
+                case BUSQUEDA_POR_APELLIDO_PATERNO:
+                    jpql += "p.apellidoPaterno LIKE :valorBusqueda OR p.apellidoPaterno IS NULL";
+                    break;
+                case BUSQUEDA_POR_APELLIDO_MATERNO:
+                    jpql += "p.apellidoMaterno LIKE :valorBusqueda OR p.apellidoMaterno IS NULL";
+                    break;
+                case BUSQUEDA_POR_RFC:
+                    jpql += "p.rfc LIKE :valorBusqueda OR p.rfc IS NULL";
+                    break;
+                default:
+                    throw new IllegalArgumentException("Tipo de búsqueda no válido");
+            }
+
+            TypedQuery<Persona> consulta = em.getEntityManager().createQuery(jpql, Persona.class);
+            consulta.setParameter("valorBusqueda", "%" + valorBusqueda + "%");
+            for (int i = 0; i < consulta.getResultList().size(); i++) {
+                System.out.println("test");
+                System.out.println(consulta.getResultList().get(i));
+            }
             return consulta.getResultList();
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             em.getEntityManager().getTransaction().rollback();
             return null;
         }
-
     }
+    
+    public Persona consultarPersonaMedianteRFC(String valorBusqueda, tipoBusqueda tipoBusqueda) {
+        try {
+            String jpql = "SELECT p FROM Persona p WHERE ";
 
+            switch (tipoBusqueda) {
+                case BUSQUEDA_POR_RFC:
+                    jpql += "p.rfc LIKE :valorBusqueda";
+                    break;
+                default:
+                    throw new IllegalArgumentException("Tipo de búsqueda no válido");
+            }
+
+            TypedQuery<Persona> consulta = em.getEntityManager().createQuery(jpql, Persona.class);
+            consulta.setParameter("valorBusqueda", "%" + valorBusqueda + "%");
+            Persona persona = consulta.getSingleResult();
+            System.out.println(persona.getNombres());
+            return persona;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+
+// public List<Persona> consultarPersonasMedianteInformacion(String nombres, String apellidoPaterno, String apellidoMaterno, String rfc) {
+//        try {
+//            String jpql = "SELECT p FROM Persona p WHERE p.nombres LIKE :nombres AND (p.apellidoPaterno LIKE :apellidoPaterno OR p.apellidoPaterno IS NULL) AND (p.apellidoMaterno LIKE :apellidoMaterno OR p.apellidoMaterno IS NULL)"
+//                    + "AND (p.rfc LIKE :rfc OR p.rfc IS NULL)";
+//            TypedQuery<Persona> consulta = em.getEntityManager().createQuery(jpql, Persona.class);
+//            consulta.setParameter("nombres", "%" + nombres + "%");
+//            consulta.setParameter("apellidoPaterno", "%" + apellidoPaterno + "%");
+//            consulta.setParameter("apellidoMaterno", "%" + apellidoMaterno + "%");
+//            consulta.setParameter("rfc", rfc);
+//            for (int i = 0; i <  consulta.getResultList().size(); i++) {
+//                System.out.println("test");
+//                System.out.println( consulta.getResultList().get(i));
+//            }
+//            return consulta.getResultList();
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//            em.getEntityManager().getTransaction().rollback();
+//            return null;
+//        }
+//
+//    }
     public int verificarAutoNuevo(Auto auto) {
         if (auto.getPlacas().size() >= 1) {
             return costoPlaca.getPLACAS_AUTO_USADO();
