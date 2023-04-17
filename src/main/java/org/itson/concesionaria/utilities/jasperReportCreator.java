@@ -30,12 +30,12 @@ import net.sf.jasperreports.view.JasperViewer;
 import org.itson.concesionaria.entitys.Reportes;
 import org.itson.concesionaria.entitys.Tramite;
 import org.itson.concesionaria.entitys.Vehiculo;
-
+    
 public class jasperReportCreator {
 
     eManager em = new eManager();
-
-    String url = "C:\\Users\\PC\\JaspersoftWorkspace\\MyReports\\JasperReport.Jrxml";
+    String url = "src\\JasperReport.Jrxml";
+ 
 
     encriptador enc = new encriptador();
 

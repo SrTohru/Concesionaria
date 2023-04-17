@@ -52,10 +52,22 @@ public class verificacionesDeSistema {
     }
 
     public void desactivarOtrasPlacas(Auto auto) {
-        List<Placas> placasAnteriores = auto.getPlacas();
-        for (Placas placaAnterior : placasAnteriores) {
-            placaAnterior.setEstadosPlaca(estadosPlaca.DESACTIVA);
-            em.getEntityManager().merge(placaAnterior);
+        TypedQuery<Placas> query = em.getEntityManager().createQuery(
+                "SELECT l FROM Placas l WHERE l.idAuto = :auto AND l.estadosPlaca = :estadosPlaca",
+                Placas.class);
+        query.setParameter("auto", auto);
+        query.setParameter("estadosPlaca", estadosPlaca.ACTIVA);
+        List<Placas> licenciasActivas = query.getResultList();
+
+        if (!licenciasActivas.isEmpty()) {
+            em.getEntityManager().getTransaction().begin();
+            for (Placas lic : licenciasActivas) {
+
+                lic.setEstadosPlaca(estadosPlaca.DESACTIVA);
+                em.getEntityManager().merge(lic);
+
+            }
+            em.getEntityManager().getTransaction().commit();
         }
     }
 
@@ -126,7 +138,7 @@ public class verificacionesDeSistema {
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ese vehiculo no existe");
+
         }
         return null;
     }
@@ -201,7 +213,6 @@ public class verificacionesDeSistema {
             TypedQuery<Persona> consulta = em.getEntityManager().createQuery(jpql, Persona.class);
             consulta.setParameter("valorBusqueda", "%" + valorBusqueda + "%");
             for (int i = 0; i < consulta.getResultList().size(); i++) {
-                System.out.println("test");
                 System.out.println(consulta.getResultList().get(i));
             }
             return consulta.getResultList();
@@ -212,19 +223,18 @@ public class verificacionesDeSistema {
         }
     }
 
- public Persona obtenerPersonaPorRFC(String rfc) {
-    try {
-        String jpql = "SELECT p FROM Persona p WHERE p.rfc = :rfc";
-        TypedQuery<Persona> consulta = em.getEntityManager().createQuery(jpql, Persona.class);
-        consulta.setParameter("rfc", rfc);
-        Persona persona = consulta.getSingleResult();
-        return persona;
-    } catch (NoResultException ex) {
-        // Si no se encuentra una persona con el RFC especificado, se devuelve null
-        return null;
+    public Persona obtenerPersonaPorRFC(String rfc) {
+        try {
+            String jpql = "SELECT p FROM Persona p WHERE p.rfc = :rfc";
+            TypedQuery<Persona> consulta = em.getEntityManager().createQuery(jpql, Persona.class);
+            consulta.setParameter("rfc", rfc);
+            Persona persona = consulta.getSingleResult();
+            return persona;
+        } catch (NoResultException ex) {
+            // Si no se encuentra una persona con el RFC especificado, se devuelve null
+            return null;
+        }
     }
-}
-
 
 // public List<Persona> consultarPersonasMedianteInformacion(String nombres, String apellidoPaterno, String apellidoMaterno, String rfc) {
 //        try {

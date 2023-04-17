@@ -37,7 +37,7 @@ public class AutosDAO implements IAutos {
             em.getEntityManager().getTransaction().commit();
             tramiteDAO.finalizarTramite(estadosTramite.Finalizado, new GregorianCalendar(), costo, tramite);
 
-            pagosDAO.registrarPagoPlacas(placa, tipoDePago.Pago_Placas, tramite);
+            
             
             JOptionPane.showMessageDialog(null, "Se ha registrado exitosamente su automovil y sus placas.");
             return auto;

@@ -199,7 +199,6 @@ public class RegistroAutomovil extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
 
-//verificacionesSistema.consultarExistenciaVehiculoPorSerie(txtSerie.getText());
         if (verificacionDeInformacion()) {
             Persona persona = verificacionesSistema.verificarPersonaPorRFC(txtRFC.getText());
             if (persona != null) {

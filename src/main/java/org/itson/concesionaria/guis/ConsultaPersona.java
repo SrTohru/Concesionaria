@@ -38,7 +38,6 @@ public class ConsultaPersona extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
         txtInfoBusqueda = new javax.swing.JTextField();
         btnSalir = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -48,8 +47,9 @@ public class ConsultaPersona extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         comboBoxSeleccionBusqueda = new javax.swing.JComboBox<>();
         lblInfoSeleccion = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnHistorial = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         jTextField4.setText("jTextField4");
 
@@ -60,17 +60,6 @@ public class ConsultaPersona extends javax.swing.JFrame {
 
         jLabel2.setText("Tipo de busqueda:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 120, -1));
-
-        jToggleButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jToggleButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jToggleButton1.setText("Consultar");
-        jToggleButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 111, -1));
 
         txtInfoBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,17 +138,30 @@ public class ConsultaPersona extends javax.swing.JFrame {
         lblInfoSeleccion.setText("Null data");
         getContentPane().add(lblInfoSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
-        jButton1.setText("Historial de la persona");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnHistorial.setText("Historial de la persona");
+        btnHistorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnHistorialActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 362, -1, -1));
+        getContentPane().add(btnHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 362, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-9, 90, 460, 220));
+
+        jToggleButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jToggleButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jToggleButton1.setText("Consultar");
+        jToggleButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jToggleButton1);
+        jToggleButton1.setBounds(40, 150, 111, 22);
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-9, 90, 950, 340));
 
         pack();
         setLocationRelativeTo(null);
@@ -189,7 +191,8 @@ public class ConsultaPersona extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         try {
-            JOptionPane.showMessageDialog(null, "lo presionaste");
+            JOptionPane.showMessageDialog(null, "Esto puede tomar un poco de tiempo, sea paciente :).");
+            
             if (tipoDeBusqueda == tipoBusqueda.BUSQUEDA_POR_RFC) {
                 añadirPersonasLista(verificacionesSistema.consultarPersonasMedianteInformacion(txtInfoBusqueda.getText(), tipoDeBusqueda));
 
@@ -197,6 +200,8 @@ public class ConsultaPersona extends javax.swing.JFrame {
                 añadirPersonasLista(verificacionesSistema.consultarPersonasMedianteInformacion(encriptador.encriptar(txtInfoBusqueda.getText()), tipoDeBusqueda));
 
             }
+            
+            JOptionPane.showMessageDialog(null, "Puede seleccionar una persona de la lista para generar su reporte.");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -236,8 +241,10 @@ public class ConsultaPersona extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_comboBoxSeleccionBusquedaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorialActionPerformed
         int filaSeleccionada = tabla.getSelectedRow();
+        
+        
         JOptionPane.showMessageDialog(null, tabla.getValueAt(filaSeleccionada, 3).toString());
         Persona persona = verificacionesSistema.obtenerPersonaPorRFC(tabla.getValueAt(filaSeleccionada, 3).toString());
         JOptionPane.showMessageDialog(null, persona);
@@ -248,13 +255,13 @@ public class ConsultaPersona extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnHistorialActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHistorial;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> comboBoxSeleccionBusqueda;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

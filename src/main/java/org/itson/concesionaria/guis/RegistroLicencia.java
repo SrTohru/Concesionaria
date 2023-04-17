@@ -143,7 +143,7 @@ public class RegistroLicencia extends javax.swing.JFrame {
             }
         });
         jPanel1.add(añosVigencia);
-        añosVigencia.setBounds(90, 100, 72, 22);
+        añosVigencia.setBounds(80, 100, 72, 22);
 
         lblDiscapacitado.setText("¿Eres discapacitado?");
         jPanel1.add(lblDiscapacitado);
@@ -156,7 +156,7 @@ public class RegistroLicencia extends javax.swing.JFrame {
             }
         });
         jPanel1.add(checkBoxDiscapacitado);
-        checkBoxDiscapacitado.setBounds(30, 160, 140, 20);
+        checkBoxDiscapacitado.setBounds(150, 140, 140, 20);
 
         Solicitar.setBackground(new java.awt.Color(204, 204, 204));
         Solicitar.setText("Solicitar");

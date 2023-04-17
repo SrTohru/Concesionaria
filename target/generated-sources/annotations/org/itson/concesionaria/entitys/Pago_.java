@@ -8,7 +8,7 @@ import org.itson.concesionaria.entitys.Placas;
 import org.itson.concesionaria.entitys.Tramite;
 import org.itson.concesionaria.utilities.tipoDePago;
 
-@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-04-16T20:35:05")
+@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-04-16T22:59:08")
 @StaticMetamodel(Pago.class)
 public class Pago_ { 
 

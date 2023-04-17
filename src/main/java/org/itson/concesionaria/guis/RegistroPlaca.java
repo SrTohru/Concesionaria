@@ -100,7 +100,7 @@ public class RegistroPlaca extends javax.swing.JFrame {
         jPanel1.add(jSeparator2);
         jSeparator2.setBounds(30, 70, 250, 3);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 420, 90));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 70));
 
         btnSalir.setBackground(new java.awt.Color(204, 204, 204));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -122,7 +122,7 @@ public class RegistroPlaca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        JOptionPane.showMessageDialog(null, actualizacionPlacas);
+   
         if (actualizacionPlacas == true) {
             new PagoPlaca(tramite, auto, persona, verificacionesSitema.verificarAutoNuevo(auto), codigoPlacas, actualizacionPlacas).setVisible(true);
             dispose();

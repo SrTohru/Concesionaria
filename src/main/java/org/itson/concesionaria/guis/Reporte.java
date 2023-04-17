@@ -32,10 +32,6 @@ public class Reporte extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnSalir = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tablaContenidos = new javax.swing.JTable();
-        btnGenerarPDF = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lblReporte = new javax.swing.JLabel();
         lblTipoTramite = new javax.swing.JLabel();
@@ -44,49 +40,11 @@ public class Reporte extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        btnSalir = new javax.swing.JButton();
+        btnGenerarPDF = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnSalir.setBackground(new java.awt.Color(204, 204, 204));
-        btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnSalir.setText("Salir");
-        btnSalir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 470, 96, -1));
-
-        tablaContenidos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Nombre Completo", "Costo", "Tipo de Tramite", "Fecha Tramite"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Float.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(tablaContenidos);
-
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 590, 345));
-
-        btnGenerarPDF.setBackground(new java.awt.Color(204, 204, 0));
-        btnGenerarPDF.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnGenerarPDF.setText("Generar PDF");
-        btnGenerarPDF.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnGenerarPDF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGenerarPDFActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnGenerarPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 470, 100, -1));
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
         jPanel1.setLayout(null);
@@ -118,10 +76,29 @@ public class Reporte extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(470, 0, 150, 120);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-13, -4, 650, 100));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-13, -4, 820, 100));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 90, 630, 450));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnSalir.setBackground(new java.awt.Color(204, 204, 204));
+        btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 120, 50));
+
+        btnGenerarPDF.setBackground(new java.awt.Color(204, 204, 0));
+        btnGenerarPDF.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnGenerarPDF.setText("Generar PDF");
+        btnGenerarPDF.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnGenerarPDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarPDFActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnGenerarPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 120, 50));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 90, 840, 560));
 
         pack();
         setLocationRelativeTo(null);
@@ -171,10 +148,8 @@ public class Reporte extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblReporte;
     private javax.swing.JLabel lblTipoTramite;
-    private javax.swing.JTable tablaContenidos;
     // End of variables declaration//GEN-END:variables
 }

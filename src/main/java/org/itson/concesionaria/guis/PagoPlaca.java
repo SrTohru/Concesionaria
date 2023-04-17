@@ -42,8 +42,8 @@ public class PagoPlaca extends javax.swing.JFrame {
 
     public PagoPlaca(Tramite tramite, Auto auto, Persona persona, int costo, String codigoPlacas, boolean actualizacionPlacas) {
         initComponents();
+        
         this.actualizacionPlacas = actualizacionPlacas;
-         JOptionPane.showMessageDialog(null, actualizacionPlacas);
         this.auto = auto;
         this.tramite = tramite;
         this.persona = persona;
@@ -193,7 +193,6 @@ public class PagoPlaca extends javax.swing.JFrame {
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
         if (mds.preguntaConfirmar()) {
-            JOptionPane.showMessageDialog(null, actualizacionPlacas);
             if (actualizacionPlacas == true) {
                
                 placasDAO.actualizarPlacas(codigoPlacas, estadosPlaca.ACTIVA, tramite, costo, persona, auto);

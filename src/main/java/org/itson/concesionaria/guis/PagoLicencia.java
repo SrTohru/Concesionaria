@@ -164,7 +164,6 @@ public class PagoLicencia extends javax.swing.JFrame {
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
         if (mds.preguntaConfirmar()) {
-            JOptionPane.showMessageDialog(null, "Confirmada");
             licenciasDAO.registrarLicencia(persona, fecha, discapacidad, costo, tramite);
 
             Calendar fechaRealizacion = new GregorianCalendar();

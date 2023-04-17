@@ -5,6 +5,7 @@
 package org.itson.concesionaria.entitys;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -42,7 +43,7 @@ public abstract class Vehiculo implements Serializable {
     @Column(name = "modelo", nullable = false, length = 50)
     private String modelo;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "tramiteVehiculo")
     private Tramite tramite;
 

@@ -37,7 +37,6 @@ org\itson\concesionaria\utilities\jasperReportCreator.class
 org\itson\concesionaria\utilities\tipoDePago.class
 org\itson\concesionaria\dao\TramitesDAO.class
 org\itson\concesionaria\guis\ConsultaPersona.class
-org\itson\concesionaria\guis\Reporte$2.class
 org\itson\concesionaria\guis\PagoPlaca$2.class
 org\itson\concesionaria\interfaces\IAutos.class
 org\itson\concesionaria\entitys\Reportes.class
