@@ -112,7 +112,6 @@ public class PagoLicencia extends javax.swing.JFrame {
         jPanel1.add(jSeparator1);
         jSeparator1.setBounds(20, 60, 179, 10);
 
-<<<<<<< HEAD
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -153,13 +152,11 @@ public class PagoLicencia extends javax.swing.JFrame {
                 .addComponent(btnCancelarTramite)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
-=======
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 80));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 80, 380, 180));
->>>>>>> master
 
         pack();
         setLocationRelativeTo(null);
@@ -179,7 +176,9 @@ public class PagoLicencia extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPagarActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-       tramiteDAO.cancelarTramite(tramite, estadosTramite.Cancelado);
+       if(tramite.getEstadoTramite() != estadosTramite.Finalizado){
+           tramiteDAO.cancelarTramite(tramite, estadosTramite.Cancelado);
+       }
     }//GEN-LAST:event_formWindowClosed
 
     private void btnCancelarTramiteActionPerformed(java.awt.event.ActionEvent evt) {

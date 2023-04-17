@@ -38,7 +38,8 @@ public class jasperReportCreator {
     String url = "C:\\Users\\PC\\JaspersoftWorkspace\\MyReports\\JasperReport.Jrxml";
 
     encriptador enc = new encriptador();
-  public void generarReporte(Persona persona) throws FileNotFoundException, JRException {
+
+    public void generarReporte(Persona persona) throws FileNotFoundException, JRException {
 
         JRBeanCollectionDataSource items = new JRBeanCollectionDataSource(consultarTramitesPersona(persona));
 
@@ -56,8 +57,8 @@ public class jasperReportCreator {
 
         JasperViewer.viewReport(print, false);
     }
-    
-        public void generarReportePorTipo(Persona persona, tiposTramite tipo) throws FileNotFoundException, JRException {
+
+    public void generarReportePorTipo(Persona persona, tiposTramite tipo) throws FileNotFoundException, JRException {
 
         JRBeanCollectionDataSource items = new JRBeanCollectionDataSource(consultarTramitesPersonaPorTipo(persona, tipo));
 
@@ -75,13 +76,45 @@ public class jasperReportCreator {
 
         JasperViewer.viewReport(print, false);
     }
-   public List<Reportes> consultarTramitesPersona(Persona persona) {
+
+    public List<Reportes> consultarTramitesPersona(Persona persona) {
 
         TypedQuery<Tramite> query = em.getEntityManager().createQuery(
                 "SELECT t  FROM Tramite t WHERE t.idPersona = :persona AND t.estadoTramite = :estadoTramite", Tramite.class);
 
         query.setParameter("persona", persona);
         query.setParameter("estadoTramite", estadosTramite.Finalizado);
+
+        List<Reportes> list = new ArrayList<>();
+
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+
+            for (int i = 0; i < query.getResultList().size(); i++) {
+
+                String fechaString = sdf.format(query.getResultList().get(i).getFechaTramite().getTime());
+
+                Reportes rep = new Reportes(query.getResultList().get(i).getTipoTramite() + "",
+                        encriptador.desencriptar(query.getResultList().get(i).getIdPersona().getNombres()) + " " + encriptador.desencriptar(query.getResultList().get(i).getIdPersona().getApellidoPaterno()) + " " + encriptador.desencriptar(query.getResultList().get(i).getIdPersona().getApellidoMaterno()),
+                        query.getResultList().get(i).getCosto() + "",
+                        fechaString);
+
+                list.add(rep);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<Reportes> consultarTramitesPersonaPorTipo(Persona persona, tiposTramite tipo) {
+
+        TypedQuery<Tramite> query = em.getEntityManager().createQuery(
+                "SELECT t FROM Tramite t WHERE t.idPersona = :persona "
+                + "AND t.estadoTramite = :estadoTramite AND t.tipoTramite = :tipo", Tramite.class);
+
+        query.setParameter("persona", persona);
+        query.setParameter("estadoTramite", estadosTramite.Finalizado);
+        query.setParameter("tipo", tipo);
 
         List<Reportes> list = new ArrayList<>();
 
@@ -103,35 +136,5 @@ public class jasperReportCreator {
         }
         return list;
     }
-    
-    public List<Reportes> consultarTramitesPersonaPorTipo(Persona persona, tiposTramite tipo) {
-
-    TypedQuery<Tramite> query = em.getEntityManager().createQuery(
-            "SELECT t FROM Tramite t WHERE t.idPersona = :persona AND t.estadoTramite = :estadoTramite AND t.tipoTramite = :tipo", Tramite.class);
-
-    query.setParameter("persona", persona);
-    query.setParameter("estadoTramite", estadosTramite.Finalizado);
-    query.setParameter("tipo", tipo);
-
-    List<Reportes> list = new ArrayList<>();
-
-    try {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-
-        for (int i = 0; i < query.getResultList().size(); i++) {
-
-            String fechaString = sdf.format(query.getResultList().get(i).getFechaTramite().getTime());
-
-            Reportes rep = new Reportes(query.getResultList().get(i).getTipoTramite() + "",
-                    encriptador.desencriptar(query.getResultList().get(i).getIdPersona().getNombres()) + " " + encriptador.desencriptar(query.getResultList().get(i).getIdPersona().getApellidoPaterno()) + " " + encriptador.desencriptar(query.getResultList().get(i).getIdPersona().getApellidoMaterno()),
-                    query.getResultList().get(i).getCosto() + "",
-                    fechaString);
-            System.out.println(rep);
-            list.add(rep);
-        }
-    } catch (Exception e) {
-    }
-    return list;
-}
 
 }

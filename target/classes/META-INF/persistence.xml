@@ -16,10 +16,10 @@
     <class>org.itson.concesionaria.entitys.Pago</class>
     <properties>
       <!-- -->
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://u10393_hhSTBpRIRK:F3%5Eic0MVByEA%40NrwOjzqjCln@107.181.226.202:3306/s10393_concesionaria"/>
-      <property name="javax.persistence.jdbc.user" value="u10393_hhSTBpRIRK"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://aws.connect.psdb.cloud/concesionaria?sslMode=VERIFY_IDENTITY"/>
+      <property name="javax.persistence.jdbc.user" value="gxj557nsy5gvnp05jliu"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="F3^ic0MVByEA@NrwOjzqjCln"/>
+      <property name="javax.persistence.jdbc.password" value="pscale_pw_ya1a0o3kegabDe2PQii0JmrSyflNPycAjCU9BEIQr8R"/>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
       <!-- 
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/concesionaria?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

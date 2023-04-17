@@ -17,6 +17,7 @@ import org.itson.concesionaria.utilities.tiposTramite;
 public class Reporte extends javax.swing.JFrame {
 
     Persona persona;
+
     public Reporte(Persona persona) {
         this.persona = persona;
         initComponents();
@@ -127,15 +128,16 @@ public class Reporte extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGenerarPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarPDFActionPerformed
-    jasperReportCreator jrc = new jasperReportCreator();
+        jasperReportCreator jrc = new jasperReportCreator();
 
         try {
             if (persona != null) {
+                
                 if (obtenerTipoTramite() == tiposTramite.Expedicion_De_Licencia) {
                     jrc.generarReportePorTipo(persona, tiposTramite.Expedicion_De_Licencia);
-                }else  if (obtenerTipoTramite() == tiposTramite.Expedicion_De_Placas) {
+                } else if (obtenerTipoTramite() == tiposTramite.Expedicion_De_Placas) {
                     jrc.generarReportePorTipo(persona, tiposTramite.Expedicion_De_Placas);
-                }else{
+                } else {
                     jrc.generarReporte(persona);
                 }
 
