@@ -42,12 +42,15 @@ public class Reporte extends javax.swing.JFrame {
         btnCrear = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnSalir.setBackground(new java.awt.Color(204, 204, 204));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSalir.setText("Salir");
+        btnSalir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 470, 96, -1));
 
         tablaContenidos.setModel(new javax.swing.table.DefaultTableModel(
@@ -73,14 +76,16 @@ public class Reporte extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 590, 345));
 
+        btnGenerarPDF.setBackground(new java.awt.Color(204, 204, 0));
         btnGenerarPDF.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnGenerarPDF.setText("Generar PDF");
+        btnGenerarPDF.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnGenerarPDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenerarPDFActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGenerarPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 470, -1, -1));
+        getContentPane().add(btnGenerarPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 470, 100, -1));
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
         jPanel1.setLayout(null);
@@ -91,25 +96,31 @@ public class Reporte extends javax.swing.JFrame {
         jPanel1.add(lblReporte);
         lblReporte.setBounds(30, 20, 110, 32);
 
+        lblTipoTramite.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTipoTramite.setForeground(new java.awt.Color(255, 255, 255));
         lblTipoTramite.setText("Tipo de tramite");
         jPanel1.add(lblTipoTramite);
-        lblTipoTramite.setBounds(40, 70, 130, 16);
+        lblTipoTramite.setBounds(30, 70, 130, 16);
 
         cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Licencia", "Placas" }));
         jPanel1.add(cbxTipo);
         cbxTipo.setBounds(130, 70, 82, 22);
 
+        btnCrear.setBackground(new java.awt.Color(51, 204, 0));
         btnCrear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCrear.setText("Crear");
+        btnCrear.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(btnCrear);
-        btnCrear.setBounds(220, 70, 60, 22);
+        btnCrear.setBounds(220, 70, 70, 22);
         jPanel1.add(jSeparator1);
         jSeparator1.setBounds(30, 50, 140, 10);
         jPanel1.add(jLabel1);
         jLabel1.setBounds(470, 0, 150, 120);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-13, -4, 650, 100));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 90, 630, 450));
 
         pack();
         setLocationRelativeTo(null);
@@ -157,6 +168,7 @@ public class Reporte extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblReporte;

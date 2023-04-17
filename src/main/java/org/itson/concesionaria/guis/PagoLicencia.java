@@ -58,6 +58,7 @@ public class PagoLicencia extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lblCobro = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -65,9 +66,11 @@ public class PagoLicencia extends javax.swing.JFrame {
                 formWindowClosed(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblInfoRFC.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblInfoRFC.setText("RFC");
+        getContentPane().add(lblInfoRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 30, -1));
 
         btnPagar.setText("Pagar");
         btnPagar.addActionListener(new java.awt.event.ActionListener() {
@@ -75,6 +78,7 @@ public class PagoLicencia extends javax.swing.JFrame {
                 btnPagarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 90, -1));
 
         btnCancelarTramite.setBackground(new java.awt.Color(204, 204, 204));
         btnCancelarTramite.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -85,13 +89,17 @@ public class PagoLicencia extends javax.swing.JFrame {
                 btnCancelarTramiteActionPerformed(evt);
             }
         });
+        getContentPane().add(btnCancelarTramite, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 130, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Costo");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 37, -1));
 
         lblCosto.setText("Null data");
+        getContentPane().add(lblCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
 
         lblRFC.setText("Null data");
+        getContentPane().add(lblRFC, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
         jPanel1.setLayout(null);
@@ -104,6 +112,7 @@ public class PagoLicencia extends javax.swing.JFrame {
         jPanel1.add(jSeparator1);
         jSeparator1.setBounds(20, 60, 179, 10);
 
+<<<<<<< HEAD
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -144,6 +153,13 @@ public class PagoLicencia extends javax.swing.JFrame {
                 .addComponent(btnCancelarTramite)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
+=======
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 80));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(null);
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 80, 380, 180));
+>>>>>>> master
 
         pack();
         setLocationRelativeTo(null);
@@ -186,6 +202,7 @@ public class PagoLicencia extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnPagar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblCobro;
     private javax.swing.JLabel lblCosto;

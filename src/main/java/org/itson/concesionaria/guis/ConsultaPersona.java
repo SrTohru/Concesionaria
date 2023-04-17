@@ -49,6 +49,7 @@ public class ConsultaPersona extends javax.swing.JFrame {
         comboBoxSeleccionBusqueda = new javax.swing.JComboBox<>();
         lblInfoSeleccion = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
 
         jTextField4.setText("jTextField4");
 
@@ -124,6 +125,7 @@ public class ConsultaPersona extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
         jPanel1.setForeground(new java.awt.Color(204, 0, 0));
+        jPanel1.setToolTipText("");
         jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -154,6 +156,10 @@ public class ConsultaPersona extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 362, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(null);
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-9, 90, 460, 220));
 
         pack();
         setLocationRelativeTo(null);
@@ -253,6 +259,7 @@ public class ConsultaPersona extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField4;
