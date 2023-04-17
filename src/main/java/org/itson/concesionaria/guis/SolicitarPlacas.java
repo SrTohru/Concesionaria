@@ -95,7 +95,7 @@ public class SolicitarPlacas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Lo sentimos, pero ese automovil no pertenece a ese RFC");
         }else{
             Tramite tramite = new Tramite(persona, estadosTramite.En_Proceso, tiposTramite.Expedicion_De_Placas, new GregorianCalendar());
-           new RegistroPlaca(auto, persona, tramite, true).setVisible(rootPaneCheckingEnabled);
+           new RegistroPlaca(auto, persona, tramite, true).setVisible(true);
         }
         
         }
